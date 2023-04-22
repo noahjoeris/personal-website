@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const NavBar = () => (
+const NavBar = ({ darkModeEnabled, setDarkModeEnabled }) => (
   <Box flexGrow={1}>
     <AppBar position="static">
       <Toolbar>
@@ -33,7 +33,7 @@ const NavBar = () => (
         <MenuItem color="inherit">
           <Typography variant="button">Contact</Typography>
         </MenuItem>
-        <IconButton>
+        <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
           <DarkModeIcon color="inherit" />
         </IconButton>
         <IconButton>
