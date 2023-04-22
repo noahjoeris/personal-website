@@ -2,12 +2,17 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Avatar, Badge, ThemeProvider, styled } from "@mui/material";
+import {
+  Avatar,
+  Badge,
+  ThemeProvider,
+  createTheme,
+  styled,
+} from "@mui/material";
 import { useState } from "react";
 import "./App.css";
 import "./NavBar";
 import NavBar from "./NavBar";
-import { darkTheme, lightTheme } from "./constantsThemes";
 const imgPath = "ich.jpg";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -44,12 +49,25 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useState(true);
+  const [locale, setLocale] = useState("enUS");
+
+  const theme = createTheme(
+    {
+      palette: {
+        mode: darkModeEnabled ? "dark" : "light",
+      },
+    },
+    locale
+  );
+
   return (
-    <div className="App">
-      <ThemeProvider theme={darkModeEnabled ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme}>
+      <div className="App">
         <NavBar
           darkModeEnabled={darkModeEnabled}
           setDarkModeEnabled={setDarkModeEnabled}
+          locale={locale}
+          setLocale={setLocale}
         />
         <header className="App-header">
           <StyledBadge
@@ -67,8 +85,8 @@ function App() {
 
           <p>Website in Progress</p>
         </header>
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 }
 

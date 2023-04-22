@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const NavBar = ({ darkModeEnabled, setDarkModeEnabled }) => (
+const NavBar = ({ darkModeEnabled, setDarkModeEnabled, locale, setLocale }) => (
   <Box flexGrow={1}>
     <AppBar position="static">
       <Toolbar>
@@ -36,11 +36,13 @@ const NavBar = ({ darkModeEnabled, setDarkModeEnabled }) => (
         <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
           <DarkModeIcon color="inherit" />
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={() => setLocale(locale === "enUS" ? "deDE" : "enUS")}
+        >
           <Badge
             badgeContent={
               <img
-                src="flag_eng.svg"
+                src={locale === "enUS" ? "flag_eng.svg" : "flag_ger.svg"}
                 alt=""
                 style={{ width: "150%", height: "150%" }}
               />
