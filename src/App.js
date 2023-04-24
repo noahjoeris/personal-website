@@ -10,6 +10,7 @@ import {
   styled,
 } from "@mui/material";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./NavBar";
 import NavBar from "./NavBar";
@@ -48,8 +49,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [darkModeEnabled, setDarkModeEnabled] = useState(true);
-  const [locale, setLocale] = useState("enUS");
+  const [locale, setLocale] = useState(
+    i18n.language === "en" ? "enUS" : "deDE"
+  );
 
   const theme = createTheme(
     {
@@ -82,8 +86,7 @@ function App() {
               sx={{ width: "20rem", height: "20rem" }}
             />
           </StyledBadge>
-
-          <p>Website in Progress</p>
+          <p>{t("welcome")}</p>
         </header>
       </div>
     </ThemeProvider>
