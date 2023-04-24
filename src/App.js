@@ -15,7 +15,7 @@ import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./NavBar";
 import NavBar from "./NavBar";
-const imgPath = "ich.jpg";
+const imgPath = "me.png";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
