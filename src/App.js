@@ -9,6 +9,7 @@ import {
   createTheme,
   styled,
 } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
@@ -65,8 +66,9 @@ function App() {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
+    <div className="App">
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <NavBar
           darkModeEnabled={darkModeEnabled}
           setDarkModeEnabled={setDarkModeEnabled}
@@ -88,8 +90,8 @@ function App() {
           </StyledBadge>
           <p>{t("welcome")}</p>
         </header>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </div>
   );
 }
 
