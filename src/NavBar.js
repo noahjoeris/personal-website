@@ -12,7 +12,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 const NavBar = ({ darkModeEnabled, setDarkModeEnabled, locale, setLocale }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Box flexGrow={1}>
@@ -29,13 +29,13 @@ const NavBar = ({ darkModeEnabled, setDarkModeEnabled, locale, setLocale }) => {
             Noah Joeris
           </Typography>
           <MenuItem color="inherit">
-            <Typography variant="button">Portfolio</Typography>
+            <Typography variant="button">{t("portfolioNav")}</Typography>
           </MenuItem>
           <MenuItem color="inherit">
-            <Typography variant="button">About Me</Typography>
+            <Typography variant="button">{t("aboutMeNav")}</Typography>
           </MenuItem>
           <MenuItem color="inherit">
-            <Typography variant="button">Contact</Typography>
+            <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>
           <IconButton
             onClick={() => {
