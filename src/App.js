@@ -10,11 +10,10 @@ import {
   styled,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
-import "./NavBar";
-import NavBar from "./NavBar";
+import "./components/NavBar";
+import NavBar from "./components/NavBar";
 import useLocalStorage from "./hooks/useLocalStorage";
 const imgPath = "me.png";
 
@@ -56,9 +55,6 @@ function App() {
     "true"
   );
   const { t, i18n } = useTranslation();
-  const [locale, setLocale] = useState(
-    i18n.language === "en" ? "enUS" : "deDE"
-  );
 
   const theme = createTheme(
     {
@@ -66,7 +62,7 @@ function App() {
         mode: darkModeEnabled ? "dark" : "light",
       },
     },
-    locale
+    i18n.language === "en" ? "enUS" : "deDE"
   );
 
   return (
@@ -76,8 +72,7 @@ function App() {
         <NavBar
           darkModeEnabled={darkModeEnabled}
           setDarkModeEnabled={setDarkModeEnabled}
-          locale={locale}
-          setLocale={setLocale}
+          language={i18n.language}
         />
         <header className="App-header">
           <StyledBadge
