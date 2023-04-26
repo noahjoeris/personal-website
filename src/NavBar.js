@@ -37,7 +37,12 @@ const NavBar = ({ darkModeEnabled, setDarkModeEnabled, locale, setLocale }) => {
           <MenuItem color="inherit">
             <Typography variant="button">Contact</Typography>
           </MenuItem>
-          <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
+          <IconButton
+            onClick={() => {
+              setDarkModeEnabled(!darkModeEnabled);
+              window.localStorage.setItem("darkModeEnabled", !darkModeEnabled);
+            }}
+          >
             <DarkModeIcon color="inherit" />
           </IconButton>
           <IconButton

@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import "./App.css";
 import "./NavBar";
 import NavBar from "./NavBar";
+import useLocalStorage from "./hooks/useLocalStorage";
 const imgPath = "me.png";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -50,8 +51,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function App() {
+  const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage(
+    "darkModeEnabled",
+    "true"
+  );
   const { t, i18n } = useTranslation();
-  const [darkModeEnabled, setDarkModeEnabled] = useState(true);
   const [locale, setLocale] = useState(
     i18n.language === "en" ? "enUS" : "deDE"
   );
