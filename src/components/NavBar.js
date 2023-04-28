@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const NavBar = ({ darkModeEnabled, setDarkModeEnabled }) => {
+const NavBar = ({ darkModeEnabled, setDarkModeEnabled, parallaxRef }) => {
   const { t, i18n } = useTranslation();
 
   return (
@@ -28,13 +28,22 @@ const NavBar = ({ darkModeEnabled, setDarkModeEnabled }) => {
           >
             Noah Joeris
           </Typography>
-          <MenuItem color="inherit">
+          <MenuItem
+            color="inherit"
+            onClick={() => parallaxRef.current.scrollTo(1)}
+          >
             <Typography variant="button">{t("portfolioNav")}</Typography>
           </MenuItem>
-          <MenuItem color="inherit">
+          <MenuItem
+            color="inherit"
+            onClick={() => parallaxRef.current.scrollTo(1)}
+          >
             <Typography variant="button">{t("aboutMeNav")}</Typography>
           </MenuItem>
-          <MenuItem color="inherit">
+          <MenuItem
+            color="inherit"
+            onClick={() => parallaxRef.current.scrollTo(1)}
+          >
             <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>
           <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>

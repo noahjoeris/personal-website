@@ -2,59 +2,24 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import {
-  Avatar,
-  Badge,
-  ThemeProvider,
-  createTheme,
-  styled,
-} from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
-import "./components/NavBar";
 import NavBar from "./components/NavBar";
 import useLocalStorage from "./hooks/useLocalStorage";
-const imgPath = "me.png";
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 1px ${theme.palette.background.paper}`,
-    width: "5rem",
-    height: "5rem",
-    borderRadius: "50%",
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
+import ComingSoonPage from "./pages/ComingSoonPage";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage(
     "darkModeEnabled",
     "true"
   );
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
+  const parallaxRef = useRef();
 
   const theme = createTheme(
     {
@@ -69,26 +34,22 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <NavBar
-          darkModeEnabled={darkModeEnabled}
-          setDarkModeEnabled={setDarkModeEnabled}
-          language={i18n.language}
-        />
-        <header className="App-header">
-          <StyledBadge
-            overlap="circular"
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            variant="dot"
-          >
-            <Avatar
-              className="App-logo"
-              alt="Noah Joeris"
-              src={imgPath}
-              sx={{ width: "20rem", height: "20rem" }}
-            />
-          </StyledBadge>
-          <p>{t("welcome")}</p>
-        </header>
+        <Parallax ref={parallaxRef} pages={2}>
+          <ParallaxLayer offset={0} speed={2}>
+            <div>
+              <NavBar
+                darkModeEnabled={darkModeEnabled}
+                setDarkModeEnabled={setDarkModeEnabled}
+                language={i18n.language}
+                parallaxRef={parallaxRef}
+              />
+              <LandingPage />
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={1} speed={2}>
+            <ComingSoonPage />
+          </ParallaxLayer>
+        </Parallax>
       </ThemeProvider>
     </div>
   );
