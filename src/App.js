@@ -25,6 +25,16 @@ function App() {
     {
       palette: {
         mode: darkModeEnabled ? "dark" : "light",
+        primary: {
+          light: "#7081ed",
+          main: "#0f3ed7",
+          dark: "#000bae",
+        },
+        secondary: {
+          light: "#bd60d5",
+          main: "#9000bd",
+          dark: "#3e00a5",
+        },
       },
     },
     i18n.language === "en" ? "enUS" : "deDE"
@@ -35,7 +45,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Parallax ref={parallaxRef} pages={2}>
-          <ParallaxLayer offset={0} speed={2}>
+          <ParallaxLayer offset={0} speed={0.2}>
             <div>
               <NavBar
                 darkModeEnabled={darkModeEnabled}
@@ -46,7 +56,7 @@ function App() {
               <LandingPage />
             </div>
           </ParallaxLayer>
-          <ParallaxLayer offset={1} speed={2}>
+          <ParallaxLayer offset={1} speed={0.2}>
             <ComingSoonPage />
           </ParallaxLayer>
         </Parallax>
