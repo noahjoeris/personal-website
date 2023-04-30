@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import ParticlesBackground from "./components/ParticlesBackground";
 import useLocalStorage from "./hooks/useLocalStorage";
 import ComingSoonPage from "./pages/ComingSoonPage";
 import LandingPage from "./pages/LandingPage";
@@ -44,6 +45,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ParticlesBackground />
         <Parallax ref={parallaxRef} pages={2}>
           <ParallaxLayer offset={0} speed={0.2}>
             <div>
