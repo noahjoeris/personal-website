@@ -45,18 +45,17 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <ParticlesBackground />
+
         <Parallax ref={parallaxRef} pages={2}>
           <ParallaxLayer offset={0} speed={0.2}>
-            <div>
-              <NavBar
-                darkModeEnabled={darkModeEnabled}
-                setDarkModeEnabled={setDarkModeEnabled}
-                language={i18n.language}
-                parallaxRef={parallaxRef}
-              />
-              <LandingPage />
-            </div>
+            <NavBar
+              darkModeEnabled={darkModeEnabled}
+              setDarkModeEnabled={setDarkModeEnabled}
+              language={i18n.language}
+              parallaxRef={parallaxRef}
+            />
+            <ParticlesBackground />
+            <LandingPage />
           </ParallaxLayer>
           <ParallaxLayer offset={1} speed={0.2}>
             <ComingSoonPage />

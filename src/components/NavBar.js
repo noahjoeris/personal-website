@@ -17,9 +17,8 @@ const NavBar = ({ darkModeEnabled, setDarkModeEnabled, parallaxRef }) => {
   return (
     <Box flexGrow={1}>
       <AppBar
-        position="static"
         color="default"
-        style={{ background: "transparent" }}
+        style={darkModeEnabled ? { background: "transparent" } : null}
       >
         <Toolbar>
           <Typography
