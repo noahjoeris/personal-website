@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-const NavBar = ({ darkModeEnabled, setDarkModeEnabled, parallaxRef }) => {
+const NavBar = ({ parallaxRef, darkModeEnabled, setDarkModeEnabled }) => {
   const { t, i18n } = useTranslation();
 
   return (

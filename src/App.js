@@ -10,15 +10,12 @@ import { useTranslation } from "react-i18next";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
-import useLocalStorage from "./hooks/useLocalStorage";
+import useDarkMode from "./hooks/useDarkMode";
 import ComingSoonPage from "./pages/ComingSoonPage";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage(
-    "darkModeEnabled",
-    "true"
-  );
+  const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
   const { i18n } = useTranslation();
   const parallaxRef = useRef();
 
@@ -50,7 +47,6 @@ function App() {
             <NavBar
               darkModeEnabled={darkModeEnabled}
               setDarkModeEnabled={setDarkModeEnabled}
-              language={i18n.language}
               parallaxRef={parallaxRef}
             />
             <LandingPage />
