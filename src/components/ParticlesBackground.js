@@ -1,14 +1,11 @@
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import particlesConfig from "./config/particles-config";
+import { particlesBackgoundDarkConfig } from "./config/particles-config";
 
 const ParticlesBackground = () => {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
-    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
   }, []);
 
@@ -19,11 +16,21 @@ const ParticlesBackground = () => {
   return (
     <Particles
       id="tsparticles"
-      params={particlesConfig}
+      height="100%"
+      width="100%"
+      style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}
+      params={particlesBackgoundDarkConfig}
       init={particlesInit}
       loaded={particlesLoaded}
-    ></Particles>
+    />
   );
 };
 
 export default ParticlesBackground;
+
+/*  <Particles
+      id="tsparticles"
+      params={particlesConfettiConfig}
+      init={particlesInit}
+      loaded={particlesLoaded}
+    /> */

@@ -37,23 +37,21 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const LandingPage = () => {
   const { t } = useTranslation();
   return (
-    <div>
-      <header className="App-header">
-        <StyledBadge
-          overlap="circular"
-          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          variant="dot"
-        >
-          <Avatar
-            className="App-logo"
-            alt="Noah Joeris"
-            src={imgPath}
-            sx={{ width: "20rem", height: "20rem" }}
-          />
-        </StyledBadge>
-        <p>{t("welcome")}</p>
-      </header>
-    </div>
+    <header className="App-header">
+      <StyledBadge
+        overlap="circular"
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        variant="dot"
+      >
+        <Avatar
+          className="App-logo"
+          alt="Noah Joeris"
+          src={imgPath}
+          sx={{ width: "20rem", height: "20rem" }}
+        />
+      </StyledBadge>
+      <p>{t("welcome")}</p>
+    </header>
   );
 };
 
