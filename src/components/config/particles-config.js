@@ -693,27 +693,27 @@ const particlesBackgoundDarkConfig = {
   },
   backgroundMask: {
     composite: "destination-out",
-    cover: { color: { value: "#fff" }, opacity: 1 },
+    cover: { color: { value: "#fff" }, opacity: 0.8 },
     enable: false,
   },
-  backgroundMode: { enable: false, zIndex: -1 },
-  detectRetina: true,
+  backgroundMode: { enable: true, zIndex: -1 },
+  detectRetina: false,
   infection: {
     cure: false,
     delay: 0,
-    enable: false,
+    enable: true,
     infections: 0,
     stages: [],
   },
   interactivity: {
-    detectsOn: "canvas",
+    detectsOn: "window",
     events: {
       onClick: { enable: true, mode: "repulse" },
       onDiv: { selectors: [], enable: false, mode: [], type: "circle" },
       onHover: {
         enable: true,
-        mode: "bubble",
-        parallax: { enable: false, force: 2, smooth: 10 },
+        mode: "connect",
+        parallax: { enable: true, force: 50, smooth: 30 },
       },
       resize: true,
     },
@@ -735,7 +735,7 @@ const particlesBackgoundDarkConfig = {
       },
       push: { quantity: 4 },
       remove: { quantity: 2 },
-      repulse: { distance: 400, duration: 0.4, speed: 1 },
+      repulse: { distance: 300, duration: 0.5, speed: 0.5 },
       slow: { factor: 3, radius: 200 },
       trail: { delay: 1, quantity: 1 },
     },
@@ -885,7 +885,7 @@ const particlesBackgoundLightConfig = {
   autoPlay: true,
   background: {
     color: { value: "#567698" },
-    image: "linear-gradient(19deg, #000bae 0%, #3e00a5 100%)",
+    image: "linear-gradient(19deg, #000bae 0%, #9000bd 100%)",
     position: "",
     repeat: "",
     size: "",
@@ -894,10 +894,10 @@ const particlesBackgoundLightConfig = {
   backgroundMask: {
     composite: "destination-out",
     cover: { color: { value: "#fff" }, opacity: 1 },
-    enable: false,
+    enable: true,
   },
-  backgroundMode: { enable: false, zIndex: -1 },
-  detectRetina: true,
+  backgroundMode: { enable: true, zIndex: -1 },
+  detectRetina: false,
   infection: {
     cure: false,
     delay: 0,
@@ -906,14 +906,14 @@ const particlesBackgoundLightConfig = {
     stages: [],
   },
   interactivity: {
-    detectsOn: "canvas",
+    detectsOn: "window",
     events: {
       onClick: { enable: true, mode: "repulse" },
       onDiv: { selectors: [], enable: false, mode: [], type: "circle" },
       onHover: {
         enable: true,
-        mode: "bubble",
-        parallax: { enable: false, force: 2, smooth: 10 },
+        mode: "connect",
+        parallax: { enable: true, force: 50, smooth: 30 },
       },
       resize: true,
     },
@@ -935,7 +935,7 @@ const particlesBackgoundLightConfig = {
       },
       push: { quantity: 4 },
       remove: { quantity: 2 },
-      repulse: { distance: 400, duration: 0.4, speed: 1 },
+      repulse: { distance: 300, duration: 0.5, speed: 0.5 },
       slow: { factor: 3, radius: 200 },
       trail: { delay: 1, quantity: 1 },
     },
@@ -956,7 +956,7 @@ const particlesBackgoundLightConfig = {
       mode: "bounce",
     },
     color: {
-      value: "#ffffff",
+      value: "#000",
       animation: { enable: false, speed: 1, sync: true },
     },
     life: {

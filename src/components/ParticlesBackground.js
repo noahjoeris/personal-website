@@ -1,9 +1,12 @@
 import { useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import { particlesBackgoundDarkConfig } from "./config/particles-config";
+import {
+  particlesBackgoundDarkConfig,
+  particlesBackgoundLightConfig,
+} from "./config/particles-config";
 
-const ParticlesBackground = () => {
+const ParticlesBackground = ({ darkModeEnabled }) => {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
     await loadFull(engine);
@@ -18,8 +21,11 @@ const ParticlesBackground = () => {
       id="tsparticles"
       height="100%"
       width="100%"
-      style={{ position: "absolute", top: 0, left: 0, zIndex: -1 }}
-      params={particlesBackgoundDarkConfig}
+      params={
+        darkModeEnabled
+          ? particlesBackgoundDarkConfig
+          : particlesBackgoundLightConfig
+      }
       init={particlesInit}
       loaded={particlesLoaded}
     />

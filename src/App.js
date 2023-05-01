@@ -50,7 +50,7 @@ function App() {
               parallaxRef={parallaxRef}
             />
             <LandingPage />
-            <ParticlesBackgound />
+            <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
           </ParallaxLayer>
           <ParallaxLayer offset={1} speed={0.2}>
             <ComingSoonPage />
