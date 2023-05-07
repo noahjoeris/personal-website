@@ -7,9 +7,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     backgroundColor: "#44b700",
     color: "#44b700",
     boxShadow: `0 0 0 1px ${theme.palette.background.paper}`,
-    width: "5rem",
-    height: "5rem",
-    borderRadius: "50%",
+    width: "3rem",
+    height: "3rem",
+    borderRadius: "100%",
     "&::after": {
       position: "absolute",
       top: 0,
@@ -47,7 +47,7 @@ const LandingPage = () => {
           className="App-logo"
           alt="Noah Joeris"
           src={imgPath}
-          sx={{ width: "20rem", height: "20rem" }}
+          sx={{ width: "15rem", height: "15rem" }}
         />
       </StyledBadge>
       <p>{t("welcome")}</p>
