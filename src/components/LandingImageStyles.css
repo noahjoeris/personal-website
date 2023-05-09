@@ -1,6 +1,7 @@
 .floating {
     -webkit-animation: movebounce 5s linear infinite;
     animation: movebounce 5s linear infinite;
+    margin-top: 2rem;
   }
   
   @-webkit-keyframes movebounce {

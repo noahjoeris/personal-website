@@ -16,7 +16,7 @@ const LandingText = () => {
         {t("landingPageTextWelcome")} 👋🏻
       </Typography>
       <Box>
-        <Typography variant="h6" marginBottom={"1rem"}>
+        <Typography variant="h6" marginBottom={"2rem"}>
           <Typewriter
             words={t("factsAboutMe", { returnObjects: true }).sort(
               () => Math.random() - 0.5
@@ -34,7 +34,7 @@ const LandingText = () => {
         variant="middle"
         sx={{ borderBottomWidth: "0.3rem", width: "5rem" }}
       />
-      <Typography variant="h4" fontStyle="italic" marginTop="1rem">
+      <Typography variant="h4" fontStyle="italic" marginTop="2rem">
         {t("jobRole")}
       </Typography>
 

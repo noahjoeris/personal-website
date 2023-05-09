@@ -27,8 +27,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const NavBar = ({ parallaxRef, darkModeEnabled, setDarkModeEnabled }) => {
-  const theme = useTheme();
-  const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
 
   return isMobileScreenSize ? (
