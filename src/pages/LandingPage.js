@@ -1,14 +1,18 @@
+import { Box } from "@mui/material";
 import LandingImage from "../components/LandingImage";
 import LandingText from "../components/LandingText";
-import "./LandingPageStyles.css";
 
 const LandingPage = () => {
   return (
-    // TODO: Try replacing div with MUI container
-    <div className="Landing-page">
+    <Box
+      minHeight={"100%"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
       <LandingText />
       <LandingImage />
-    </div>
+    </Box>
   );
 };
 

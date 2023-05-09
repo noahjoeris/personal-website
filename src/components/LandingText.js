@@ -12,11 +12,11 @@ const LandingText = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h4" marginBottom={"1rem"}>
+      <Typography variant="h3" marginBottom={"1rem"}>
         {t("landingPageTextWelcome")} 👋🏻
       </Typography>
       <Box>
-        <Typography variant="h6" fontStyle={"bold"} marginBottom={"1rem"}>
+        <Typography variant="h6" marginBottom={"1rem"}>
           <Typewriter
             words={t("factsAboutMe", { returnObjects: true }).sort(
               () => Math.random() - 0.5
