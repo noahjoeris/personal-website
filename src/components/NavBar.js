@@ -26,11 +26,7 @@ import {
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const NavBar = ({
-  parallaxRef,
-  darkModeEnabled = true,
-  setDarkModeEnabled = () => {},
-}) => {
+const NavBar = ({ parallaxRef, darkModeEnabled, setDarkModeEnabled }) => {
   const theme = useTheme();
   const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
@@ -135,9 +131,9 @@ const NavBarMobile = ({
                         badgeContent={
                           <img
                             src={
-                              i18n.language === "en"
-                                ? "flag_eng.svg"
-                                : "flag_ger.svg"
+                              i18n.language === "de"
+                                ? "flag_ger.svg"
+                                : "flag_eng.svg"
                             }
                             alt=""
                             style={{ width: "150%", height: "150%" }}
@@ -226,7 +222,7 @@ const NavBarDesktop = ({
             <Badge
               badgeContent={
                 <img
-                  src={i18n.language === "en" ? "flag_eng.svg" : "flag_ger.svg"}
+                  src={i18n.language === "de" ? "flag_ger.svg" : "flag_eng.svg"}
                   alt=""
                   style={{ width: "150%", height: "150%" }}
                 />

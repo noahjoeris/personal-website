@@ -1,6 +1,20 @@
 {
-    "landingPageText1": "Hi, ich bin Noah",
-    "landingPageText2": "Willkommen auf meiner Website!",
+    "landingPageTextWelcome": "Hi, ich bin Noah",
+    "landingPageTextFacts": "Lorem Ipsum",
+    "jobRole": "Software Engineer",
+    "factsAboutMe": [
+        "Lebensphilosophie: Stoizismus 💯",
+        "Leidenschaftlicher Developer 👨‍💻",
+        "Kaffee abhängig ☕",
+        "Crypto Enthusiast ⛓️",
+        "Biohacker 🥗",
+        "Frontend Developer 🎨",
+        "Bücher abhängig 📚",
+        "Calisthenics Athlet 🏋️",
+        "Verliebt in Software ❤️",
+        "Connect mit mir auf LinkedIn 🤝",
+        "Ich trinke Kaffee mit Butter 🧈"
+      ],
     "aboutMeNav": "Über mich",
     "contactNav": "Kontakt",
     "portfolioNav": "Portfolio",
