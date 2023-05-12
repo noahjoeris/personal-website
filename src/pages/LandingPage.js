@@ -2,7 +2,7 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import LandingImage from "../components/LandingImage";
 import LandingText from "../components/LandingText";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
 
   return (
@@ -13,7 +13,7 @@ const LandingPage = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <LandingText />
+      <LandingText darkModeEnabled={props.darkModeEnabled} />
       <LandingImage />
     </Box>
   );

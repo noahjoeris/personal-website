@@ -49,7 +49,7 @@ function App() {
               setDarkModeEnabled={setDarkModeEnabled}
               parallaxRef={parallaxRef}
             />
-            <LandingPage />
+            <LandingPage darkModeEnabled={darkModeEnabled} />
             <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
           </ParallaxLayer>
           <ParallaxLayer offset={1} speed={0.2}>

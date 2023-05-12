@@ -2,8 +2,9 @@ import { Box, Divider, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Typewriter } from "react-simple-typewriter";
 
-const LandingText = () => {
+const LandingText = ({ darkModeEnabled }) => {
   const { t } = useTranslation();
+
   return (
     <Box
       sx={{
@@ -42,7 +43,11 @@ const LandingText = () => {
         <Typography variant="h4" fontStyle="italic" marginRight={"0.5rem"}>
           @
         </Typography>
-        <img src="airbus.png" height="25rem" alt="Airbus" />
+        <img
+          src={darkModeEnabled ? "airbusWhite.png" : "airbusBlue.png"}
+          height="25rem"
+          alt="Airbus"
+        />
       </Box>
     </Box>
   );
