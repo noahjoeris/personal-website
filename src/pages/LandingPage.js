@@ -1,9 +1,11 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
+import ContactsSideBar from "../components/ContactsSideBar";
 import LandingImage from "../components/LandingImage";
 import LandingText from "../components/LandingText";
 
 const LandingPage = (props) => {
-  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
+  const theme = useTheme();
+  const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
@@ -15,6 +17,15 @@ const LandingPage = (props) => {
     >
       <LandingText darkModeEnabled={props.darkModeEnabled} />
       <LandingImage />
+      <Box
+        sx={{
+          position: "relative",
+          left: "-42rem",
+          bottom: "-15rem",
+        }}
+      >
+        <ContactsSideBar />
+      </Box>
     </Box>
   );
 };
