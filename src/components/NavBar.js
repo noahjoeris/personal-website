@@ -58,8 +58,12 @@ const NavBarMobile = ({
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
-    <Box flexGrow={1}>
-      <AppBar color="default" style={{ background: "transparent" }}>
+    <Box flexGrow={1} marginBottom={4}>
+      <AppBar
+        position="sticky"
+        color="default"
+        style={{ background: "transparent" }}
+      >
         <Toolbar sx={{ flexDirection: "row-reverse" }}>
           <Drawer
             anchor="right"
@@ -162,6 +166,7 @@ const NavBarMobile = ({
             flexGrow={1}
             variant="h4"
             color="inherit"
+            noWrap
           >
             Noah Joeris
           </Typography>
@@ -180,7 +185,11 @@ const NavBarDesktop = ({
 }) => {
   return (
     <Box flexGrow={1}>
-      <AppBar color="default" style={{ background: "transparent" }}>
+      <AppBar
+        position="sticky"
+        color="default"
+        style={{ background: "transparent" }}
+      >
         <Toolbar>
           <Typography
             align="left"
