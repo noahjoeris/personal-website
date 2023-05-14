@@ -39,8 +39,7 @@ const ContactsSideBar = () => {
     padding: "0.5rem",
     margin: "2rem",
     boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.5)",
-    backdropFilter: "blur(5px)",
-    transition: "0.5s ease-in-out",
+    backdropFilter: "blur(3px)",
   };
 
   return (

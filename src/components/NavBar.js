@@ -184,11 +184,15 @@ const NavBarDesktop = ({
   i18n,
 }) => {
   return (
-    <Box flexGrow={1}>
+    <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
       <AppBar
         position="sticky"
         color="default"
-        style={{ background: "transparent" }}
+        style={{
+          background: "transparent",
+          borderRadius: "0 0 5rem 5rem",
+          backdropFilter: "blur(2px)",
+        }}
       >
         <Toolbar>
           <Typography
