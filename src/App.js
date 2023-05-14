@@ -43,7 +43,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Parallax ref={parallaxRef} pages={2}>
-          <ParallaxLayer offset={0} speed={0.2}>
+          <ParallaxLayer
+            offset={0}
+            speed={0.2}
+            style={{ backgroundSize: "cover" }}
+          >
             <NavBar
               darkModeEnabled={darkModeEnabled}
               setDarkModeEnabled={setDarkModeEnabled}

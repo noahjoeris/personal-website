@@ -17,15 +17,7 @@ const LandingPage = (props) => {
     >
       <LandingText darkModeEnabled={props.darkModeEnabled} />
       <LandingImage />
-      <Box
-        sx={{
-          position: "relative",
-          left: "-42rem",
-          bottom: "-15rem",
-        }}
-      >
-        <ContactsSideBar />
-      </Box>
+      <ContactsSideBar />
     </Box>
   );
 };

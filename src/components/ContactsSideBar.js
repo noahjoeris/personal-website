@@ -1,10 +1,11 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 
 const ContactsSideBar = () => {
+  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const [focusedButton, setFocusedButton] = useState("");
 
   const icons = [
@@ -26,16 +27,24 @@ const ContactsSideBar = () => {
     marginBottom: "0.3rem",
   };
 
+  const boxStyle = {
+    display: "flex",
+    flexDirection: isMobileScreenSize ? "row" : "column",
+    position: "relative",
+    top: isMobileScreenSize ? "-4rem" : "0",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    border: "3px solid rgba(255, 255, 255, 0.5)",
+    borderRadius: "25px",
+    padding: "0.5rem",
+    margin: "2rem",
+    boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.5)",
+    backdropFilter: "blur(5px)",
+    transition: "0.5s ease-in-out",
+  };
+
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      backgroundColor="rgba(0, 0, 0, 0.2)"
-      borderRadius="25px"
-      padding="0.3rem"
-      boxShadow="0 0 15px 0 rgba(0, 0, 0, 0.5)"
-    >
+    <Box sx={boxStyle}>
       {icons.map(({ icon, key, link }, index) => (
         <>
           <IconButton
