@@ -46,7 +46,7 @@ function App() {
           <ParallaxLayer
             offset={0}
             speed={0.2}
-            style={{ backgroundSize: "cover" }}
+            style={{ backgroundSize: "cover", overflow: "hidden" }}
           >
             <NavBar
               darkModeEnabled={darkModeEnabled}
