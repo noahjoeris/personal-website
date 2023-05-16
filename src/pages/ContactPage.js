@@ -19,15 +19,37 @@ const ContactPage = () => {
   return (
     <Box
       display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
+      flexDirection="row"
+      minHeight={"100%"}
+      sx={{
+        background:
+          theme.palette.mode === "light"
+            ? "linear-gradient(135deg, #fff, #cfdafc)"
+            : "linear-gradient(-135deg, #051135, #121212)",
+        transition: "background 1s ease",
+      }}
     >
-      <Box>
-        <Typography variant="h3" align="left">
-          Contact Me
-        </Typography>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        minWidth={"50%"}
+      >
+        <Typography variant="h3">Contact Me</Typography>
         <GradientDivider variant="fullWidth" />
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        minWidth={"50%"}
+        sx={{ backgroundColor: "rgba(144, 0, 189,0.1)" }}
+      >
+        <Typography>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+        </Typography>
       </Box>
     </Box>
   );

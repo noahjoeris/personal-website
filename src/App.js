@@ -57,7 +57,7 @@ function App() {
             <LandingPage darkModeEnabled={darkModeEnabled} />
             <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
           </ParallaxLayer>
-          <ParallaxLayer offset={1} speed={0.2}>
+          <ParallaxLayer offset={0.98} speed={0.2}>
             <ContactPage />
           </ParallaxLayer>
           <ParallaxLayer offset={2} speed={0.2}>
