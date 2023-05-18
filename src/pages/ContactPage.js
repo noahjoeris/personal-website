@@ -8,6 +8,7 @@ const ContactPage = () => {
     minHeight: "0.4em",
     width: "5rem",
     marginTop: "1rem",
+    marginBottom: "3rem",
     borderRadius: "1rem",
     boxShadow:
       theme.palette.mode === "light"
@@ -16,41 +17,56 @@ const ContactPage = () => {
     backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
   }));
 
+  const GlassBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: "45%",
+    marginTop: "10%",
+    marginLeft: "2.5%",
+    marginRight: "2.5%",
+    marginBottom: "10%",
+    padding: "4rem",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+    border:
+      theme.palette.mode === "light"
+        ? "4px solid rgba(209, 213, 219, 0.4)"
+        : "4px solid rgba(255, 255, 255, 0.125)",
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? "rgba(255, 255, 255, 0.75)"
+        : "rgba(17, 25, 40, 0.5)",
+    borderRadius: "12px",
+    backdropFilter: "blur(16px) saturate(180%)",
+    WebkitBackdropFilter: "blur(16px) saturate(200%)",
+  }));
+
   return (
     <Box
       display="flex"
       flexDirection="row"
-      minHeight={"100%"}
+      minHeight="100%"
       sx={{
-        background:
-          theme.palette.mode === "light"
-            ? "linear-gradient(135deg, #fff, #cfdafc)"
-            : "linear-gradient(-135deg, #051135, #121212)",
-        transition: "background 1s ease",
+        backgroundColor: theme.palette.mode === "light" ? "#bd60d5" : "#121212",
+        backgroundImage:
+          "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 55%)",
       }}
     >
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        minWidth={"50%"}
-      >
-        <Typography variant="h3">Contact Me</Typography>
+      <GlassBox>
+        <Typography variant="h3">Reach out to me</Typography>
         <GradientDivider variant="fullWidth" />
-      </Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        minWidth={"50%"}
-        sx={{ backgroundColor: "rgba(144, 0, 189,0.1)" }}
-      >
+        <Typography variant="subtitle1">
+          My door is always open for a good cup of coffee and a chat. Whether it
+          be about a potential project, a new opportunity, or just to say hi.
+        </Typography>
+      </GlassBox>
+      <GlassBox>
         <Typography>
+          {/* Add Stepper component here */}
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
         </Typography>
-      </Box>
+      </GlassBox>
     </Box>
   );
 };
