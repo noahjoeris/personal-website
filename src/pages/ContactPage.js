@@ -1,7 +1,16 @@
-import { Box, Divider, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Typography,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import MessageStepper from "../components/MessageStepper";
 
 const ContactPage = ({ darkModeEnabled }) => {
+  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
+
   const GradientDivider = styled(Divider)(({ theme }) => ({
     minWidth: "6rem",
     minHeight: "0.4em",
@@ -21,16 +30,17 @@ const ContactPage = ({ darkModeEnabled }) => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: "30rem",
-    height: "35rem",
     maxWidth: "50rem",
     maxHeight: "50rem",
-    marginTop: "6rem",
+    height: isMobileScreenSize ? "" : "35rem",
+
+    zoom: isMobileScreenSize ? "0.7" : "1",
+    marginTop: isMobileScreenSize ? "2rem" : "6rem",
     marginLeft: "2rem",
     marginRight: "2rem",
-    marginBottom: "6rem",
-    padding: "4rem",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+    marginBottom: isMobileScreenSize ? "1rem" : "6rem",
+    padding: isMobileScreenSize ? "2rem" : "4rem",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
     border:
       theme.palette.mode === "light"
         ? "4px solid rgba(209, 213, 219, 0.4)"
@@ -47,8 +57,8 @@ const ContactPage = ({ darkModeEnabled }) => {
   return (
     <Box
       display="flex"
-      flexDirection="row"
-      justifyContent={"center"}
+      flexDirection={isMobileScreenSize ? "column" : "row"}
+      justifyContent="center"
       alignItems={"center"}
       minHeight="100%"
       sx={{
@@ -62,7 +72,7 @@ const ContactPage = ({ darkModeEnabled }) => {
         <GradientDivider variant="fullWidth" />
         <Typography variant="subtitle1">
           My door is always open for a good cup of coffee and a chat. Whether it
-          be about a potential project, a new opportunity, or just to say hi.
+          be about a potential project, a new opportunity, or just to say hi. 😄
         </Typography>
       </GlassBox>
       <GlassBox>

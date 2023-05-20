@@ -22,7 +22,6 @@ export default function MessageStepper() {
         activeStep={activeStep}
         sx={{
           marginBottom: "2rem",
-          transition: "all 1s ease",
         }}
       >
         {steps.map((label, index) => {
@@ -92,7 +91,6 @@ export default function MessageStepper() {
               display: "flex",
               flexDirection: "row",
               pt: 2,
-              marginTop: "2rem",
             }}
           >
             <Button
@@ -112,7 +110,7 @@ export default function MessageStepper() {
               }
               color="inherit"
             >
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              {activeStep === steps.length - 1 ? "Send 🚀" : "Next"}
             </Button>
           </Box>
         </>

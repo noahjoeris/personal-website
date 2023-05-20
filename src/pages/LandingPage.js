@@ -4,8 +4,7 @@ import LandingImage from "../components/LandingImage";
 import LandingText from "../components/LandingText";
 
 const LandingPage = (props) => {
-  const theme = useTheme();
-  const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
 
   return (
     <Box
