@@ -1,8 +1,7 @@
-import { Box, Divider, Typography, styled, useTheme } from "@mui/material";
+import { Box, Divider, Typography, styled } from "@mui/material";
+import MessageStepper from "../components/MessageStepper";
 
-const ContactPage = () => {
-  const theme = useTheme();
-
+const ContactPage = ({ darkModeEnabled }) => {
   const GradientDivider = styled(Divider)(({ theme }) => ({
     minWidth: "6rem",
     minHeight: "0.4em",
@@ -22,11 +21,14 @@ const ContactPage = () => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    minWidth: "45%",
-    marginTop: "10%",
-    marginLeft: "2.5%",
-    marginRight: "2.5%",
-    marginBottom: "10%",
+    width: "30rem",
+    height: "35rem",
+    maxWidth: "50rem",
+    maxHeight: "50rem",
+    marginTop: "6rem",
+    marginLeft: "2rem",
+    marginRight: "2rem",
+    marginBottom: "6rem",
     padding: "4rem",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     border:
@@ -36,7 +38,7 @@ const ContactPage = () => {
     backgroundColor:
       theme.palette.mode === "light"
         ? "rgba(255, 255, 255, 0.75)"
-        : "rgba(17, 25, 40, 0.5)",
+        : "rgba(17, 25, 40, 0.6)",
     borderRadius: "12px",
     backdropFilter: "blur(16px) saturate(180%)",
     WebkitBackdropFilter: "blur(16px) saturate(200%)",
@@ -46,15 +48,17 @@ const ContactPage = () => {
     <Box
       display="flex"
       flexDirection="row"
+      justifyContent={"center"}
+      alignItems={"center"}
       minHeight="100%"
       sx={{
-        backgroundColor: theme.palette.mode === "light" ? "#bd60d5" : "#121212",
+        backgroundColor: darkModeEnabled ? "#121212" : "#bd60d5",
         backgroundImage:
-          "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 55%)",
+          "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 70%)",
       }}
     >
       <GlassBox>
-        <Typography variant="h3">Reach out to me</Typography>
+        <Typography variant="h3">Let's Talk</Typography>
         <GradientDivider variant="fullWidth" />
         <Typography variant="subtitle1">
           My door is always open for a good cup of coffee and a chat. Whether it
@@ -62,10 +66,7 @@ const ContactPage = () => {
         </Typography>
       </GlassBox>
       <GlassBox>
-        <Typography>
-          {/* Add Stepper component here */}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        </Typography>
+        <MessageStepper />
       </GlassBox>
     </Box>
   );
