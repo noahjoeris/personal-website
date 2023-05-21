@@ -7,6 +7,7 @@ import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import TextArea from "rc-textarea";
 import { useState } from "react";
+import { sendContactMessage } from "../services/email";
 
 const steps = ["Message", "Name", "Email"];
 
@@ -105,9 +106,12 @@ export default function MessageStepper() {
             </Button>
             <Box sx={{ flex: "1 1 auto" }} />
             <Button
-              onClick={() =>
-                setActiveStep((prevActiveStep) => prevActiveStep + 1)
-              }
+              onClick={() => {
+                if (activeStep === steps.length - 1) {
+                  sendContactMessage(name, email, message);
+                }
+                setActiveStep((prevActiveStep) => prevActiveStep + 1);
+              }}
               color="inherit"
             >
               {activeStep === steps.length - 1 ? "Send 🚀" : "Next"}
