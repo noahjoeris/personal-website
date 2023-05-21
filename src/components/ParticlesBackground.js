@@ -21,6 +21,7 @@ const ParticlesBackground = ({ darkModeEnabled }) => {
       id="tsparticles"
       height="100%"
       width="100%"
+      key={darkModeEnabled}
       params={
         darkModeEnabled
           ? particlesBackgoundDarkConfig

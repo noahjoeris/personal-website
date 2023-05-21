@@ -5,7 +5,6 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
-import TextArea from "rc-textarea";
 import { useState } from "react";
 import { sendContactMessage } from "../services/email";
 
@@ -52,21 +51,14 @@ export default function MessageStepper() {
           <Box>
             {activeStep === 0 && (
               <Box>
-                <TextArea
-                  placeholder="Message"
+                <TextField
+                  multiline
+                  fullWidth
+                  label="Message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  style={{
-                    maxWidth: "25rem",
-                    minWidth: "8rem",
-                    width: "25rem",
-                    height: "20rem",
-                    maxHeight: "20rem",
-                    borderRadius: ".5rem",
-                    padding: "1rem",
-                    color: "inherit",
-                    backgroundColor: "inherit",
-                  }}
+                  minRows={6}
+                  maxRows={8}
                 />
               </Box>
             )}
