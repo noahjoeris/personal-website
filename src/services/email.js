@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 
-export const sendContactMessage = (name, email, message) => {
+export const sendContactMessage = (name, email, message, captcha) => {
   emailjs
     .send(
       "service_e2zokzh",
@@ -9,6 +9,7 @@ export const sendContactMessage = (name, email, message) => {
         name,
         email,
         message,
+        "g-recaptcha-response": captcha,
       },
       "p5N7bDhGORWdbiB3f"
     )
@@ -21,3 +22,5 @@ export const sendContactMessage = (name, email, message) => {
       }
     );
 };
+
+export const CAPTCHA_SITE_KEY = "6LeLnCkmAAAAAJTOd3CKClI8d0iIMqLOj2SQH9nf";

@@ -6,12 +6,19 @@ import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-import { sendContactMessage } from "../services/email";
+import ReCAPTCHA from "react-google-recaptcha";
+import { CAPTCHA_SITE_KEY, sendContactMessage } from "../services/email";
 
 const steps = ["Message", "Name", "Email"];
 
+const validateInputs = (message, name, email) => {
+  const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  return regexEmail.test(email) && name.length > 0 && message.length > 0;
+};
+
 export default function MessageStepper() {
   const [activeStep, setActiveStep] = useState(0);
+  const [recaptchaOpened, setRecaptchaOpened] = useState(false);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -89,9 +96,10 @@ export default function MessageStepper() {
             <Button
               color="inherit"
               disabled={activeStep === 0}
-              onClick={() =>
-                setActiveStep((prevActiveStep) => prevActiveStep - 1)
-              }
+              onClick={() => {
+                setActiveStep((prevActiveStep) => prevActiveStep - 1);
+                setRecaptchaOpened(false);
+              }}
               sx={{ mr: 1 }}
             >
               Back
@@ -99,16 +107,34 @@ export default function MessageStepper() {
             <Box sx={{ flex: "1 1 auto" }} />
             <Button
               onClick={() => {
-                if (activeStep === steps.length - 1) {
-                  sendContactMessage(name, email, message);
+                if (
+                  activeStep === steps.length - 1 &&
+                  validateInputs(message, name, email)
+                ) {
+                  setRecaptchaOpened(true);
+                } else {
+                  setActiveStep((prevActiveStep) => prevActiveStep + 1);
                 }
-                setActiveStep((prevActiveStep) => prevActiveStep + 1);
               }}
               color="inherit"
+              disabled={
+                activeStep === steps.length - 1 &&
+                !validateInputs(message, name, email)
+              }
             >
               {activeStep === steps.length - 1 ? "Send 🚀" : "Next"}
             </Button>
           </Box>
+          {recaptchaOpened && (
+            <ReCAPTCHA
+              sitekey={CAPTCHA_SITE_KEY}
+              onChange={(captchaValue) => {
+                sendContactMessage(name, email, message, captchaValue);
+                setRecaptchaOpened(false);
+                setActiveStep((prevActiveStep) => prevActiveStep + 1);
+              }}
+            />
+          )}
         </>
       )}
     </Box>
