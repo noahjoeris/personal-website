@@ -1,0 +1,85 @@
+import {
+  Box,
+  Divider,
+  Typography,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import MessageStepper from "../components/MessageStepper";
+
+const ContactPage = ({ darkModeEnabled }) => {
+  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
+
+  const GradientDivider = styled(Divider)(({ theme }) => ({
+    minWidth: "6rem",
+    minHeight: "0.4em",
+    width: "5rem",
+    marginTop: "1rem",
+    marginBottom: "3rem",
+    borderRadius: "1rem",
+    boxShadow:
+      theme.palette.mode === "light"
+        ? "0 0 1rem 0.2rem rgba(0, 0, 0, 0.2)"
+        : "0 0 1rem 0.2rem rgba(255, 255, 255, 0.1)",
+    backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+  }));
+
+  const GlassBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    maxWidth: "50rem",
+    maxHeight: "50rem",
+    height: isMobileScreenSize ? "" : "35rem",
+
+    zoom: isMobileScreenSize ? "0.7" : "1",
+    marginTop: isMobileScreenSize ? "2rem" : "6rem",
+    marginLeft: "2rem",
+    marginRight: "2rem",
+    marginBottom: isMobileScreenSize ? "1rem" : "6rem",
+    padding: isMobileScreenSize ? "2rem" : "4rem",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
+    border:
+      theme.palette.mode === "light"
+        ? "4px solid rgba(209, 213, 219, 0.4)"
+        : "4px solid rgba(255, 255, 255, 0.125)",
+    backgroundColor:
+      theme.palette.mode === "light"
+        ? "rgba(255, 255, 255, 0.75)"
+        : "rgba(17, 25, 40, 0.6)",
+    borderRadius: "12px",
+    backdropFilter: "blur(16px) saturate(180%)",
+    WebkitBackdropFilter: "blur(16px) saturate(200%)",
+  }));
+
+  return (
+    <Box
+      display="flex"
+      flexDirection={isMobileScreenSize ? "column" : "row"}
+      justifyContent="center"
+      alignItems={"center"}
+      minHeight="100%"
+      sx={{
+        backgroundColor: darkModeEnabled ? "#121212" : "#bd60d5",
+        backgroundImage:
+          "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 70%)",
+      }}
+    >
+      <GlassBox>
+        <Typography variant="h3">Let's Talk</Typography>
+        <GradientDivider variant="fullWidth" />
+        <Typography variant="subtitle1">
+          My door is always open for a good cup of coffee and a chat. Whether it
+          be about a potential project, a new opportunity, or just to say hi. 😄
+        </Typography>
+      </GlassBox>
+      <GlassBox>
+        <MessageStepper />
+      </GlassBox>
+    </Box>
+  );
+};
+
+export default ContactPage;

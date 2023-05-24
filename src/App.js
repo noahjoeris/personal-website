@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
 import ComingSoonPage from "./pages/ComingSoonPage";
+import ContactPage from "./pages/ContactPage";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Parallax ref={parallaxRef} pages={2}>
+        <Parallax ref={parallaxRef} pages={3}>
           <ParallaxLayer
             offset={0}
             speed={0.2}
@@ -56,7 +57,14 @@ function App() {
             <LandingPage darkModeEnabled={darkModeEnabled} />
             <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
           </ParallaxLayer>
-          <ParallaxLayer offset={1} speed={0.2}>
+          <ParallaxLayer
+            offset={0.98}
+            speed={0.2}
+            style={{ backgroundSize: "cover", overflow: "hidden" }}
+          >
+            <ContactPage darkModeEnabled={darkModeEnabled} />
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} speed={0.2}>
             <ComingSoonPage />
           </ParallaxLayer>
         </Parallax>

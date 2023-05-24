@@ -21,6 +21,7 @@ const ParticlesBackground = ({ darkModeEnabled }) => {
       id="tsparticles"
       height="100%"
       width="100%"
+      key={darkModeEnabled}
       params={
         darkModeEnabled
           ? particlesBackgoundDarkConfig
@@ -33,10 +34,3 @@ const ParticlesBackground = ({ darkModeEnabled }) => {
 };
 
 export default ParticlesBackground;
-
-/*  <Particles
-      id="tsparticles"
-      params={particlesConfettiConfig}
-      init={particlesInit}
-      loaded={particlesLoaded}
-    /> */

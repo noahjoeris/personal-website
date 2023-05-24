@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const ComingSoonPage = () => {
   return (
-    <div>
+    <Box minHeight="100%">
       <Typography variant="h1">Coming Soon...</Typography>
-    </div>
+    </Box>
   );
 };
 
