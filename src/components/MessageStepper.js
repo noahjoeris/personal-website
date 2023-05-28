@@ -1,30 +1,70 @@
-import { TextField, useTheme } from "@mui/material";
+import { CircularProgress, TextField, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { CAPTCHA_SITE_KEY } from "../services/email";
+import { CAPTCHA_SITE_KEY, sendContactMessage } from "../services/email";
 
 const steps = ["Message", "Name", "Email"];
 
 const validateInputs = (message, name, email) => {
-  const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  const regexEmail = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g;
   return regexEmail.test(email) && name.length > 0 && message.length > 0;
 };
 
 export default function MessageStepper() {
   const theme = useTheme();
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(2);
   const [recaptchaOpened, setRecaptchaOpened] = useState(false);
-  const [message, setMessage] = useState("testmessage");
-  const [name, setName] = useState("test");
-  const [email, setEmail] = useState("w@gmail.com");
+  const [isSending, setIsSending] = useState(false);
+  const [message, setMessage] = useState("d");
+  const [name, setName] = useState("d");
+  const [email, setEmail] = useState("d@d.de");
+  const [sentSuccessfully, setSentSuccessfully] = useState(false);
 
-  let recaptchaRef = null;
+  const recaptchaRef = useRef(null);
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleNext = () => {
+    if (
+      activeStep === steps.length - 1 &&
+      validateInputs(message, name, email)
+    ) {
+      setRecaptchaOpened(true);
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    }
+  };
+
+  const handleSendAnotherMessage = () => {
+    setActiveStep(0);
+  };
+
+  const handleCaptchaChange = (captchaValue) => {
+    if (captchaValue) {
+      setIsSending(true);
+      sendContactMessage(name, email, message, captchaValue)
+        .then(() => {
+          console.log("Message sent");
+          setSentSuccessfully(true);
+          setIsSending(false);
+          setMessage("");
+          setName("");
+          setEmail("");
+          setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        })
+        .catch((err) => setSentSuccessfully(false));
+      setRecaptchaOpened(false);
+      recaptchaRef.current.reset();
+    }
+  };
 
   return (
     <Box>
@@ -34,16 +74,13 @@ export default function MessageStepper() {
           marginBottom: "2rem",
         }}
       >
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
+        {steps.map((label, index) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
       </Stepper>
+
       {!recaptchaOpened && (
         <Box>
           {activeStep === 0 && (
@@ -67,7 +104,7 @@ export default function MessageStepper() {
               onChange={(e) => setName(e.target.value)}
             />
           )}
-          {activeStep === 2 && !recaptchaOpened && (
+          {activeStep === 2 && !isSending && (
             <TextField
               label="Your Email"
               fullWidth
@@ -75,22 +112,26 @@ export default function MessageStepper() {
               onChange={(e) => setEmail(e.target.value)}
             />
           )}
+          {activeStep === 2 && isSending && <CircularProgress />}
           {activeStep === steps.length && (
             <>
               <Typography sx={{ mt: 2, mb: 1 }}>
-                Message was sent successfully!
+                {sentSuccessfully
+                  ? "Message sent successfully"
+                  : "Error while sending message"}
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={() => setActiveStep(0)} color="inherit">
-                  Send another message
+                <Button onClick={handleSendAnotherMessage} color="inherit">
+                  {sentSuccessfully ? "Send another message" : "Try again"}
                 </Button>
               </Box>
             </>
           )}
         </Box>
       )}
-      {!recaptchaOpened && activeStep < steps.length && (
+
+      {!recaptchaOpened && !isSending && activeStep < steps.length && (
         <Box
           sx={{
             display: "flex",
@@ -101,25 +142,14 @@ export default function MessageStepper() {
           <Button
             color="inherit"
             disabled={activeStep === 0}
-            onClick={() => {
-              setActiveStep((prevActiveStep) => prevActiveStep - 1);
-            }}
+            onClick={handleBack}
             sx={{ mr: 1 }}
           >
             Back
           </Button>
           <Box sx={{ flex: "1 1 auto" }} />
           <Button
-            onClick={() => {
-              if (
-                activeStep === steps.length - 1 &&
-                validateInputs(message, name, email)
-              ) {
-                setRecaptchaOpened(true);
-              } else {
-                setActiveStep((prevActiveStep) => prevActiveStep + 1);
-              }
-            }}
+            onClick={handleNext}
             color="inherit"
             disabled={
               activeStep === steps.length - 1 &&
@@ -132,19 +162,11 @@ export default function MessageStepper() {
       )}
 
       <ReCAPTCHA
-        ref={(r) => (recaptchaRef = r)}
+        ref={recaptchaRef}
         theme={theme.palette.mode === "light" ? "light" : "dark"}
         sitekey={CAPTCHA_SITE_KEY}
         hidden={!recaptchaOpened}
-        onChange={(captchaValue) => {
-          if (captchaValue) {
-            //sendContactMessage(name, email, message, captchaValue);
-            console.log("Message sent");
-            setActiveStep((prevActiveStep) => prevActiveStep + 1);
-            setRecaptchaOpened(false);
-            recaptchaRef?.reset();
-          }
-        }}
+        onChange={handleCaptchaChange}
       />
     </Box>
   );
