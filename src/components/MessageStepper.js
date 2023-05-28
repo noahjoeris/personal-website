@@ -18,12 +18,12 @@ const validateInputs = (message, name, email) => {
 
 export default function MessageStepper() {
   const theme = useTheme();
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(0);
   const [recaptchaOpened, setRecaptchaOpened] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [message, setMessage] = useState("d");
-  const [name, setName] = useState("d");
-  const [email, setEmail] = useState("d@d.de");
+  const [message, setMessage] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [sentSuccessfully, setSentSuccessfully] = useState(false);
 
   const recaptchaRef = useRef(null);
