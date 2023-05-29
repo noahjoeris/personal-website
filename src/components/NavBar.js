@@ -207,19 +207,7 @@ const NavBarDesktop = ({
           </Typography>
           <MenuItem
             color="inherit"
-            onClick={() => parallaxRef?.current.scrollTo(1)}
-          >
-            <Typography variant="button">{t("portfolioNav")}</Typography>
-          </MenuItem>
-          <MenuItem
-            color="inherit"
-            onClick={() => parallaxRef?.current.scrollTo(1)}
-          >
-            <Typography variant="button">{t("aboutMeNav")}</Typography>
-          </MenuItem>
-          <MenuItem
-            color="inherit"
-            onClick={() => parallaxRef?.current.scrollTo(1)}
+            onClick={() => parallaxRef?.current.scrollTo(0.8)}
           >
             <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>

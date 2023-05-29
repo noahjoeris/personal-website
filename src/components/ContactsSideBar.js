@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
 
-const ContactsSideBar = () => {
+const ContactsSideBar = ({ alignment }) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const [focusedButton, setFocusedButton] = useState("");
 
@@ -25,11 +25,13 @@ const ContactsSideBar = () => {
     borderRadius: "30px",
     marginTop: "0.3rem",
     marginBottom: "0.3rem",
+    marginLeft: "0.5rem",
+    marginRight: "0.5rem",
   };
 
   const boxStyle = {
     display: "flex",
-    flexDirection: isMobileScreenSize ? "row" : "column",
+    flexDirection: alignment,
     position: "relative",
     top: isMobileScreenSize ? "-4rem" : "0",
     alignItems: "center",
@@ -37,7 +39,7 @@ const ContactsSideBar = () => {
     border: "3px solid rgba(255, 255, 255, 0.5)",
     borderRadius: "25px",
     padding: "0.5rem",
-    margin: "2rem",
+    margin: "1rem",
     boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.5)",
     backdropFilter: "blur(3px)",
   };
