@@ -1,11 +1,10 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { useState } from "react";
 
-const ContactsSideBar = ({ alignment }) => {
-  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
+const ContactsSideBar = ({ alignment, topPositioning }) => {
   const [focusedButton, setFocusedButton] = useState("");
 
   const icons = [
@@ -33,12 +32,12 @@ const ContactsSideBar = ({ alignment }) => {
     display: "flex",
     flexDirection: alignment,
     position: "relative",
-    top: isMobileScreenSize ? "-4rem" : "0",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.1)",
     border: "3px solid rgba(255, 255, 255, 0.5)",
+    top: topPositioning,
     borderRadius: "25px",
-    padding: "0.5rem",
+    padding: "0.3rem",
     margin: "1rem",
     boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.5)",
     backdropFilter: "blur(3px)",

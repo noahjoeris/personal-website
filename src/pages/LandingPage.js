@@ -16,7 +16,10 @@ const LandingPage = (props) => {
     >
       <LandingText darkModeEnabled={props.darkModeEnabled} />
       <LandingImage />
-      <ContactsSideBar alignment={isMobileScreenSize ? "row" : "column"} />
+      <ContactsSideBar
+        alignment={isMobileScreenSize ? "row" : "column"}
+        topPositioning={isMobileScreenSize ? "-4rem" : "0"}
+      />
     </Box>
   );
 };

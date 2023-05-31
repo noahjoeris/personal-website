@@ -8,11 +8,11 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
 import ContactPage from "./pages/ContactPage";
-import FooterPage from "./pages/FooterPage";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
@@ -43,35 +43,47 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Parallax ref={parallaxRef} pages={2}>
-          <ParallaxLayer
-            offset={0}
-            speed={0.2}
-            style={{ backgroundSize: "cover", overflow: "hidden" }}
-          >
-            <NavBar
-              darkModeEnabled={darkModeEnabled}
-              setDarkModeEnabled={setDarkModeEnabled}
-              parallaxRef={parallaxRef}
-            />
-            <LandingPage darkModeEnabled={darkModeEnabled} />
-            <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
-          </ParallaxLayer>
-          <ParallaxLayer
-            offset={0.98}
-            speed={0.2}
-            style={{ backgroundSize: "cover", overflow: "hidden" }}
-          >
-            <ContactPage darkModeEnabled={darkModeEnabled} />
-          </ParallaxLayer>
-          <ParallaxLayer
-            offset={1.78}
-            speed={0.2}
-            style={{ backgroundSize: "cover", overflow: "hidden" }}
-          >
-            <FooterPage />
-          </ParallaxLayer>
-        </Parallax>
+        <>
+          <Parallax ref={parallaxRef} pages={2}>
+            <ParallaxLayer
+              offset={0}
+              speed={0.2}
+              style={{ backgroundSize: "cover", overflow: "hidden" }}
+            >
+              <NavBar
+                darkModeEnabled={darkModeEnabled}
+                setDarkModeEnabled={setDarkModeEnabled}
+                parallaxRef={parallaxRef}
+              />
+              <LandingPage darkModeEnabled={darkModeEnabled} />
+              <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
+            </ParallaxLayer>
+            <ParallaxLayer
+              offset={0.98}
+              speed={0.2}
+              style={{ backgroundSize: "cover", overflow: "hidden" }}
+            >
+              <ContactPage darkModeEnabled={darkModeEnabled} />
+            </ParallaxLayer>
+            <ParallaxLayer
+              offset={1.79}
+              speed={1}
+              style={{
+                backgroundSize: "cover",
+                overflow: "hidden",
+                width: "100%",
+                position: "fixed",
+                bottom: 0,
+                height: "100%",
+                left: 0,
+
+                zIndex: "-1",
+              }}
+            >
+              <Footer />
+            </ParallaxLayer>
+          </Parallax>
+        </>
       </ThemeProvider>
     </div>
   );
