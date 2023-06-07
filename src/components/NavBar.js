@@ -1,7 +1,5 @@
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import FeaturedVideoIcon from "@mui/icons-material/FeaturedVideo";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
@@ -80,27 +78,7 @@ const NavBarMobile = ({
               <List>
                 <ListItem disablePadding>
                   <ListItemButton
-                    onClick={() => parallaxRef?.current.scrollTo(1)}
-                  >
-                    <ListItemIcon>
-                      <FeaturedVideoIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={t("portfolioNav")} />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => parallaxRef?.current.scrollTo(1)}
-                  >
-                    <ListItemIcon>
-                      <EmojiPeopleIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={t("aboutMeNav")} />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => parallaxRef?.current.scrollTo(1)}
+                    onClick={() => parallaxRef?.current.scrollTo(0.8)}
                   >
                     <ListItemIcon>
                       <ContactMailIcon />

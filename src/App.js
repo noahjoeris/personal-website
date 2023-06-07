@@ -67,16 +67,14 @@ function App() {
             </ParallaxLayer>
             <ParallaxLayer
               offset={1.79}
-              speed={1}
+              speed={0.4}
               style={{
                 backgroundSize: "cover",
                 overflow: "hidden",
-                width: "100%",
                 position: "fixed",
                 bottom: 0,
                 height: "100%",
                 left: 0,
-
                 zIndex: "-1",
               }}
             >

@@ -1,23 +1,24 @@
 {
-    "landingPageTextWelcome": "Hi, ich bin Noah",
-    "landingPageTextFacts": "Lorem Ipsum",
-    "jobRole": "Software Engineer",
-    "factsAboutMe": [
-        "Lebensphilosophie: Stoizismus 💯",
-        "Leidenschaftlicher Developer 👨‍💻",
-        "Kaffee abhängig ☕",
-        "Crypto Enthusiast ⛓️",
-        "Biohacker 🥗",
-        "Frontend Developer 🎨",
-        "Bücher abhängig 📚",
-        "Calisthenics Athlet 🏋️",
-        "Verliebt in Software ❤️",
-        "Minimalist 🧘",
-        "Connect mit mir auf LinkedIn 🤝",
-        "Schon mal Kaffee mit Butter probiert? 😋"
-      ],
-    "aboutMeNav": "Über mich",
-    "contactNav": "Kontakt",
-    "portfolioNav": "Portfolio",
-    "language": "Wechsel zu Englisch"
+  "landingPageTextWelcome": "Hi, ich bin Noah",
+  "landingPageTextFacts": "Lorem Ipsum",
+  "jobRole": "Software Engineer",
+  "factsAboutMe": [
+    "Lebensphilosophie: Stoizismus 💯",
+    "Leidenschaftlicher Developer 👨‍💻",
+    "Kaffee abhängig ☕",
+    "Crypto Enthusiast ⛓️",
+    "Biohacker 🥗",
+    "Frontend Developer 🎨",
+    "Bücher abhängig 📚",
+    "Calisthenics Athlet 🏋️",
+    "Verliebt in Software ❤️",
+    "Minimalist 🧘",
+    "Connect mit mir auf LinkedIn 🤝",
+    "Schon mal Kaffee mit Butter probiert? 😋"
+  ],
+  "aboutMeNav": "Über mich",
+  "contactNav": "Kontakt",
+  "portfolioNav": "Portfolio",
+  "language": "Wechsel zu Englisch",
+  "contactText": "Meine Tür steht immer offen für einen guten Kaffee und ein Gespräch. Ob es um ein potentielles Projekt, eine neue Möglichkeit oder einfach nur um Hallo zu sagen geht. 😄"
 }

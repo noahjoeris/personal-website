@@ -17,7 +17,12 @@ const Footer = () => {
       justifyContent="space-evenly"
       sx={{ background: gradientBackground }}
     >
-      <Box display="flex" justifyContent="space-evenly" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="space-evenly"
+        alignItems="center"
+        paddingLeft={"0.5rem"}
+      >
         <Typography>© 2023 Noah Joeris. All rights reserved.</Typography>
         <ContactsSideBar alignment="row" />
       </Box>

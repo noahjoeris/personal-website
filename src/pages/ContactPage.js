@@ -6,10 +6,12 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import MessageStepper from "../components/MessageStepper";
 
 const ContactPage = ({ darkModeEnabled }) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
+  const { t } = useTranslation();
 
   const GradientDivider = styled(Divider)(({ theme }) => ({
     minWidth: "6rem",
@@ -31,9 +33,9 @@ const ContactPage = ({ darkModeEnabled }) => {
     alignItems: "center",
     justifyContent: "center",
     maxWidth: "50rem",
+    width: isMobileScreenSize ? "90%" : "40rem",
     maxHeight: "50rem",
     height: isMobileScreenSize ? "" : "35rem",
-
     zoom: isMobileScreenSize ? "0.7" : "1",
     marginTop: isMobileScreenSize ? "2rem" : "6rem",
     marginLeft: "2rem",
@@ -70,10 +72,7 @@ const ContactPage = ({ darkModeEnabled }) => {
       <GlassBox>
         <Typography variant="h3">Let's Talk</Typography>
         <GradientDivider variant="fullWidth" />
-        <Typography variant="subtitle1">
-          My door is always open for a good cup of coffee and a chat. Whether it
-          be about a potential project, a new opportunity, or just to say hi. 😄
-        </Typography>
+        <Typography variant="subtitle1">{t("contactText")}</Typography>
       </GlassBox>
       <GlassBox>
         <MessageStepper />

@@ -67,7 +67,7 @@ export default function MessageStepper() {
   };
 
   return (
-    <Box>
+    <Box width={"100%"}>
       <Stepper
         activeStep={activeStep}
         sx={{
