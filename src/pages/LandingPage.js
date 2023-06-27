@@ -12,13 +12,13 @@ const LandingPage = (props) => {
       display={"flex"}
       flexDirection={isMobileScreenSize ? "column" : "row"}
       alignItems={"center"}
-      justifyContent={"center"}
+      justifyContent={isMobileScreenSize ? "start" : "center"}
     >
       <LandingText darkModeEnabled={props.darkModeEnabled} />
-      <LandingImage />
+      <LandingImage padding={"0.2rem 3rem 0 3rem"} />
       <ContactsSideBar
         alignment={isMobileScreenSize ? "row" : "column"}
-        topPositioning={isMobileScreenSize ? "-4rem" : "0"}
+        topPositioning={isMobileScreenSize ? "-1rem" : "0"}
       />
     </Box>
   );

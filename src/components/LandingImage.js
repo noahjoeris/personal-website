@@ -1,4 +1,4 @@
-import { Avatar, Badge, styled } from "@mui/material";
+import { Avatar, Badge, styled, useTheme } from "@mui/material";
 import "../components/LandingImageStyles.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -34,9 +34,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 const imgPath = "me.png";
 
-const LandingImage = () => {
+const LandingImage = ({ padding }) => {
+  const theme = useTheme();
   return (
-    <div className="floating">
+    <div className="floating" style={{ padding: padding }}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
@@ -45,7 +46,13 @@ const LandingImage = () => {
         <Avatar
           alt="Noah Joeris"
           src={imgPath}
-          sx={{ width: "15rem", height: "15rem" }}
+          sx={{
+            width: "16rem",
+            height: "16rem",
+            borderRadius: "50%",
+            boxShadow: "inset 0 0 0.5rem 0.2rem",
+            backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
+          }}
         />
       </StyledBadge>
     </div>
