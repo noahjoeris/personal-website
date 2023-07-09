@@ -1,42 +1,43 @@
-import { CircularProgress, TextField, useTheme } from "@mui/material";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Stepper from "@mui/material/Stepper";
-import Typography from "@mui/material/Typography";
 import React, { useRef, useState } from "react";
+import {
+  CircularProgress,
+  TextField,
+  useTheme,
+  Box,
+  Button,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
 import ReCAPTCHA from "react-google-recaptcha";
 import { CAPTCHA_SITE_KEY, sendContactMessage } from "../services/email";
 
-const steps = ["Message", "Name", "Email"];
+const steps: string[] = ["Message", "Name", "Email"];
 
-const validateInputs = (message, name, email) => {
+const validateInputs = (message: string, name: string, email: string): boolean => {
   const regexEmail = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g;
   return regexEmail.test(email) && name.length > 0 && message.length > 0;
 };
 
 export default function MessageStepper() {
   const theme = useTheme();
-  const [activeStep, setActiveStep] = useState(0);
-  const [recaptchaOpened, setRecaptchaOpened] = useState(false);
-  const [isSending, setIsSending] = useState(false);
-  const [message, setMessage] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [sentSuccessfully, setSentSuccessfully] = useState(false);
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [recaptchaOpened, setRecaptchaOpened] = useState<boolean>(false);
+  const [isSending, setIsSending] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [sentSuccessfully, setSentSuccessfully] = useState<boolean>(false);
 
-  const recaptchaRef = useRef(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleNext = () => {
-    if (
-      activeStep === steps.length - 1 &&
-      validateInputs(message, name, email)
-    ) {
+    if (activeStep === steps.length - 1 && validateInputs(message, name, email)) {
       setRecaptchaOpened(true);
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -47,7 +48,7 @@ export default function MessageStepper() {
     setActiveStep(0);
   };
 
-  const handleCaptchaChange = (captchaValue) => {
+  const handleCaptchaChange = (captchaValue: string | null) => {
     if (captchaValue) {
       setIsSending(true);
       sendContactMessage(name, email, message, captchaValue)
@@ -62,25 +63,20 @@ export default function MessageStepper() {
         })
         .catch((err) => setSentSuccessfully(false));
       setRecaptchaOpened(false);
-      recaptchaRef.current.reset();
+      recaptchaRef.current?.reset();
     }
   };
 
   return (
     <Box width={"100%"}>
-      <Stepper
-        activeStep={activeStep}
-        sx={{
-          marginBottom: "2rem",
-        }}
-      >
+      <Stepper activeStep={activeStep} sx={{ marginBottom: "2rem" }}>
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-
+  
       {!recaptchaOpened && (
         <Box>
           {activeStep === 0 && (
@@ -130,7 +126,7 @@ export default function MessageStepper() {
           )}
         </Box>
       )}
-
+  
       {!recaptchaOpened && !isSending && activeStep < steps.length && (
         <Box
           sx={{
@@ -160,7 +156,7 @@ export default function MessageStepper() {
           </Button>
         </Box>
       )}
-
+  
       <ReCAPTCHA
         ref={recaptchaRef}
         theme={theme.palette.mode === "light" ? "light" : "dark"}
@@ -170,4 +166,5 @@ export default function MessageStepper() {
       />
     </Box>
   );
+  
 }
