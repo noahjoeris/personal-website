@@ -1,7 +1,8 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import React from "react";
 import ContactsSideBar from "./ContactsSideBar";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const theme = useTheme();
   const gradientBackground =
     theme.palette.mode === "light"

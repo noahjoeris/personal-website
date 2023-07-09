@@ -8,7 +8,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import "./App.css";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer.tsx";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
