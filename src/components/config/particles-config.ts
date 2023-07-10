@@ -1,4 +1,4 @@
-const particlesConfettiConfig = {
+const particlesConfettiConfig: any = {
   autoPlay: true,
   background: {
     color: {
@@ -681,7 +681,7 @@ const particlesConfettiConfig = {
   ],
 };
 
-const particlesBackgoundDarkConfig = {
+const particlesBackgoundDarkConfig: any = {
   autoPlay: true,
   background: {
     color: { value: "#567698" },
@@ -1081,8 +1081,4 @@ const particlesBackgoundLightConfig = {
   themes: [],
 };
 
-export {
-  particlesConfettiConfig,
-  particlesBackgoundDarkConfig,
-  particlesBackgoundLightConfig,
-};
+export { particlesBackgoundDarkConfig, particlesBackgoundLightConfig };

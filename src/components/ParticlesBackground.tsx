@@ -6,14 +6,20 @@ import {
   particlesBackgoundLightConfig,
 } from "./config/particles-config";
 
-const ParticlesBackground = ({ darkModeEnabled }) => {
+interface ParticlesBackgroundProps {
+  darkModeEnabled: boolean;
+}
+
+const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
+  darkModeEnabled,
+}) => {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
     await loadFull(engine);
   }, []);
 
   const particlesLoaded = useCallback(async (container) => {
-    await console.log(container);
+    console.log(container);
   }, []);
 
   return (
@@ -21,7 +27,7 @@ const ParticlesBackground = ({ darkModeEnabled }) => {
       id="tsparticles"
       height="100%"
       width="100%"
-      key={darkModeEnabled}
+      key={darkModeEnabled ? "darkMode" : "lightMode"}
       params={
         darkModeEnabled
           ? particlesBackgoundDarkConfig
