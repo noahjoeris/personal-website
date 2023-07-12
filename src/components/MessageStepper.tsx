@@ -1,21 +1,26 @@
-import React, { useRef, useState } from "react";
 import {
-  CircularProgress,
-  TextField,
-  useTheme,
   Box,
   Button,
+  CircularProgress,
   Step,
   StepLabel,
   Stepper,
+  TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
+import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { CAPTCHA_SITE_KEY, sendContactMessage } from "../services/email";
+import { CAPTCHA_SITE_KEY } from "../constants/constants";
+import { sendContactMessage } from "../services/email";
 
 const steps: string[] = ["Message", "Name", "Email"];
 
-const validateInputs = (message: string, name: string, email: string): boolean => {
+const validateInputs = (
+  message: string,
+  name: string,
+  email: string
+): boolean => {
   const regexEmail = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g;
   return regexEmail.test(email) && name.length > 0 && message.length > 0;
 };
@@ -37,7 +42,10 @@ export default function MessageStepper() {
   };
 
   const handleNext = () => {
-    if (activeStep === steps.length - 1 && validateInputs(message, name, email)) {
+    if (
+      activeStep === steps.length - 1 &&
+      validateInputs(message, name, email)
+    ) {
       setRecaptchaOpened(true);
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -76,7 +84,7 @@ export default function MessageStepper() {
           </Step>
         ))}
       </Stepper>
-  
+
       {!recaptchaOpened && (
         <Box>
           {activeStep === 0 && (
@@ -126,7 +134,7 @@ export default function MessageStepper() {
           )}
         </Box>
       )}
-  
+
       {!recaptchaOpened && !isSending && activeStep < steps.length && (
         <Box
           sx={{
@@ -156,7 +164,7 @@ export default function MessageStepper() {
           </Button>
         </Box>
       )}
-  
+
       <ReCAPTCHA
         ref={recaptchaRef}
         theme={theme.palette.mode === "light" ? "light" : "dark"}
@@ -166,5 +174,4 @@ export default function MessageStepper() {
       />
     </Box>
   );
-  
 }

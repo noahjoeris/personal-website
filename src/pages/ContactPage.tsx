@@ -6,28 +6,30 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import MessageStepper from "../components/MessageStepper";
 
-const ContactPage = ({ darkModeEnabled }) => {
-  const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
-  const { t } = useTranslation();
+interface ContactPageProps {
+  darkModeEnabled?: boolean;
+}
 
-  const GradientDivider = styled(Divider)(({ theme }) => ({
-    minWidth: "6rem",
-    minHeight: "0.4em",
-    width: "5rem",
-    marginTop: "1rem",
-    marginBottom: "3rem",
-    borderRadius: "1rem",
-    boxShadow:
-      theme.palette.mode === "light"
-        ? "0 0 1rem 0.2rem rgba(0, 0, 0, 0.2)"
-        : "0 0 1rem 0.2rem rgba(255, 255, 255, 0.1)",
-    backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
-  }));
+const GradientDivider = styled(Divider)(({ theme }) => ({
+  minWidth: "6rem",
+  minHeight: "0.4em",
+  width: "5rem",
+  marginTop: "1rem",
+  marginBottom: "3rem",
+  borderRadius: "1rem",
+  boxShadow:
+    theme.palette.mode === "light"
+      ? "0 0 1rem 0.2rem rgba(0, 0, 0, 0.2)"
+      : "0 0 1rem 0.2rem rgba(255, 255, 255, 0.1)",
+  backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+}));
 
-  const GlassBox = styled(Box)(({ theme }) => ({
+const GlassBox = styled(Box)<{ isMobileScreenSize: boolean }>(
+  ({ theme, isMobileScreenSize }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -54,14 +56,22 @@ const ContactPage = ({ darkModeEnabled }) => {
     borderRadius: "12px",
     backdropFilter: "blur(16px) saturate(180%)",
     WebkitBackdropFilter: "blur(16px) saturate(200%)",
-  }));
+  })
+);
+
+const ContactPage: FC<ContactPageProps> = ({ darkModeEnabled = true }) => {
+  const theme = useTheme();
+  const isMobileScreenSize: boolean = useMediaQuery(
+    theme.breakpoints.down("sm")
+  );
+  const { t } = useTranslation();
 
   return (
     <Box
       display="flex"
       flexDirection={isMobileScreenSize ? "column" : "row"}
       justifyContent="center"
-      alignItems={"center"}
+      alignItems="center"
       minHeight="100%"
       sx={{
         backgroundColor: darkModeEnabled ? "#121212" : "#bd60d5",
@@ -69,12 +79,12 @@ const ContactPage = ({ darkModeEnabled }) => {
           "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 70%)",
       }}
     >
-      <GlassBox>
+      <GlassBox isMobileScreenSize={isMobileScreenSize}>
         <Typography variant="h3">Let's Talk</Typography>
         <GradientDivider variant="fullWidth" />
         <Typography variant="subtitle1">{t("contactText")}</Typography>
       </GlassBox>
-      <GlassBox>
+      <GlassBox isMobileScreenSize={isMobileScreenSize}>
         <MessageStepper />
       </GlassBox>
     </Box>

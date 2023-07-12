@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-const ComingSoonPage = () => {
+const ComingSoonPage: React.FC = () => {
   return (
     <Box minHeight="100%">
       <Typography variant="h1">Coming Soon...</Typography>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton } from "@mui/material";
+import React, { useState } from "react";
 
 interface Icon {
   icon: any;
@@ -12,7 +12,7 @@ interface Icon {
 
 interface ContactsSideBarProps {
   alignment?: "row" | "column";
-  topPositioning?: number;
+  topPositioning?: string;
 }
 
 const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
