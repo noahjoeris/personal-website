@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Language, LanguageIconPath } from "../constants/constants";
+import { ImagePath, Language } from "../constants/constants";
 
 interface NavBarProps {
   parallaxRef: React.MutableRefObject<any>;
@@ -136,8 +136,8 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
                           <img
                             src={
                               i18n.language === Language.German
-                                ? LanguageIconPath.German
-                                : LanguageIconPath.English
+                                ? ImagePath.GermanFlag
+                                : ImagePath.EnglishFlag
                             }
                             alt=""
                             style={{ width: "150%", height: "150%" }}
@@ -196,16 +196,14 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
         }}
       >
         <Toolbar>
-          <Typography
-            align="left"
-            fontFamily="Babylonica"
-            component="div"
-            flexGrow={1}
-            variant="h4"
-            color="inherit"
-          >
-            Noah Joeris
-          </Typography>
+          <Box display="flex" flexGrow={1}>
+            <img
+              src={ImagePath.Signature}
+              height={100}
+              alt="Noah Joeris"
+              style={darkModeEnabled ? { filter: "invert(100%)" } : null}
+            />
+          </Box>
           <MenuItem
             color="inherit"
             onClick={() => parallaxRef?.current.scrollTo(0.8)}
@@ -221,8 +219,8 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
                 <img
                   src={
                     i18n.language === Language.German
-                      ? LanguageIconPath.German
-                      : LanguageIconPath.English
+                      ? ImagePath.GermanFlag
+                      : ImagePath.EnglishFlag
                   }
                   alt=""
                   style={{ width: "150%", height: "150%" }}

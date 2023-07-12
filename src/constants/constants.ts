@@ -3,9 +3,12 @@ export enum Language {
   German = "de",
 }
 
-export enum LanguageIconPath {
-  English = "flag_eng.svg",
-  German = "flag_ger.svg",
+export enum ImagePath {
+  Signature = "signature.png",
+  Myself = "me.png",
+  EnglishFlag = "flag_eng.svg",
+  GermanFlag = "flag_ger.svg",
+  AirbusLogo = "airbus.png",
 }
 
 export const CAPTCHA_SITE_KEY: string =

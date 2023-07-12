@@ -1,6 +1,7 @@
-import React from "react";
 import { Avatar, Badge, styled, useTheme } from "@mui/material";
+import React from "react";
 import "../components/LandingImageStyles.css";
+import { ImagePath } from "../constants/constants";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -34,9 +35,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const imgPath = "me.png";
-
-const LandingImage: React.FC<{ padding?: string }> = ({ padding="0" }) => {
+const LandingImage: React.FC<{ padding?: string }> = ({ padding = "0" }) => {
   const theme = useTheme();
   return (
     <div className="floating" style={{ padding: padding }}>
@@ -47,7 +46,7 @@ const LandingImage: React.FC<{ padding?: string }> = ({ padding="0" }) => {
       >
         <Avatar
           alt="Noah Joeris"
-          src={imgPath}
+          src={ImagePath.Myself}
           sx={{
             width: "16rem",
             height: "16rem",
