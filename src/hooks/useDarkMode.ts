@@ -1,12 +1,12 @@
 import useLocalStorage from "./useLocalStorage";
 
-function useDarkMode() {
-  const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage(
+function useDarkMode(): [boolean, (value: boolean) => void] {
+  const [darkModeEnabled, setDarkModeEnabled] = useLocalStorage<boolean>(
     "darkModeEnabled",
-    "true"
+    true
   );
 
-  function changeDarkMode(newValue) {
+  function changeDarkMode(newValue: boolean): void {
     newValue ? setDarkModeEnabled(true) : setDarkModeEnabled(false);
   }
 

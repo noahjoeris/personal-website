@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "jsx": "preserve",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "skipLibCheck": true
+  }
+}

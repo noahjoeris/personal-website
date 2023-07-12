@@ -2,12 +2,26 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const ContactsSideBar = ({ alignment, topPositioning }) => {
-  const [focusedButton, setFocusedButton] = useState("");
+interface Icon {
+  icon: any;
+  key: string;
+  link: string;
+}
 
-  const icons = [
+interface ContactsSideBarProps {
+  alignment?: "row" | "column";
+  topPositioning?: string;
+}
+
+const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
+  alignment = "row",
+  topPositioning = 0,
+}) => {
+  const [focusedButton, setFocusedButton] = useState<string>("");
+
+  const icons: Icon[] = [
     {
       icon: faLinkedin,
       key: "linkedin",
@@ -17,7 +31,7 @@ const ContactsSideBar = ({ alignment, topPositioning }) => {
     { icon: faGithub, key: "github", link: "https://github.com/noahjoeris" },
   ];
 
-  const grayLineStyle = {
+  const grayLineStyle: React.CSSProperties = {
     width: "0.2rem",
     height: "1rem",
     backgroundColor: "gray",
@@ -28,7 +42,7 @@ const ContactsSideBar = ({ alignment, topPositioning }) => {
     marginRight: "0.5rem",
   };
 
-  const boxStyle = {
+  const boxStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: alignment,
     position: "relative",
@@ -45,7 +59,7 @@ const ContactsSideBar = ({ alignment, topPositioning }) => {
   return (
     <Box sx={boxStyle}>
       {icons.map(({ icon, key, link }, index) => (
-        <>
+        <React.Fragment key={key}>
           <IconButton
             onMouseEnter={() => setFocusedButton(key)}
             onMouseLeave={() => setFocusedButton("")}
@@ -53,11 +67,11 @@ const ContactsSideBar = ({ alignment, topPositioning }) => {
           >
             <FontAwesomeIcon
               icon={icon}
-              {...(focusedButton === key ? { bounce: true } : null)}
+              {...(focusedButton === key ? { bounce: true } : undefined)}
             />
           </IconButton>
           {icons.length - 1 > index ? <div style={grayLineStyle} /> : null}
-        </>
+        </React.Fragment>
       ))}
     </Box>
   );

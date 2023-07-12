@@ -2,9 +2,6 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-
 import {
   AppBar,
   Badge,
@@ -20,11 +17,40 @@ import {
   MenuItem,
   Toolbar,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { useState } from "react";
+import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Language, LanguageIconPath } from "../constants/constants";
 
-const NavBar = ({ parallaxRef, darkModeEnabled, setDarkModeEnabled }) => {
+interface NavBarProps {
+  parallaxRef: React.MutableRefObject<any>;
+  darkModeEnabled: boolean;
+  setDarkModeEnabled: (darkModeEnabled: boolean) => void;
+}
+
+interface NavBarMobileProps extends NavBarProps {
+  t: (key: string) => string;
+  i18n: any;
+}
+
+interface NavBarDesktopProps extends NavBarProps {
+  t: (key: string) => string;
+  i18n: any;
+}
+
+const changeLanguage = (i18n: any) => {
+  i18n.changeLanguage(
+    i18n.language === Language.English ? Language.German : Language.English
+  );
+};
+
+const NavBar: FC<NavBarProps> = ({
+  parallaxRef,
+  darkModeEnabled,
+  setDarkModeEnabled,
+}) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
 
@@ -47,7 +73,7 @@ const NavBar = ({ parallaxRef, darkModeEnabled, setDarkModeEnabled }) => {
   );
 };
 
-const NavBarMobile = ({
+const NavBarMobile: FC<NavBarMobileProps> = ({
   parallaxRef,
   darkModeEnabled,
   setDarkModeEnabled,
@@ -55,6 +81,7 @@ const NavBarMobile = ({
   i18n,
 }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   return (
     <Box flexGrow={1} marginBottom={4}>
       <AppBar
@@ -102,19 +129,15 @@ const NavBarMobile = ({
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() =>
-                      i18n.changeLanguage(i18n.language === "en" ? "de" : "en")
-                    }
-                  >
+                  <ListItemButton onClick={() => changeLanguage(i18n)}>
                     <ListItemIcon>
                       <Badge
                         badgeContent={
                           <img
                             src={
-                              i18n.language === "de"
-                                ? "flag_ger.svg"
-                                : "flag_eng.svg"
+                              i18n.language === Language.German
+                                ? LanguageIconPath.German
+                                : LanguageIconPath.English
                             }
                             alt=""
                             style={{ width: "150%", height: "150%" }}
@@ -154,7 +177,7 @@ const NavBarMobile = ({
   );
 };
 
-const NavBarDesktop = ({
+const NavBarDesktop: FC<NavBarDesktopProps> = ({
   parallaxRef,
   darkModeEnabled,
   setDarkModeEnabled,
@@ -192,15 +215,15 @@ const NavBarDesktop = ({
           <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
             <DarkModeIcon color="inherit" />
           </IconButton>
-          <IconButton
-            onClick={() =>
-              i18n.changeLanguage(i18n.language === "en" ? "de" : "en")
-            }
-          >
+          <IconButton onClick={() => changeLanguage(i18n)}>
             <Badge
               badgeContent={
                 <img
-                  src={i18n.language === "de" ? "flag_ger.svg" : "flag_eng.svg"}
+                  src={
+                    i18n.language === Language.German
+                      ? LanguageIconPath.German
+                      : LanguageIconPath.English
+                  }
                   alt=""
                   style={{ width: "150%", height: "150%" }}
                 />

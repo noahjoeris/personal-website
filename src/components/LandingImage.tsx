@@ -1,3 +1,4 @@
+import React from "react";
 import { Avatar, Badge, styled, useTheme } from "@mui/material";
 import "../components/LandingImageStyles.css";
 
@@ -32,9 +33,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
   },
 }));
+
 const imgPath = "me.png";
 
-const LandingImage = ({ padding }) => {
+const LandingImage: React.FC<{ padding?: string }> = ({ padding="0" }) => {
   const theme = useTheme();
   return (
     <div className="floating" style={{ padding: padding }}>
