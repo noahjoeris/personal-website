@@ -2,11 +2,12 @@ import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Typewriter } from "react-simple-typewriter";
-import { ImagePath } from "../constants/constants";
+import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
 
-const LandingText: React.FC<{ darkModeEnabled?: boolean }> = ({
-  darkModeEnabled = false,
-}) => {
+const LandingText: React.FC<{
+  darkModeEnabled?: boolean;
+  isMobileScreen?: boolean;
+}> = ({ darkModeEnabled = false, isMobileScreen = false }) => {
   const { t } = useTranslation();
 
   return (
@@ -15,13 +16,18 @@ const LandingText: React.FC<{ darkModeEnabled?: boolean }> = ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        position: "relative",
+        bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
       }}
     >
-      <Typography variant="h3" marginBottom={"1rem"}>
-        {t("landingPageTextWelcome")} 👋🏻
-      </Typography>
+      <img
+        src={ImagePath.Signature}
+        alt="Signature"
+        height={"180rem"}
+        style={darkModeEnabled ? { filter: "invert(100%)" } : null}
+      />
       <Box>
-        <Typography variant="h6" marginBottom={"2rem"}>
+        <Typography variant="h6" marginBottom={"2rem"} marginTop={"2rem"}>
           <Typewriter
             words={(
               t("factsAboutMe", { returnObjects: true }) as string[]

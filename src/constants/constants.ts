@@ -9,6 +9,7 @@ export enum ImagePath {
   EnglishFlag = "flag_eng.svg",
   GermanFlag = "flag_ger.svg",
   AirbusLogo = "airbus.png",
+  MyLogo = "logo.png",
 }
 
 export const CAPTCHA_SITE_KEY: string =
@@ -17,3 +18,6 @@ export const CAPTCHA_SITE_KEY: string =
 export const EMAILJS_SERVICE_ID: string = "service_e2zokzh";
 export const EMAILJS_TEMPLATE_ID: string = "template_0z1419n";
 export const EMAILJS_PUBLIC_KEY: string = "p5N7bDhGORWdbiB3f";
+
+// needed due to a bug in parallax
+export const PARALLAX_OFFSET = "60px";

@@ -1,7 +1,7 @@
-import { Badge, Box, styled, useTheme } from "@mui/material";
+import { Badge, Box, styled } from "@mui/material";
 import React from "react";
 import "../components/LandingImageStyles.css";
-import { ImagePath } from "../constants/constants";
+import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,10 +35,19 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const LandingImage: React.FC<{ padding?: string }> = ({ padding = "0" }) => {
-  const theme = useTheme();
+const LandingImage: React.FC<{
+  padding?: string;
+  isMobileScreen?: boolean;
+}> = ({ padding = "0", isMobileScreen = false }) => {
   return (
-    <Box alignSelf={"end"} sx={{ padding, position: "relative", top: "-40px" }}>
+    <Box
+      alignSelf={"end"}
+      sx={{
+        padding,
+        position: "relative",
+        bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
+      }}
+    >
       <img alt="Noah Joeris" src={ImagePath.Myself} width={"400rem"} />
     </Box>
   );
