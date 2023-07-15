@@ -1,9 +1,9 @@
-import { Badge, Box, styled, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import React from "react";
 import "../components/LandingImageStyles.css";
 import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+/* const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     backgroundColor: "#44b700",
     color: "#44b700",
@@ -33,7 +33,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
       opacity: 0,
     },
   },
-}));
+})); */
 
 const LandingImage: React.FC<{
   padding?: string;
