@@ -1,4 +1,5 @@
 import { Box, Divider, Typography } from "@mui/material";
+import { TFunction } from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Typewriter } from "react-simple-typewriter";
@@ -7,7 +8,8 @@ import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
 const LandingText: React.FC<{
   darkModeEnabled?: boolean;
   isMobileScreen?: boolean;
-}> = ({ darkModeEnabled = false, isMobileScreen = false }) => {
+  translations: TFunction;
+}> = ({ darkModeEnabled = false, isMobileScreen = false, translations }) => {
   const { t } = useTranslation();
 
   return (
@@ -21,7 +23,7 @@ const LandingText: React.FC<{
       }}
     >
       <Typography fontStyle="italic" marginTop={"2rem"}>
-        Hi there! I'm
+        {translations("landingPageTextWelcome")}
       </Typography>
       <img
         src={ImagePath.Signature}
