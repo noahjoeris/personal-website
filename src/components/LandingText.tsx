@@ -20,6 +20,9 @@ const LandingText: React.FC<{
         bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
       }}
     >
+      <Typography fontStyle="italic" marginTop={"2rem"}>
+        Hi there! I'm
+      </Typography>
       <img
         src={ImagePath.Signature}
         alt="Signature"
