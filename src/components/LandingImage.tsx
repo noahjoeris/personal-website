@@ -1,4 +1,4 @@
-import { Badge, Box, styled } from "@mui/material";
+import { Badge, Box, styled, useTheme } from "@mui/material";
 import React from "react";
 import "../components/LandingImageStyles.css";
 import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
@@ -39,16 +39,36 @@ const LandingImage: React.FC<{
   padding?: string;
   isMobileScreen?: boolean;
 }> = ({ padding = "0", isMobileScreen = false }) => {
+  const theme = useTheme();
   return (
     <Box
       alignSelf={"end"}
+      display={"flex"}
+      flexDirection={"row"}
       sx={{
         padding,
         position: "relative",
         bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
       }}
     >
-      <img alt="Noah Joeris" src={ImagePath.Myself} width={"400rem"} />
+      <img
+        alt="Noah Joeris"
+        src={ImagePath.Myself}
+        width={"400rem"}
+        style={{ zIndex: 1 }}
+      />
+      <div
+        style={{
+          width: "38rem",
+          height: "38rem",
+          position: "absolute",
+          bottom: "-4rem",
+          right: "-5rem",
+          borderRadius: "50%",
+          boxShadow: "inset 0 0 0.5rem 0.2rem",
+          backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
+        }}
+      />
     </Box>
   );
 };
