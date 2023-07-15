@@ -21,7 +21,7 @@ const LandingPage: FC<LandingPageProps> = ({ darkModeEnabled = true }) => {
       justifyContent={isMobileScreenSize ? "start" : "center"}
     >
       <LandingText darkModeEnabled={darkModeEnabled} />
-      <LandingImage padding={"0.2rem 3rem 0 3rem"} />
+      <LandingImage padding="0 0 0 10rem" />
       <ContactsSideBar
         alignment={isMobileScreenSize ? "row" : "column"}
         topPositioning={isMobileScreenSize ? "-1rem" : "0"}
