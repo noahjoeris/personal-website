@@ -53,7 +53,7 @@ function App() {
               <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
             </ParallaxLayer>
             <ParallaxLayer
-              offset={0.98}
+              offset={0.99}
               speed={0.2}
               style={{ backgroundSize: "cover", overflow: "hidden" }}
             >

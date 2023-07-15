@@ -198,7 +198,7 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
         <Toolbar>
           <Box display="flex" flexGrow={1}>
             <img
-              src={ImagePath.Signature}
+              src={ImagePath.MyLogo}
               height={100}
               alt="Noah Joeris"
               style={darkModeEnabled ? { filter: "invert(100%)" } : null}
