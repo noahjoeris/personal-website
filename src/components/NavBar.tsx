@@ -161,16 +161,16 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            align="left"
-            fontFamily="Babylonica"
-            flexGrow={1}
-            variant="h4"
-            color="inherit"
-            noWrap
-          >
-            Noah Joeris
-          </Typography>
+          <Box flexGrow={1} />
+          <IconButton color="inherit" aria-label="menu">
+            <img
+              src={ImagePath.MyLogo}
+              alt="Logo"
+              height={42}
+              style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
+            />
+          </IconButton>
+          <Box />
         </Toolbar>
       </AppBar>
     </Box>
@@ -200,8 +200,8 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
             <img
               src={ImagePath.MyLogo}
               height={100}
-              alt="Noah Joeris"
-              style={darkModeEnabled ? { filter: "invert(100%)" } : null}
+              alt="Logo"
+              style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
             />
           </Box>
           <MenuItem
