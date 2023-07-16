@@ -1,7 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 import React from "react";
 import "../components/LandingImageStyles.css";
-import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
+import { ImagePath } from "../constants/constants";
 
 /* const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -46,26 +46,30 @@ const LandingImage = ({ padding = "0", isMobileScreen = false }) => {
   const containerStyle: React.CSSProperties = {
     padding,
     display: "flex",
-    flexDirection: "row",
-    alignSelf: isMobileScreen ? "center" : "flex-end",
-    alignItems: "center",
     position: "relative",
-    bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
+    alignSelf: isMobileScreen ? "center" : "flex-end",
   };
   const backgroundStyle: React.CSSProperties = {
     width: "38rem",
     height: "38rem",
     position: "absolute",
+    top: isMobileScreen ? "70px" : "3rem",
+    left: isMobileScreen ? "-100px" : "2rem",
     maxHeight: isMobileScreen ? "60vh" : undefined,
-    bottom: "-4rem",
-    right: "-5rem",
+    maxWidth: isMobileScreen ? "150vw" : undefined,
     borderRadius: "50%",
     boxShadow: "inset 0 0 0.5rem 0.2rem",
     backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
   };
 
   const imageStyle: React.CSSProperties = isMobileScreen
-    ? { ...baseImageStyle, maxHeight: "60vh" }
+    ? {
+        ...baseImageStyle,
+        maxHeight: "60vh",
+        position: "relative",
+        top: "1rem",
+        left: "2rem",
+      }
     : baseImageStyle;
 
   return (

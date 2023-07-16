@@ -16,22 +16,24 @@ const LandingPage: FC<LandingPageProps> = ({ darkModeEnabled = true }) => {
 
   return (
     <Box
-      minHeight={"100%"}
+      minHeight={"90vh"}
+      maxHeight={isMobileScreenSize ? "100vh" : undefined}
       display={"flex"}
       flexDirection={isMobileScreenSize ? "column" : "row"}
       alignItems={"center"}
       justifyContent={isMobileScreenSize ? "start" : "center"}
+      overflow={"hidden"}
     >
       <LandingText
         darkModeEnabled={darkModeEnabled}
         isMobileScreen={isMobileScreenSize}
         translations={t}
       />
-      <LandingImage padding="0 0 0 7rem" isMobileScreen={isMobileScreenSize} />
-      <ContactsSideBar
-        alignment={isMobileScreenSize ? "row" : "column"}
-        topPositioning={isMobileScreenSize ? "-1rem" : "0"}
+      <LandingImage
+        isMobileScreen={isMobileScreenSize}
+        padding={isMobileScreenSize ? undefined : "0 0 0 7rem"}
       />
+      <ContactsSideBar alignment="column" />
     </Box>
   );
 };

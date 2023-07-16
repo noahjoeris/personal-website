@@ -20,12 +20,11 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ImagePath, Language } from "../constants/constants";
 
 interface NavBarProps {
-  parallaxRef: React.MutableRefObject<any>;
   darkModeEnabled: boolean;
   setDarkModeEnabled: (darkModeEnabled: boolean) => void;
 }
@@ -46,17 +45,12 @@ const changeLanguage = (i18n: any) => {
   );
 };
 
-const NavBar: FC<NavBarProps> = ({
-  parallaxRef,
-  darkModeEnabled,
-  setDarkModeEnabled,
-}) => {
+const NavBar: FC<NavBarProps> = ({ darkModeEnabled, setDarkModeEnabled }) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
 
   return isMobileScreenSize ? (
     <NavBarMobile
-      parallaxRef={parallaxRef}
       darkModeEnabled={darkModeEnabled}
       setDarkModeEnabled={setDarkModeEnabled}
       t={t}
@@ -64,7 +58,6 @@ const NavBar: FC<NavBarProps> = ({
     />
   ) : (
     <NavBarDesktop
-      parallaxRef={parallaxRef}
       darkModeEnabled={darkModeEnabled}
       setDarkModeEnabled={setDarkModeEnabled}
       t={t}
@@ -74,7 +67,6 @@ const NavBar: FC<NavBarProps> = ({
 };
 
 const NavBarMobile: FC<NavBarMobileProps> = ({
-  parallaxRef,
   darkModeEnabled,
   setDarkModeEnabled,
   t,
@@ -104,9 +96,7 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
             >
               <List>
                 <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => parallaxRef?.current.scrollTo(0.8)}
-                  >
+                  <ListItemButton>
                     <ListItemIcon>
                       <ContactMailIcon />
                     </ListItemIcon>
@@ -178,7 +168,6 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
 };
 
 const NavBarDesktop: FC<NavBarDesktopProps> = ({
-  parallaxRef,
   darkModeEnabled,
   setDarkModeEnabled,
   t,
@@ -204,10 +193,7 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
               style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
             />
           </Box>
-          <MenuItem
-            color="inherit"
-            onClick={() => parallaxRef?.current.scrollTo(0.8)}
-          >
+          <MenuItem color="inherit">
             <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>
           <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
