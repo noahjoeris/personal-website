@@ -35,40 +35,43 @@ import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
   },
 })); */
 
-const LandingImage: React.FC<{
-  padding?: string;
-  isMobileScreen?: boolean;
-}> = ({ padding = "0", isMobileScreen = false }) => {
+const baseImageStyle: React.CSSProperties = {
+  zIndex: 1,
+  maxWidth: "25rem",
+};
+
+const LandingImage = ({ padding = "0", isMobileScreen = false }) => {
   const theme = useTheme();
+
+  const containerStyle: React.CSSProperties = {
+    padding,
+    display: "flex",
+    flexDirection: "row",
+    alignSelf: isMobileScreen ? "center" : "flex-end",
+    alignItems: "center",
+    position: "relative",
+    bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
+  };
+  const backgroundStyle: React.CSSProperties = {
+    width: "38rem",
+    height: "38rem",
+    position: "absolute",
+    maxHeight: isMobileScreen ? "60vh" : undefined,
+    bottom: "-4rem",
+    right: "-5rem",
+    borderRadius: "50%",
+    boxShadow: "inset 0 0 0.5rem 0.2rem",
+    backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
+  };
+
+  const imageStyle: React.CSSProperties = isMobileScreen
+    ? { ...baseImageStyle, maxHeight: "60vh" }
+    : baseImageStyle;
+
   return (
-    <Box
-      alignSelf={"end"}
-      display={"flex"}
-      flexDirection={"row"}
-      sx={{
-        padding,
-        position: "relative",
-        bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
-      }}
-    >
-      <img
-        alt="Noah Joeris"
-        src={ImagePath.Myself}
-        width={"400rem"}
-        style={{ zIndex: 1 }}
-      />
-      <div
-        style={{
-          width: "38rem",
-          height: "38rem",
-          position: "absolute",
-          bottom: "-4rem",
-          right: "-5rem",
-          borderRadius: "50%",
-          boxShadow: "inset 0 0 0.5rem 0.2rem",
-          backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
-        }}
-      />
+    <Box sx={containerStyle}>
+      <img alt="Noah Joeris" src={ImagePath.Myself} style={imageStyle} />
+      <div style={backgroundStyle} />
     </Box>
   );
 };

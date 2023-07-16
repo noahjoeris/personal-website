@@ -27,7 +27,7 @@ const LandingPage: FC<LandingPageProps> = ({ darkModeEnabled = true }) => {
         isMobileScreen={isMobileScreenSize}
         translations={t}
       />
-      <LandingImage padding="0 0 0 10rem" isMobileScreen={isMobileScreenSize} />
+      <LandingImage padding="0 0 0 7rem" isMobileScreen={isMobileScreenSize} />
       <ContactsSideBar
         alignment={isMobileScreenSize ? "row" : "column"}
         topPositioning={isMobileScreenSize ? "-1rem" : "0"}

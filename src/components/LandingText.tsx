@@ -11,6 +11,11 @@ const LandingText: React.FC<{
   translations: TFunction;
 }> = ({ darkModeEnabled = false, isMobileScreen = false, translations }) => {
   const { t } = useTranslation();
+  const imageStyle: React.CSSProperties = {
+    maxWidth: "90%",
+    maxHeight: "15rem",
+    filter: darkModeEnabled ? "invert(100%)" : undefined,
+  };
 
   return (
     <Box
@@ -18,21 +23,17 @@ const LandingText: React.FC<{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
         position: "relative",
         bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
       }}
     >
-      <Typography fontStyle="italic" marginTop={"2rem"}>
+      <Typography fontStyle="italic">
         {translations("landingPageTextWelcome")}
       </Typography>
-      <img
-        src={ImagePath.Signature}
-        alt="Signature"
-        height={"180rem"}
-        style={darkModeEnabled ? { filter: "invert(100%)" } : null}
-      />
+      <img src={ImagePath.Signature} alt="Signature" style={imageStyle} />
       <Box>
-        <Typography variant="h6" marginBottom={"2rem"} marginTop={"2rem"}>
+        <Typography variant="h6" marginBottom={"1rem"} marginTop={"2rem"}>
           <Typewriter
             words={(
               t("factsAboutMe", { returnObjects: true }) as string[]
@@ -50,11 +51,11 @@ const LandingText: React.FC<{
         variant="middle"
         sx={{ borderBottomWidth: "0.3rem", width: "5rem" }}
       />
-      <Typography variant="h4" fontStyle="italic" marginTop="2rem">
+      <Typography variant="h5" fontStyle="italic" marginTop="1rem">
         {t("jobRole")}
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Typography variant="h4" fontStyle="italic" marginRight={"0.5rem"}>
+        <Typography variant="h5" fontStyle="italic" marginRight={"0.5rem"}>
           @
         </Typography>
         <img
@@ -64,7 +65,7 @@ const LandingText: React.FC<{
           style={
             darkModeEnabled
               ? { filter: "invert(1) grayscale(1) brightness(100)" }
-              : null
+              : undefined
           }
         />
       </Box>
