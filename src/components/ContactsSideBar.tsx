@@ -12,12 +12,10 @@ interface Icon {
 
 interface ContactsSideBarProps {
   alignment?: "row" | "column";
-  topPositioning?: string;
 }
 
 const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
   alignment = "row",
-  topPositioning = 0,
 }) => {
   const [focusedButton, setFocusedButton] = useState<string>("");
 
@@ -45,15 +43,17 @@ const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
   const boxStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: alignment,
-    position: "relative",
     alignItems: "center",
+    position: "fixed",
+    top: "40vh",
+    right: "0.5rem",
+    zIndex: "tooltip",
+    padding: "0.2rem",
     backgroundColor: "rgba(0, 0, 0, 0.1)",
     border: "3px solid rgba(255, 255, 255, 0.5)",
-    top: topPositioning,
     borderRadius: "25px",
-    padding: "0.3rem",
     boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.5)",
-    backdropFilter: "blur(3px)",
+    backdropFilter: "blur(1px)",
   };
 
   return (

@@ -68,11 +68,11 @@ const ContactPage: FC<ContactPageProps> = ({ darkModeEnabled = true }) => {
 
   return (
     <Box
+      minHeight="100vh"
       display="flex"
       flexDirection={isMobileScreenSize ? "column" : "row"}
       justifyContent="center"
       alignItems="center"
-      minHeight="100%"
       zIndex={2}
       sx={{
         backgroundColor: darkModeEnabled ? "#121212" : "#bd60d5",

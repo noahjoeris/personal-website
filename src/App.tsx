@@ -3,7 +3,6 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CssBaseline, Theme, ThemeProvider, createTheme } from "@mui/material";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { useRef } from "react";
 import "./App.css";
 import Footer from "./components/Footer";
@@ -15,7 +14,7 @@ import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
-  const parallaxRef = useRef<any>(null);
+  const contactPageRef = useRef(null); // Create a ref for the ContactPage component
 
   const theme: Theme = createTheme({
     palette: {
@@ -33,48 +32,33 @@ function App() {
     },
   });
 
+  const handleScrollToContact = () => {
+    if (contactPageRef.current) {
+      contactPageRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <>
-          <Parallax ref={parallaxRef} pages={2}>
-            <ParallaxLayer
-              offset={0}
-              speed={0.2}
-              style={{ backgroundSize: "cover", overflow: "hidden" }}
-            >
-              <NavBar
-                darkModeEnabled={darkModeEnabled}
-                setDarkModeEnabled={setDarkModeEnabled}
-                parallaxRef={parallaxRef}
-              />
-              <LandingPage darkModeEnabled={darkModeEnabled} />
-              <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
-            </ParallaxLayer>
-            <ParallaxLayer
-              offset={0.99}
-              speed={0.2}
-              style={{ backgroundSize: "cover", overflow: "hidden" }}
-            >
-              <ContactPage darkModeEnabled={darkModeEnabled} />
-            </ParallaxLayer>
-            <ParallaxLayer
-              offset={1.79}
-              speed={0.4}
-              style={{
-                backgroundSize: "cover",
-                overflow: "hidden",
-                position: "fixed",
-                bottom: 0,
-                height: "100%",
-                left: 0,
-                zIndex: "-1",
-              }}
-            >
-              <Footer />
-            </ParallaxLayer>
-          </Parallax>
+          <NavBar
+            darkModeEnabled={darkModeEnabled}
+            setDarkModeEnabled={setDarkModeEnabled}
+            scrollToContact={handleScrollToContact} // Pass the scroll function as a prop
+          />
+          <LandingPage darkModeEnabled={darkModeEnabled} />
+          <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
+          <div ref={contactPageRef}>
+            {" "}
+            {/* Attach the ref to the ContactPage component */}
+            <ContactPage darkModeEnabled={darkModeEnabled} />
+          </div>
+          <Footer />
         </>
       </ThemeProvider>
     </div>

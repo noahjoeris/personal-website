@@ -3,7 +3,7 @@ import { TFunction } from "i18next";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Typewriter } from "react-simple-typewriter";
-import { ImagePath, PARALLAX_OFFSET } from "../constants/constants";
+import { ImagePath } from "../constants/constants";
 
 const LandingText: React.FC<{
   darkModeEnabled?: boolean;
@@ -24,8 +24,6 @@ const LandingText: React.FC<{
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        position: "relative",
-        bottom: isMobileScreen ? 0 : PARALLAX_OFFSET,
       }}
     >
       <Typography fontStyle="italic">
