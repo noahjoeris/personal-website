@@ -30,17 +30,23 @@ interface NavBarProps {
   scrollToContact: () => void;
 }
 
-interface NavBarMobileProps extends NavBarProps {
+interface NavBarVersionProps extends NavBarProps {
   t: (key: string) => string;
   i18n: any;
-  scrollToContact: () => void;
 }
 
-interface NavBarDesktopProps extends NavBarProps {
-  t: (key: string) => string;
-  i18n: any;
-  scrollToContact: () => void;
-}
+const ListItemComponent: FC<{
+  icon: React.ReactNode;
+  text: string;
+  action: () => void;
+}> = ({ icon, text, action }) => (
+  <ListItem disablePadding>
+    <ListItemButton onClick={action}>
+      <ListItemIcon>{icon}</ListItemIcon>
+      <ListItemText primary={text} />
+    </ListItemButton>
+  </ListItem>
+);
 
 const changeLanguage = (i18n: any) => {
   i18n.changeLanguage(
@@ -48,41 +54,30 @@ const changeLanguage = (i18n: any) => {
   );
 };
 
-const NavBar: FC<NavBarProps> = ({
-  darkModeEnabled,
-  setDarkModeEnabled,
-  scrollToContact,
-}) => {
+const NavBar: FC<NavBarProps> = (props) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
 
   return isMobileScreenSize ? (
-    <NavBarMobile
-      darkModeEnabled={darkModeEnabled}
-      setDarkModeEnabled={setDarkModeEnabled}
-      scrollToContact={scrollToContact}
-      t={t}
-      i18n={i18n}
-    />
+    <NavBarMobile {...props} t={t} i18n={i18n} />
   ) : (
-    <NavBarDesktop
-      darkModeEnabled={darkModeEnabled}
-      setDarkModeEnabled={setDarkModeEnabled}
-      scrollToContact={scrollToContact}
-      t={t}
-      i18n={i18n}
-    />
+    <NavBarDesktop {...props} t={t} i18n={i18n} />
   );
 };
 
-const NavBarMobile: FC<NavBarMobileProps> = ({
-  darkModeEnabled,
-  setDarkModeEnabled,
-  scrollToContact,
-  t,
-  i18n,
-}) => {
+const NavBarMobile: FC<NavBarVersionProps> = (props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleContactClick = () => {
+    setTimeout(() => {
+      props.scrollToContact();
+    }, 10);
+  };
+
+  const handleDarkModeToggle = () =>
+    props.setDarkModeEnabled(!props.darkModeEnabled);
+
+  const handleLanguageChange = () => changeLanguage(props.i18n);
 
   return (
     <Box flexGrow={1} marginBottom={4}>
@@ -105,57 +100,40 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
               onClick={() => setIsDrawerOpen(false)}
             >
               <List>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => {
-                      setTimeout(() => {
-                        scrollToContact();
-                      }, 10);
-                    }}
-                  >
-                    <ListItemIcon>
-                      <ContactMailIcon />
-                    </ListItemIcon>
-                    <ListItemText primary={t("contactNav")} />
-                  </ListItemButton>
-                </ListItem>
+                <ListItemComponent
+                  icon={<ContactMailIcon />}
+                  text={props.t("contactNav")}
+                  action={handleContactClick}
+                />
               </List>
               <Divider />
               <List>
-                <ListItem disablePadding>
-                  <ListItemButton
-                    onClick={() => setDarkModeEnabled(!darkModeEnabled)}
-                  >
-                    <ListItemIcon>
-                      <DarkModeIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={darkModeEnabled ? "Light Mode" : "Dark Mode"}
-                    />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton onClick={() => changeLanguage(i18n)}>
-                    <ListItemIcon>
-                      <Badge
-                        badgeContent={
-                          <img
-                            src={
-                              i18n.language === Language.German
-                                ? ImagePath.GermanFlag
-                                : ImagePath.EnglishFlag
-                            }
-                            alt=""
-                            style={{ width: "150%", height: "150%" }}
-                          />
-                        }
-                      >
-                        <LanguageIcon />
-                      </Badge>
-                    </ListItemIcon>
-                    <ListItemText primary={t("language")} />
-                  </ListItemButton>
-                </ListItem>
+                <ListItemComponent
+                  icon={<DarkModeIcon />}
+                  text={props.darkModeEnabled ? "Light Mode" : "Dark Mode"}
+                  action={handleDarkModeToggle}
+                />
+                <ListItemComponent
+                  icon={
+                    <Badge
+                      badgeContent={
+                        <img
+                          src={
+                            props.i18n.language === Language.German
+                              ? ImagePath.GermanFlag
+                              : ImagePath.EnglishFlag
+                          }
+                          alt=""
+                          style={{ width: "150%", height: "150%" }}
+                        />
+                      }
+                    >
+                      <LanguageIcon />
+                    </Badge>
+                  }
+                  text={props.t("language")}
+                  action={handleLanguageChange}
+                />
               </List>
             </Box>
           </Drawer>
@@ -173,7 +151,9 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
               src={ImagePath.MyLogo}
               alt="Logo"
               height={42}
-              style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
+              style={
+                props.darkModeEnabled ? { filter: "invert(100%)" } : undefined
+              }
             />
           </IconButton>
           <Box />
@@ -183,13 +163,12 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
   );
 };
 
-const NavBarDesktop: FC<NavBarDesktopProps> = ({
-  darkModeEnabled,
-  setDarkModeEnabled,
-  scrollToContact,
-  t,
-  i18n,
-}) => {
+const NavBarDesktop: FC<NavBarVersionProps> = (props) => {
+  const handleDarkModeToggle = () =>
+    props.setDarkModeEnabled(!props.darkModeEnabled);
+
+  const handleLanguageChange = () => changeLanguage(props.i18n);
+
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
       <AppBar
@@ -207,25 +186,27 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
               src={ImagePath.MyLogo}
               height={100}
               alt="Logo"
-              style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
+              style={
+                props.darkModeEnabled ? { filter: "invert(100%)" } : undefined
+              }
             />
           </Box>
-          <MenuItem onClick={() => scrollToContact()}>
-            <Typography variant="button">{t("contactNav")}</Typography>
+          <MenuItem onClick={props.scrollToContact}>
+            <Typography variant="button">{props.t("contactNav")}</Typography>
           </MenuItem>
-          <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
+          <IconButton onClick={handleDarkModeToggle}>
             <DarkModeIcon />
           </IconButton>
-          <IconButton onClick={() => changeLanguage(i18n)}>
+          <IconButton onClick={handleLanguageChange}>
             <Badge
               badgeContent={
                 <img
                   src={
-                    i18n.language === Language.German
+                    props.i18n.language === Language.German
                       ? ImagePath.GermanFlag
                       : ImagePath.EnglishFlag
                   }
-                  alt=""
+                  alt="Language Flag"
                   style={{ width: "150%", height: "150%" }}
                 />
               }
