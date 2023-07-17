@@ -3,6 +3,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CssBaseline, Theme, ThemeProvider, createTheme } from "@mui/material";
+import { useRef } from "react";
 import "./App.css";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
@@ -13,6 +14,7 @@ import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
+  const contactPageRef = useRef(null); // Create a ref for the ContactPage component
 
   const theme: Theme = createTheme({
     palette: {
@@ -30,6 +32,15 @@ function App() {
     },
   });
 
+  const handleScrollToContact = () => {
+    if (contactPageRef.current) {
+      contactPageRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -38,10 +49,15 @@ function App() {
           <NavBar
             darkModeEnabled={darkModeEnabled}
             setDarkModeEnabled={setDarkModeEnabled}
+            scrollToContact={handleScrollToContact} // Pass the scroll function as a prop
           />
           <LandingPage darkModeEnabled={darkModeEnabled} />
           <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
-          <ContactPage darkModeEnabled={darkModeEnabled} />
+          <div ref={contactPageRef}>
+            {" "}
+            {/* Attach the ref to the ContactPage component */}
+            <ContactPage darkModeEnabled={darkModeEnabled} />
+          </div>
           <Footer />
         </>
       </ThemeProvider>

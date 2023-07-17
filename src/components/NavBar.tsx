@@ -27,16 +27,19 @@ import { ImagePath, Language } from "../constants/constants";
 interface NavBarProps {
   darkModeEnabled: boolean;
   setDarkModeEnabled: (darkModeEnabled: boolean) => void;
+  scrollToContact: () => void;
 }
 
 interface NavBarMobileProps extends NavBarProps {
   t: (key: string) => string;
   i18n: any;
+  scrollToContact: () => void;
 }
 
 interface NavBarDesktopProps extends NavBarProps {
   t: (key: string) => string;
   i18n: any;
+  scrollToContact: () => void;
 }
 
 const changeLanguage = (i18n: any) => {
@@ -45,7 +48,11 @@ const changeLanguage = (i18n: any) => {
   );
 };
 
-const NavBar: FC<NavBarProps> = ({ darkModeEnabled, setDarkModeEnabled }) => {
+const NavBar: FC<NavBarProps> = ({
+  darkModeEnabled,
+  setDarkModeEnabled,
+  scrollToContact,
+}) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
 
@@ -53,6 +60,7 @@ const NavBar: FC<NavBarProps> = ({ darkModeEnabled, setDarkModeEnabled }) => {
     <NavBarMobile
       darkModeEnabled={darkModeEnabled}
       setDarkModeEnabled={setDarkModeEnabled}
+      scrollToContact={scrollToContact}
       t={t}
       i18n={i18n}
     />
@@ -60,6 +68,7 @@ const NavBar: FC<NavBarProps> = ({ darkModeEnabled, setDarkModeEnabled }) => {
     <NavBarDesktop
       darkModeEnabled={darkModeEnabled}
       setDarkModeEnabled={setDarkModeEnabled}
+      scrollToContact={scrollToContact}
       t={t}
       i18n={i18n}
     />
@@ -69,6 +78,7 @@ const NavBar: FC<NavBarProps> = ({ darkModeEnabled, setDarkModeEnabled }) => {
 const NavBarMobile: FC<NavBarMobileProps> = ({
   darkModeEnabled,
   setDarkModeEnabled,
+  scrollToContact,
   t,
   i18n,
 }) => {
@@ -96,7 +106,13 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
             >
               <List>
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton
+                    onClick={() => {
+                      setTimeout(() => {
+                        scrollToContact();
+                      }, 10);
+                    }}
+                  >
                     <ListItemIcon>
                       <ContactMailIcon />
                     </ListItemIcon>
@@ -152,7 +168,7 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
             <MenuIcon />
           </IconButton>
           <Box flexGrow={1} />
-          <IconButton color="inherit" aria-label="menu">
+          <IconButton>
             <img
               src={ImagePath.MyLogo}
               alt="Logo"
@@ -170,6 +186,7 @@ const NavBarMobile: FC<NavBarMobileProps> = ({
 const NavBarDesktop: FC<NavBarDesktopProps> = ({
   darkModeEnabled,
   setDarkModeEnabled,
+  scrollToContact,
   t,
   i18n,
 }) => {
@@ -193,11 +210,11 @@ const NavBarDesktop: FC<NavBarDesktopProps> = ({
               style={darkModeEnabled ? { filter: "invert(100%)" } : undefined}
             />
           </Box>
-          <MenuItem color="inherit">
+          <MenuItem onClick={() => scrollToContact()}>
             <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>
           <IconButton onClick={() => setDarkModeEnabled(!darkModeEnabled)}>
-            <DarkModeIcon color="inherit" />
+            <DarkModeIcon />
           </IconButton>
           <IconButton onClick={() => changeLanguage(i18n)}>
             <Badge
