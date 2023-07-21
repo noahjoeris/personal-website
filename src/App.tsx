@@ -2,19 +2,25 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CssBaseline, Theme, ThemeProvider, createTheme } from "@mui/material";
+import {
+  CssBaseline,
+  Divider,
+  Theme,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
 import { useRef } from "react";
 import "./App.css";
-import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
 import ContactPage from "./pages/ContactPage";
+import Footer from "./pages/FooterPage";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
-  const contactPageRef = useRef(null); // Create a ref for the ContactPage component
+  const contactPageRef = useRef(null);
 
   const theme: Theme = createTheme({
     palette: {
@@ -51,11 +57,14 @@ function App() {
             setDarkModeEnabled={setDarkModeEnabled}
             scrollToContact={handleScrollToContact} // Pass the scroll function as a prop
           />
+
           <LandingPage darkModeEnabled={darkModeEnabled} />
+          <Divider
+            orientation="horizontal"
+            sx={{ borderBottomWidth: "0.3rem" }}
+          />
           <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
           <div ref={contactPageRef}>
-            {" "}
-            {/* Attach the ref to the ContactPage component */}
             <ContactPage darkModeEnabled={darkModeEnabled} />
           </div>
           <Footer darkModeEnabled={darkModeEnabled} />

@@ -1,15 +1,20 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { ImagePath } from "../constants/constants";
 
 const lightBackground: string =
-  "linear-gradient(to top right,  #f0f0f0 80%, #000bae 120%)";
+  "linear-gradient(to top right,  rgb(240, 240, 240, 0.8) 80%, #000bae 120%)";
 const darkBackground: string =
-  "linear-gradient(to top right,  #070707 80%, #000bae 120%)";
+  "linear-gradient(to top right,  	rgb(8,8,8, 0.9) 80%, #000bae 120%)";
 
-const Footer: React.FC<{ darkModeEnabled?: boolean }> = ({
-  darkModeEnabled = true,
-}) => {
+const Footer: React.FC<{
+  darkModeEnabled?: boolean;
+}> = ({ darkModeEnabled = true }) => {
+  const theme = useTheme();
+  const isMobileScreenSize: boolean = useMediaQuery(
+    theme.breakpoints.down("sm")
+  );
+
   return (
     <>
       <Box
@@ -31,22 +36,23 @@ const Footer: React.FC<{ darkModeEnabled?: boolean }> = ({
           <Typography>
             © {new Date().getFullYear()} Noah Joeris. All rights reserved.
           </Typography>
+          <img
+            src={ImagePath.MyLogo}
+            alt="Noah Joeris Logo"
+            style={{
+              position: "relative",
+              height: isMobileScreenSize ? "12vh" : "20vh",
+              zIndex: 1,
+              right: 0,
+              filter: darkModeEnabled
+                ? "invert(1) grayscale(1) brightness(100)"
+                : undefined,
+            }}
+          />
         </Box>
         <Typography sx={{ backgroundColor: "#404040" }}>
           Made with ❤️ in React.js
         </Typography>
-        <img
-          src={ImagePath.MyLogo}
-          style={{
-            position: "absolute",
-            height: "20vh",
-            zIndex: 1,
-            right: 0,
-            filter: darkModeEnabled
-              ? "invert(1) grayscale(1) brightness(100)"
-              : undefined,
-          }}
-        />
       </Box>
     </>
   );

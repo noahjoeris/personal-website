@@ -75,9 +75,11 @@ const ContactPage: FC<ContactPageProps> = ({ darkModeEnabled = true }) => {
       alignItems="center"
       zIndex={2}
       sx={{
-        backgroundColor: darkModeEnabled ? "#121212" : "#bd60d5",
+        backgroundColor: darkModeEnabled
+          ? "rgba(18, 18, 18, 0.4)"
+          : "rgba(189, 96, 213, 0.5)",
         backgroundImage:
-          "radial-gradient(at 47% 33%, #9000bd 0, transparent 59%), radial-gradient(at 82% 65%, #000bae 0, transparent 70%)",
+          "radial-gradient(at 47% 33%, rgba(144, 0, 189, 0.7) 0, transparent 59%), radial-gradient(at 82% 65%, rgba(0, 11, 174, 0.7) 0, transparent 70%)",
       }}
     >
       <GlassBox isMobileScreenSize={isMobileScreenSize}>
