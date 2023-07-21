@@ -58,7 +58,7 @@ function App() {
             {/* Attach the ref to the ContactPage component */}
             <ContactPage darkModeEnabled={darkModeEnabled} />
           </div>
-          <Footer />
+          <Footer darkModeEnabled={darkModeEnabled} />
         </>
       </ThemeProvider>
     </div>
