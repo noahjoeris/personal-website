@@ -7,7 +7,7 @@ const lightBackground: string =
 const darkBackground: string =
   "linear-gradient(to top right,  	rgb(8,8,8, 0.9) 80%, #000bae 120%)";
 
-const Footer: React.FC<{
+const FooterPage: React.FC<{
   darkModeEnabled?: boolean;
 }> = ({ darkModeEnabled = true }) => {
   const theme = useTheme();
@@ -58,4 +58,4 @@ const Footer: React.FC<{
   );
 };
 
-export default Footer;
+export default FooterPage;

@@ -6,6 +6,7 @@ export enum Language {
 export enum ImagePath {
   Signature = "signature.png",
   Myself = "me.png",
+  Myself2 = "me2.png",
   EnglishFlag = "flag_eng.svg",
   GermanFlag = "flag_ger.svg",
   AirbusLogo = "airbus.png",
