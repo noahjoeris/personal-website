@@ -67,7 +67,7 @@ function App() {
           />
           <LandingPage darkModeEnabled={darkModeEnabled} />
           <PageDivider />
-          <AboutmePage />
+          <AboutmePage darkModeEnabled={darkModeEnabled} />
           <PageDivider />
           <div ref={contactPageRef}>
             <ContactPage darkModeEnabled={darkModeEnabled} />

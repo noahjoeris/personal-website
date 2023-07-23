@@ -1,11 +1,16 @@
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  IconDefinition,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton } from "@mui/material";
 import React, { useState } from "react";
+import { Hyperlink } from "../constants/constants";
 
 interface Icon {
-  icon: any;
+  icon: IconDefinition;
   key: string;
   link: string;
 }
@@ -23,10 +28,10 @@ const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
     {
       icon: faLinkedin,
       key: "linkedin",
-      link: "https://www.linkedin.com/in/njoeris/",
+      link: Hyperlink.LinkedIn,
     },
-    { icon: faEnvelope, key: "email", link: "mailto:noahjoeris@gmail.com" },
-    { icon: faGithub, key: "github", link: "https://github.com/noahjoeris" },
+    { icon: faEnvelope, key: "email", link: Hyperlink.Email },
+    { icon: faGithub, key: "github", link: Hyperlink.GitHub },
   ];
 
   const grayLineStyle: React.CSSProperties = {

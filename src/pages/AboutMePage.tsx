@@ -1,72 +1,104 @@
 import {
   Avatar,
   Box,
-  Button,
   Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
-import { ImagePath } from "../constants/constants";
+import AchievementCircle from "../components/AchievementCircle";
+import SkillsetVisualizer, {
+  SkillsetItem,
+} from "../components/SkillsetVisualizer";
+import { ImagePath, TechIconPath } from "../constants/constants";
 
-const mainContainerStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-};
+const programmingLanguagesItems: SkillsetItem[] = [
+  { icon: TechIconPath.Python, label: "Python" },
+  { icon: TechIconPath.Java, label: "Java" },
+  { icon: TechIconPath.TypeScript, label: "Typescript" },
+  { icon: TechIconPath.JavaScript, label: "Javascript" },
+  { icon: TechIconPath.HTML, label: "HTML" },
+  { icon: TechIconPath.CSS, label: "CSS" },
+];
 
-const rowContainerStyle: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-};
+const devOpsItems: SkillsetItem[] = [
+  { icon: TechIconPath.Docker, label: "Docker" },
+  { icon: TechIconPath.Linux, label: "Linux" },
+  { icon: TechIconPath.AWS, label: "AWS" },
+  { icon: TechIconPath.Kubernetes, label: "Kubernetes" },
+];
 
-const AboutmePage: React.FC = () => {
+const toolsAndFrameworkItems: SkillsetItem[] = [
+  { icon: TechIconPath.React, label: "React" },
+  { icon: TechIconPath.Flutter, label: "Flutter" },
+  { icon: TechIconPath.MUI, label: "MUI" },
+  { icon: TechIconPath.Redux, label: "Redux" },
+];
+
+const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
+  darkModeEnabled = true,
+}) => {
   const theme = useTheme();
   const isMobileScreen: boolean = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box display="flex" alignItems={"center"} justifyContent={"center"}>
+    <Box
+      display="flex"
+      flexDirection={"column"}
+      alignItems={"center"}
+      justifyContent={"center"}
+    >
       <Grid
         container
         padding={4}
         maxWidth={"70rem"}
-        gap={{ xs: 2, md: 6 }}
+        gap={{ xs: 2, md: 2 }}
         alignItems={"center"}
         justifyContent={"center"}
       >
+        <Grid md={12}>
+          <Typography
+            variant={isMobileScreen ? "h4" : "h2"}
+            fontWeight={"bold"}
+            align="left"
+          >
+            About Me
+          </Typography>
+        </Grid>
         <Grid md={12}>
           <Typography
             variant={isMobileScreen ? "subtitle2" : "h6"}
             paragraph
             align="justify"
           >
-            Over the past four years, I've honed my skills at Airbus, working
-            across a spectrum of departments. My multifaceted experience
-            encompasses software engineering, web development, cloud computing,
-            and IT security, affording me a holistic view of technology in
-            industry. Today, I am at the helm of innovation at Airbus, entrusted
-            with spearheading in-house developments. I bring ideas to life by
-            crafting proof-of-concepts (PoCs) and minimum viable products (MVPs)
-            in a range of burgeoning fields.
+            Over the past four years, I've significantly enhanced my technical
+            skills at Airbus, gaining diverse experience across multiple
+            departments. My wide-ranging experience includes software
+            engineering, web development, cloud computing, and IT security. This
+            gives me a broad understanding of technology in the business sector.
+            Today, I'm leading the push for new innovative ideas at Airbus,
+            responsible for guiding the development of new projects in the
+            company. I turn ideas into reality by building proof-of-concepts and
+            minimum viable products in several emerging areas.
           </Typography>
           <Typography
             variant={isMobileScreen ? "subtitle2" : "h6"}
             paragraph
             align="justify"
           >
-            Beyond my duties at Airbus, I also leverage my expertise to support
-            other companies in navigating the complex landscapes of software and
-            DevOps. As a Freelancer, my mission is to empower businesses to
-            thrive by leveraging well-designed software products{" "}
-            <Button size="small" sx={{ color: theme.palette.secondary.light }}>
+            Beyond my duties at Airbus, I'm now offering my services as a
+            freelancer to help other companies deal with the complexities of
+            software and DevOps. My aim is to use my expertise in software to
+            enable businesses to succeed with technology. As a freelancer, I'm
+            excited to start empowering companies to thrive by providing them
+            with well-designed and effective software solutions.{" "}
+            {/* <Button size="small" sx={{ color: theme.palette.secondary.light }}>
               Hire me
-            </Button>
+            </Button> */}
           </Typography>
         </Grid>
-        <Grid>
+
+        <Grid md={5}>
           <Avatar
             src={ImagePath.Myself2}
             variant="rounded"
@@ -77,7 +109,7 @@ const AboutmePage: React.FC = () => {
               ...(isMobileScreen
                 ? {
                     width: "80vw",
-                    height: "40vh",
+                    height: "30vh",
                   }
                 : {
                     width: "20rem",
@@ -86,22 +118,60 @@ const AboutmePage: React.FC = () => {
             }}
           />
         </Grid>
-        <Grid>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "10rem",
-              width: "10rem",
-              borderRadius: "50%",
-              borderStyle: "solid",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
+
+        <Grid md={4} minHeight={"20rem"} minWidth={"20rem"}>
+          <Box
+            display="flex"
+            justifyContent="end"
+            alignItems={"end"}
+            position={"relative"}
+            top={"2rem"}
           >
-            <Typography variant="h3">4</Typography>
-            <Typography variant="h6">Years of Experience</Typography>
-          </div>
+            <AchievementCircle
+              header="4+"
+              subheader="Years of Experience"
+              isMobileScreen={isMobileScreen}
+              isDarkModeEnabled={darkModeEnabled}
+            />
+          </Box>
+          <Box display={"flex"} justifyContent={"start"} alignItems={"start"}>
+            <AchievementCircle
+              header="Top"
+              subheader="University Graduate"
+              isMobileScreen={isMobileScreen}
+              isDarkModeEnabled={darkModeEnabled}
+            />
+          </Box>
+          <Box
+            display={"flex"}
+            justifyContent={"end"}
+            alignItems={"end"}
+            position={"relative"}
+            bottom={"2rem"}
+          >
+            <AchievementCircle
+              header="Boss"
+              subheader="Of Life"
+              isMobileScreen={isMobileScreen}
+              isDarkModeEnabled={darkModeEnabled}
+            />
+          </Box>
+        </Grid>
+
+        <Grid md={12}>
+          <SkillsetVisualizer
+            header="Programming Skills"
+            items={programmingLanguagesItems}
+          />
+        </Grid>
+        <Grid md>
+          <SkillsetVisualizer header="DevOps Skills" items={devOpsItems} />
+        </Grid>
+        <Grid md>
+          <SkillsetVisualizer
+            header="Tools & Frameworks"
+            items={toolsAndFrameworkItems}
+          />
         </Grid>
       </Grid>
     </Box>
