@@ -130,7 +130,7 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
           >
             <AchievementCircle
               header="4+"
-              subheader="Years of Experience"
+              subheader="Years Work Experience"
               isMobileScreen={isMobileScreen}
               isDarkModeEnabled={darkModeEnabled}
             />
@@ -151,8 +151,9 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
             bottom={"2rem"}
           >
             <AchievementCircle
-              header="Boss"
-              subheader="Of Life"
+              header="Since 2016"
+              subheader="Fully committed to IT"
+              headerVariant="h4"
               isMobileScreen={isMobileScreen}
               isDarkModeEnabled={darkModeEnabled}
             />

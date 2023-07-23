@@ -4,6 +4,7 @@ import React from "react";
 interface AchievementCircleProps {
   isDarkModeEnabled?: boolean;
   isMobileScreen?: boolean;
+  headerVariant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   header: string;
   subheader: string;
 }
@@ -13,6 +14,7 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
   isMobileScreen = false,
   header,
   subheader,
+  headerVariant = "h3",
 }) => {
   const theme = useTheme();
 
@@ -21,8 +23,8 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "10rem",
-        width: "10rem",
+        height: "10.3rem",
+        width: "10.3rem",
         borderRadius: "50%",
         borderStyle: "solid",
         alignItems: "center",
@@ -32,7 +34,11 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
         boxShadow: "inset 0 0 0.5rem 0.2rem",
       }}
     >
-      <Typography variant="h3" fontStyle={"italic"} fontWeight={"bold"}>
+      <Typography
+        variant={headerVariant}
+        fontStyle={"italic"}
+        fontWeight={"bold"}
+      >
         {header}
       </Typography>
       <Typography variant="subtitle1">{subheader}</Typography>
