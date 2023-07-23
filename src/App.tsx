@@ -8,15 +8,22 @@ import {
   Theme,
   ThemeProvider,
   createTheme,
+  styled,
 } from "@mui/material";
 import { useRef } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
+import AboutmePage from "./pages/AboutMePage";
 import ContactPage from "./pages/ContactPage";
-import Footer from "./pages/FooterPage";
+import FooterPage from "./pages/FooterPage";
 import LandingPage from "./pages/LandingPage";
+
+const PageDivider = styled(Divider)(() => ({
+  orientation: "horizontal",
+  borderBottomWidth: "0.3rem",
+}));
 
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
@@ -51,23 +58,21 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
         <>
           <NavBar
             darkModeEnabled={darkModeEnabled}
             setDarkModeEnabled={setDarkModeEnabled}
             scrollToContact={handleScrollToContact} // Pass the scroll function as a prop
           />
-
           <LandingPage darkModeEnabled={darkModeEnabled} />
-          <Divider
-            orientation="horizontal"
-            sx={{ borderBottomWidth: "0.3rem" }}
-          />
-          <ParticlesBackgound darkModeEnabled={darkModeEnabled} />
+          <PageDivider />
+          <AboutmePage darkModeEnabled={darkModeEnabled} />
+          <PageDivider />
           <div ref={contactPageRef}>
             <ContactPage darkModeEnabled={darkModeEnabled} />
           </div>
-          <Footer darkModeEnabled={darkModeEnabled} />
+          <FooterPage darkModeEnabled={darkModeEnabled} />
         </>
       </ThemeProvider>
     </div>
