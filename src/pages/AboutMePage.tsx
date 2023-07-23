@@ -101,11 +101,12 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
         <Grid md={5}>
           <Avatar
             src={ImagePath.Myself2}
-            variant="rounded"
             sx={{
-              borderRadius: "20%",
-              minWidth: "12rem",
-              minHeight: "12rem",
+              minWidth: "15rem",
+              minHeight: "15rem",
+              borderStyle: "solid",
+              boxShadow: "0 0 1rem 0.1rem",
+
               ...(isMobileScreen
                 ? {
                     width: "80vw",
