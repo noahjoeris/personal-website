@@ -1,5 +1,6 @@
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import LanguageIcon from "@mui/icons-material/Language";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
@@ -20,14 +21,14 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { FC, useState } from "react";
+import { FC, MutableRefObject, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ImagePath, Language } from "../constants/constants";
 
 interface NavBarProps {
   darkModeEnabled: boolean;
   setDarkModeEnabled: (darkModeEnabled: boolean) => void;
-  scrollToContact: () => void;
+  pageRefs: any;
 }
 
 interface NavBarVersionProps extends NavBarProps {
@@ -54,6 +55,17 @@ const changeLanguage = (i18n: any) => {
   );
 };
 
+const handleScrollToRef = (ref: MutableRefObject<any>) => {
+  if (ref.current) {
+    setTimeout(() => {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 10);
+  }
+};
+
 const NavBar: FC<NavBarProps> = (props) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
   const { t, i18n } = useTranslation();
@@ -68,16 +80,8 @@ const NavBar: FC<NavBarProps> = (props) => {
 const NavBarMobile: FC<NavBarVersionProps> = (props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleContactClick = () => {
-    setTimeout(() => {
-      props.scrollToContact();
-    }, 10);
-  };
-
   const handleDarkModeToggle = () =>
     props.setDarkModeEnabled(!props.darkModeEnabled);
-
-  const handleLanguageChange = () => changeLanguage(props.i18n);
 
   return (
     <Box flexGrow={1} marginBottom={4}>
@@ -101,9 +105,16 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
             >
               <List>
                 <ListItemComponent
+                  icon={<EmojiPeopleIcon />}
+                  text={props.t("aboutMeNav")}
+                  action={() => handleScrollToRef(props.pageRefs.aboutPageRef)}
+                />
+                <ListItemComponent
                   icon={<ContactMailIcon />}
                   text={props.t("contactNav")}
-                  action={handleContactClick}
+                  action={() =>
+                    handleScrollToRef(props.pageRefs.contactPageRef)
+                  }
                 />
               </List>
               <Divider />
@@ -132,7 +143,7 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
                     </Badge>
                   }
                   text={props.t("language")}
-                  action={handleLanguageChange}
+                  action={() => changeLanguage(props.i18n)}
                 />
               </List>
             </Box>
@@ -167,8 +178,6 @@ const NavBarDesktop: FC<NavBarVersionProps> = (props) => {
   const handleDarkModeToggle = () =>
     props.setDarkModeEnabled(!props.darkModeEnabled);
 
-  const handleLanguageChange = () => changeLanguage(props.i18n);
-
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
       <AppBar
@@ -191,13 +200,21 @@ const NavBarDesktop: FC<NavBarVersionProps> = (props) => {
               }
             />
           </Box>
-          <MenuItem onClick={props.scrollToContact}>
+
+          <MenuItem
+            onClick={() => handleScrollToRef(props.pageRefs.aboutPageRef)}
+          >
+            <Typography variant="button">{props.t("aboutMeNav")}</Typography>
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleScrollToRef(props.pageRefs.contactPageRef)}
+          >
             <Typography variant="button">{props.t("contactNav")}</Typography>
           </MenuItem>
           <IconButton onClick={handleDarkModeToggle}>
             <DarkModeIcon />
           </IconButton>
-          <IconButton onClick={handleLanguageChange}>
+          <IconButton onClick={() => changeLanguage(props.i18n)}>
             <Badge
               badgeContent={
                 <img

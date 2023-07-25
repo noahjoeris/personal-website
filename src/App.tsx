@@ -28,6 +28,7 @@ const PageDivider = styled(Divider)(() => ({
 function App() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
   const contactPageRef = useRef(null);
+  const aboutPageRef = useRef(null);
 
   const theme: Theme = createTheme({
     palette: {
@@ -45,15 +46,6 @@ function App() {
     },
   });
 
-  const handleScrollToContact = () => {
-    if (contactPageRef.current) {
-      contactPageRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -63,11 +55,13 @@ function App() {
           <NavBar
             darkModeEnabled={darkModeEnabled}
             setDarkModeEnabled={setDarkModeEnabled}
-            scrollToContact={handleScrollToContact} // Pass the scroll function as a prop
+            pageRefs={{ contactPageRef, aboutPageRef }}
           />
           <LandingPage darkModeEnabled={darkModeEnabled} />
           <PageDivider />
-          <AboutmePage darkModeEnabled={darkModeEnabled} />
+          <div ref={aboutPageRef}>
+            <AboutmePage darkModeEnabled={darkModeEnabled} />
+          </div>
           <PageDivider />
           <div ref={contactPageRef}>
             <ContactPage darkModeEnabled={darkModeEnabled} />
