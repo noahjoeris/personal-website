@@ -33,9 +33,11 @@ const LandingText: React.FC<{
       <Box>
         <Typography variant="h6" marginBottom={"1rem"} marginTop={"2rem"}>
           <Typewriter
-            words={(
-              t("factsAboutMe", { returnObjects: true }) as string[]
-            ).sort(() => Math.random() - 0.5)}
+            words={
+              t("factsAboutMe", {
+                returnObjects: true,
+              }) /*(as string[]).sort(() => Math.random() - 0.5)*/
+            }
             loop={0}
             cursor
             cursorStyle="_"

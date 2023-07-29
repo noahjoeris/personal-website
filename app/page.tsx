@@ -1,3 +1,4 @@
+"use client";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -11,7 +12,6 @@ import {
   styled,
 } from "@mui/material";
 import { useRef } from "react";
-import "./App.css";
 import NavBar from "./components/NavBar";
 import ParticlesBackgound from "./components/ParticlesBackground";
 import useDarkMode from "./hooks/useDarkMode";
@@ -25,7 +25,7 @@ const PageDivider = styled(Divider)(() => ({
   borderBottomWidth: "0.3rem",
 }));
 
-function App() {
+export default function Home() {
   const [darkModeEnabled, setDarkModeEnabled] = useDarkMode();
   const contactPageRef = useRef(null);
   const aboutPageRef = useRef(null);
@@ -72,5 +72,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
