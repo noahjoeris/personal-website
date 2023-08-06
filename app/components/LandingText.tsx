@@ -1,8 +1,8 @@
 import { Box, Divider, Typography, useTheme } from "@mui/material";
 import { TFunction } from "i18next";
 import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 import { ImagePath } from "../constants/constants";
-
 const LandingText: React.FC<{
   isMobileScreen?: boolean;
   translations: TFunction;
@@ -30,21 +30,21 @@ const LandingText: React.FC<{
       <img src={ImagePath.Signature} alt="Signature" style={imageStyle} />
       <Box>
         <Typography variant="h6" marginBottom={"1rem"} marginTop={"2rem"}>
-          {
-            //<Typewriter
-            //  words={
-            //    translations("factsAboutMe", {
-            //      returnObjects: true,
-            //    }) /*(as string[]).sort(() => Math.random() - 0.5)*/
-            // }
-            //  loop={0}
-            //  cursor
-            //  cursorStyle="_"
-            //  typeSpeed={50}
-            //  deleteSpeed={50}
-            //  delaySpeed={1200}
-            // />
-          }
+          <Typewriter
+            words={
+              ["test", "dada", "tetete"]
+              /* 
+              translations("factsAboutMe", {
+                returnObjects: true,
+              }) (as string[]).sort(() => Math.random() - 0.5) */
+            }
+            loop={0}
+            cursor
+            cursorStyle="_"
+            typeSpeed={50}
+            deleteSpeed={50}
+            delaySpeed={1200}
+          />
         </Typography>
       </Box>
       <Divider

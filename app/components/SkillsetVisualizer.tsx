@@ -1,5 +1,6 @@
 import { Chip, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Image from "next/image";
 import React from "react";
 
 export interface SkillsetItem {
@@ -8,15 +9,11 @@ export interface SkillsetItem {
 }
 
 interface SkillsetVisualizerProps {
-  isDarkModeEnabled?: boolean;
-  isMobileScreen?: boolean;
   header: string;
   items: SkillsetItem[];
 }
 
 const SkillsetVisualizer: React.FC<SkillsetVisualizerProps> = ({
-  isDarkModeEnabled = true,
-  isMobileScreen = false,
   header,
   items,
 }) => {
@@ -32,10 +29,11 @@ const SkillsetVisualizer: React.FC<SkillsetVisualizerProps> = ({
         <Grid key={item.label}>
           <Chip
             icon={
-              <img
+              <Image
                 src={item.icon}
                 alt={item.label + " icon"}
-                width={"24rem"}
+                width={24}
+                height={24}
                 style={{ borderRadius: "0.4rem" }}
               />
             }

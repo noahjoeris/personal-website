@@ -63,13 +63,11 @@ const handleScrollToRef = (ref: MutableRefObject<any>) => {
 const NavBar: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
 
-  return <NavBarDesktop onDarkModeButtonClick={onDarkModeButtonClick} />;
-
-  /* return isMobileScreenSize ? (
+  return isMobileScreenSize ? (
     <NavBarMobile onDarkModeButtonClick={onDarkModeButtonClick} />
   ) : (
     <NavBarDesktop onDarkModeButtonClick={onDarkModeButtonClick} />
-  ); */
+  );
 };
 
 const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {

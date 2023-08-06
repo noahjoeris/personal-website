@@ -36,9 +36,7 @@ const toolsAndFrameworkItems: SkillsetItem[] = [
   { icon: TechIconPath.Redux, label: "Redux" },
 ];
 
-const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
-  darkModeEnabled = true,
-}) => {
+const AboutmePage: React.FC = () => {
   const theme = useTheme();
   const isMobileScreen: boolean = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -66,6 +64,7 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
             About Me
           </Typography>
         </Grid>
+        {/* TODO: outsource text to translations */}
         <Grid md={12}>
           <Typography
             variant={isMobileScreen ? "subtitle2" : "h6"}
@@ -129,20 +128,10 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
             position={"relative"}
             top={"2rem"}
           >
-            <AchievementCircle
-              header="4+"
-              subheader="Years Work Experience"
-              isMobileScreen={isMobileScreen}
-              isDarkModeEnabled={darkModeEnabled}
-            />
+            <AchievementCircle header="4+" subheader="Years Work Experience" />
           </Box>
           <Box display={"flex"} justifyContent={"start"} alignItems={"start"}>
-            <AchievementCircle
-              header="Top"
-              subheader="University Graduate"
-              isMobileScreen={isMobileScreen}
-              isDarkModeEnabled={darkModeEnabled}
-            />
+            <AchievementCircle header="Top" subheader="University Graduate" />
           </Box>
           <Box
             display={"flex"}
@@ -155,8 +144,6 @@ const AboutmePage: React.FC<{ darkModeEnabled?: boolean }> = ({
               header="Since 2016"
               subheader="Fully committed to IT"
               headerVariant="h4"
-              isMobileScreen={isMobileScreen}
-              isDarkModeEnabled={darkModeEnabled}
             />
           </Box>
         </Grid>

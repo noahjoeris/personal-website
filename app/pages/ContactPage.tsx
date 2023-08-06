@@ -1,19 +1,7 @@
 "use client"; // TODO: make this work with server-side rendering
-import {
-  Box,
-  Divider,
-  Typography,
-  styled,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Divider, Typography, styled, useTheme } from "@mui/material";
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
 import MessageStepper from "../components/MessageStepper";
-
-interface ContactPageProps {
-  darkModeEnabled?: boolean;
-}
 
 const GradientDivider = styled(Divider)(({ theme }) => ({
   minWidth: "6rem",
@@ -29,66 +17,71 @@ const GradientDivider = styled(Divider)(({ theme }) => ({
   backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
 }));
 
-const GlassBox = styled(Box)<{ isMobileScreenSize: boolean }>(
-  ({ theme, isMobileScreenSize }) => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: "50rem",
-    width: isMobileScreenSize ? "90%" : "40rem",
-    maxHeight: "50rem",
-    height: isMobileScreenSize ? "" : "35rem",
-    zoom: isMobileScreenSize ? "0.7" : "1",
-    marginTop: isMobileScreenSize ? "2rem" : "6rem",
-    marginLeft: "2rem",
-    marginRight: "2rem",
-    marginBottom: isMobileScreenSize ? "1rem" : "6rem",
-    padding: isMobileScreenSize ? "2rem" : "4rem",
-    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
-    border:
-      theme.palette.mode === "light"
-        ? "4px solid rgba(209, 213, 219, 0.4)"
-        : "4px solid rgba(255, 255, 255, 0.125)",
-    backgroundColor:
-      theme.palette.mode === "light"
-        ? "rgba(255, 255, 255, 0.75)"
-        : "rgba(17, 25, 40, 0.6)",
-    borderRadius: "12px",
-    backdropFilter: "blur(16px) saturate(180%)",
-    WebkitBackdropFilter: "blur(16px) saturate(200%)",
-  })
-);
+const GlassBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  maxWidth: "50rem",
+  width: "90%",
+  maxHeight: "50rem",
+  height: "100%",
+  marginTop: "2rem",
+  marginLeft: "2rem",
+  marginRight: "2rem",
+  marginBottom: "1rem",
+  padding: "2rem",
+  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
+  border:
+    theme.palette.mode === "light"
+      ? "4px solid rgba(209, 213, 219, 0.4)"
+      : "4px solid rgba(255, 255, 255, 0.125)",
+  backgroundColor:
+    theme.palette.mode === "light"
+      ? "rgba(255, 255, 255, 0.75)"
+      : "rgba(17, 25, 40, 0.6)",
+  borderRadius: "12px",
+  backdropFilter: "blur(16px) saturate(180%)",
+  WebkitBackdropFilter: "blur(16px) saturate(200%)",
+  [theme.breakpoints.up("md")]: {
+    width: "40rem",
+    height: "35rem",
+    zoom: 1,
+    marginTop: "6rem",
+    marginBottom: "6rem",
+    padding: "4rem",
+  },
+  [theme.breakpoints.down("sm")]: {
+    zoom: 0.7,
+  },
+}));
 
-const ContactPage: FC<ContactPageProps> = ({ darkModeEnabled = true }) => {
+const ContactPage: FC = () => {
   const theme = useTheme();
-  const isMobileScreenSize: boolean = useMediaQuery(
-    theme.breakpoints.down("sm")
-  );
-  const { t } = useTranslation();
 
   return (
     <Box
       minHeight="100vh"
       display="flex"
-      flexDirection={isMobileScreenSize ? "column" : "row"}
+      flexDirection={{ xs: "column", md: "row" }}
       justifyContent="center"
       alignItems="center"
       zIndex={2}
       sx={{
-        backgroundColor: darkModeEnabled
-          ? "rgba(18, 18, 18, 0.4)"
-          : "rgba(189, 96, 213, 0.5)",
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? "rgba(18, 18, 18, 0.4)"
+            : "rgba(189, 96, 213, 0.5)",
         backgroundImage:
           "radial-gradient(at 47% 33%, rgba(144, 0, 189, 0.7) 0, transparent 59%), radial-gradient(at 82% 65%, rgba(0, 11, 174, 0.7) 0, transparent 70%)",
       }}
     >
-      <GlassBox isMobileScreenSize={isMobileScreenSize}>
+      <GlassBox>
         <Typography variant="h3">Let's Talk</Typography>
         <GradientDivider variant="fullWidth" />
-        <Typography variant="subtitle1">{t("contactText")}</Typography>
+        <Typography variant="subtitle1">{"TO REPLACE"}</Typography>
       </GlassBox>
-      <GlassBox isMobileScreenSize={isMobileScreenSize}>
+      <GlassBox>
         <MessageStepper />
       </GlassBox>
     </Box>

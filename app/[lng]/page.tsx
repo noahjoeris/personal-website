@@ -19,20 +19,20 @@ export default function Home({ params: { lng } }) {
     <div className="App">
       <ParticlesBackground />
       <>
-        <LandingPage darkModeEnabled={true} />
+        <LandingPage />
         <Divider
           sx={{ orientation: "horizontal", borderBottomWidth: "0.3rem" }}
         />
         <div /* ref={aboutPageRef} */>
-          <AboutmePage darkModeEnabled={true} />
+          <AboutmePage />
         </div>
         <Divider
           sx={{ orientation: "horizontal", borderBottomWidth: "0.3rem" }}
         />
         <div /* ref={contactPageRef} */>
-          <ContactPage darkModeEnabled={true} />
+          <ContactPage />
         </div>
-        <FooterPage darkModeEnabled={true} />
+        <FooterPage />
       </>
     </div>
   );

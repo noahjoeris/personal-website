@@ -2,16 +2,12 @@ import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 
 interface AchievementCircleProps {
-  isDarkModeEnabled?: boolean;
-  isMobileScreen?: boolean;
   headerVariant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   header: string;
   subheader: string;
 }
 
 const AchievementCircle: React.FC<AchievementCircleProps> = ({
-  isDarkModeEnabled = true,
-  isMobileScreen = false,
   header,
   subheader,
   headerVariant = "h3",
