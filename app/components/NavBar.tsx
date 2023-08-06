@@ -1,3 +1,4 @@
+"use client"; // TODO: make this work with server-side rendering
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
@@ -22,18 +23,11 @@ import {
   useTheme,
 } from "@mui/material";
 import { FC, MutableRefObject, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { ImagePath, Language } from "../constants/constants";
 
 interface NavBarProps {
-  darkModeEnabled: boolean;
-  setDarkModeEnabled: (darkModeEnabled: boolean) => void;
-  pageRefs: any;
-}
-
-interface NavBarVersionProps extends NavBarProps {
-  t: (key: string) => string;
-  i18n: any;
+  pageRefs?: any;
+  onDarkModeButtonClick: () => void;
 }
 
 const ListItemComponent: FC<{
@@ -66,22 +60,21 @@ const handleScrollToRef = (ref: MutableRefObject<any>) => {
   }
 };
 
-const NavBar: FC<NavBarProps> = (props) => {
+const NavBar: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
   const isMobileScreenSize = useMediaQuery(useTheme().breakpoints.down("sm"));
-  const { t, i18n } = useTranslation();
 
-  return isMobileScreenSize ? (
-    <NavBarMobile {...props} t={t} i18n={i18n} />
+  return <NavBarDesktop onDarkModeButtonClick={onDarkModeButtonClick} />;
+
+  /* return isMobileScreenSize ? (
+    <NavBarMobile onDarkModeButtonClick={onDarkModeButtonClick} />
   ) : (
-    <NavBarDesktop {...props} t={t} i18n={i18n} />
-  );
+    <NavBarDesktop onDarkModeButtonClick={onDarkModeButtonClick} />
+  ); */
 };
 
-const NavBarMobile: FC<NavBarVersionProps> = (props) => {
+const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-  const handleDarkModeToggle = () =>
-    props.setDarkModeEnabled(!props.darkModeEnabled);
+  const theme = useTheme();
 
   return (
     <Box flexGrow={1} marginBottom={4}>
@@ -106,34 +99,39 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
               <List>
                 <ListItemComponent
                   icon={<EmojiPeopleIcon />}
-                  text={props.t("aboutMeNav")}
-                  action={() => handleScrollToRef(props.pageRefs.aboutPageRef)}
+                  // text={props.t("aboutMeNav")}
+                  text="About Me"
+                  action={() => handleScrollToRef(pageRefs.aboutPageRef)}
                 />
                 <ListItemComponent
                   icon={<ContactMailIcon />}
-                  text={props.t("contactNav")}
-                  action={() =>
-                    handleScrollToRef(props.pageRefs.contactPageRef)
-                  }
+                  //text={props.t("contactNav")}
+                  text="Contact"
+                  action={() => handleScrollToRef(pageRefs.contactPageRef)}
                 />
               </List>
               <Divider />
+
               <List>
                 <ListItemComponent
                   icon={<DarkModeIcon />}
-                  text={props.darkModeEnabled ? "Light Mode" : "Dark Mode"}
-                  action={handleDarkModeToggle}
+                  text={
+                    theme.palette.mode === "dark" ? "Light Mode" : "Dark Mode"
+                  }
+                  action={() => onDarkModeButtonClick()}
                 />
+
                 <ListItemComponent
                   icon={
                     <Badge
                       badgeContent={
                         <img
-                          src={
+                          /* src={
                             props.i18n.language === Language.German
                               ? ImagePath.GermanFlag
                               : ImagePath.EnglishFlag
-                          }
+                          } */
+                          src={ImagePath.GermanFlag}
                           alt=""
                           style={{ width: "150%", height: "150%" }}
                         />
@@ -142,8 +140,10 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
                       <LanguageIcon />
                     </Badge>
                   }
-                  text={props.t("language")}
-                  action={() => changeLanguage(props.i18n)}
+                  //text={props.t("language")}
+                  text="Language"
+                  //action={() => changeLanguage(i18n)}
+                  action={function () {}}
                 />
               </List>
             </Box>
@@ -163,7 +163,9 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
               alt="Logo"
               height={42}
               style={
-                props.darkModeEnabled ? { filter: "invert(100%)" } : undefined
+                theme.palette.mode === "dark"
+                  ? { filter: "invert(100%)" }
+                  : undefined
               }
             />
           </IconButton>
@@ -174,9 +176,11 @@ const NavBarMobile: FC<NavBarVersionProps> = (props) => {
   );
 };
 
-const NavBarDesktop: FC<NavBarVersionProps> = (props) => {
-  const handleDarkModeToggle = () =>
-    props.setDarkModeEnabled(!props.darkModeEnabled);
+const NavBarDesktop: FC<NavBarProps> = ({
+  pageRefs,
+  onDarkModeButtonClick,
+}) => {
+  const theme = useTheme();
 
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
@@ -196,33 +200,37 @@ const NavBarDesktop: FC<NavBarVersionProps> = (props) => {
               height={100}
               alt="Logo"
               style={
-                props.darkModeEnabled ? { filter: "invert(100%)" } : undefined
+                theme.palette.mode === "dark"
+                  ? { filter: "invert(100%)" }
+                  : undefined
               }
             />
           </Box>
 
-          <MenuItem
-            onClick={() => handleScrollToRef(props.pageRefs.aboutPageRef)}
-          >
-            <Typography variant="button">{props.t("aboutMeNav")}</Typography>
+          <MenuItem onClick={() => handleScrollToRef(pageRefs.aboutPageRef)}>
+            <Typography variant="button">
+              {/* {props.t("aboutMeNav")} */}
+              About Me
+            </Typography>
           </MenuItem>
-          <MenuItem
-            onClick={() => handleScrollToRef(props.pageRefs.contactPageRef)}
-          >
-            <Typography variant="button">{props.t("contactNav")}</Typography>
+          <MenuItem onClick={() => handleScrollToRef(pageRefs.contactPageRef)}>
+            <Typography variant="button">
+              {/* {props.t("contactNav")} */}
+            </Typography>
           </MenuItem>
-          <IconButton onClick={handleDarkModeToggle}>
+          <IconButton onClick={onDarkModeButtonClick}>
             <DarkModeIcon />
           </IconButton>
-          <IconButton onClick={() => changeLanguage(props.i18n)}>
+          <IconButton /* onClick={() => changeLanguage(props.i18n)} */>
             <Badge
               badgeContent={
                 <img
-                  src={
+                  /* src={
                     props.i18n.language === Language.German
                       ? ImagePath.GermanFlag
                       : ImagePath.EnglishFlag
-                  }
+                  } */
+                  src={ImagePath.GermanFlag}
                   alt="Language Flag"
                   style={{ width: "150%", height: "150%" }}
                 />

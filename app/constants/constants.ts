@@ -4,13 +4,13 @@ export enum Language {
 }
 
 export enum ImagePath {
-  Signature = "signature.png",
-  Myself = "me.png",
-  Myself2 = "me2.png",
-  EnglishFlag = "flag_eng.svg",
-  GermanFlag = "flag_ger.svg",
-  AirbusLogo = "airbus.png",
-  MyLogo = "logo.png",
+  Signature = "images/signature.png",
+  Myself = "images/me.png",
+  Myself2 = "images/me2.png",
+  EnglishFlag = "images/flag_eng.svg",
+  GermanFlag = "images/flag_ger.svg",
+  AirbusLogo = "images/airbus.png",
+  MyLogo = "images/logo.png",
 }
 
 export enum Hyperlink {

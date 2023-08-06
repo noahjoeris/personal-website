@@ -1,3 +1,4 @@
+"use client"; // TODO: make this work with server-side rendering
 import {
   Box,
   Divider,

@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
@@ -6,13 +7,7 @@ import {
   particlesBackgoundLightConfig,
 } from "./config/particles-config";
 
-interface ParticlesBackgroundProps {
-  darkModeEnabled: boolean;
-}
-
-const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
-  darkModeEnabled,
-}) => {
+const ParticlesBackground: React.FC = () => {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
     await loadFull(engine);
@@ -22,14 +17,16 @@ const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
     console.log(container);
   }, []);
 
+  const theme = useTheme();
+
   return (
     <Particles
       id="tsparticles"
       height="100%"
       width="100%"
-      key={darkModeEnabled ? "darkMode" : "lightMode"}
+      key={theme.palette.mode}
       params={
-        darkModeEnabled
+        theme.palette.mode === "dark"
           ? particlesBackgoundDarkConfig
           : particlesBackgoundLightConfig
       }

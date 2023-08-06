@@ -7,7 +7,8 @@ function useDarkMode(): [boolean, (value: boolean) => void] {
   );
 
   function changeDarkMode(newValue: boolean): void {
-    newValue ? setDarkModeEnabled(true) : setDarkModeEnabled(false);
+    setDarkModeEnabled(newValue);
+    console.log("Hook:" + newValue);
   }
 
   return [darkModeEnabled, changeDarkMode];

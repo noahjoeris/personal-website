@@ -1,19 +1,22 @@
 "use client";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { TFunction } from "i18next";
 import { FC } from "react";
-import { useTranslation } from "react-i18next";
 import ContactsSideBar from "../components/ContactsSideBar";
 import LandingImage from "../components/LandingImage";
 import LandingText from "../components/LandingText";
 
 interface LandingPageProps {
   darkModeEnabled?: boolean;
+  translations?: TFunction;
 }
 
-const LandingPage: FC<LandingPageProps> = ({ darkModeEnabled = true }) => {
+const LandingPage: FC<LandingPageProps> = ({
+  darkModeEnabled = true,
+  translations = undefined,
+}) => {
   const theme = useTheme();
   const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
-  const { t } = useTranslation();
 
   return (
     <Box
@@ -28,7 +31,7 @@ const LandingPage: FC<LandingPageProps> = ({ darkModeEnabled = true }) => {
       <LandingText
         darkModeEnabled={darkModeEnabled}
         isMobileScreen={isMobileScreenSize}
-        translations={t}
+        translations={translations}
       />
       <LandingImage
         isMobileScreen={isMobileScreenSize}

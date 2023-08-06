@@ -1,7 +1,6 @@
+import { ImagePath } from "@/app/constants/constants";
 import { Box, useTheme } from "@mui/material";
 import React from "react";
-import "../components/LandingImageStyles.css";
-import { ImagePath } from "../constants/constants";
 
 /* const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
