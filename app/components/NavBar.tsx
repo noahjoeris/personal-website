@@ -72,7 +72,7 @@ const NavBarDesktop: FC<NavBarProps> = ({
         }}
       >
         <Toolbar>
-          <Box display="flex" flexGrow={1} p={1.5}>
+          <Box display="flex" flexGrow={1} ml={2} p={1.5}>
             <Image
               src={myLogo}
               alt="Noah Joeris Logo"
@@ -81,7 +81,7 @@ const NavBarDesktop: FC<NavBarProps> = ({
                 width: "auto",
                 ...(theme.palette.mode === "dark"
                   ? { filter: "invert(100%)" }
-                  : undefined),
+                  : null),
               }}
             />
           </Box>

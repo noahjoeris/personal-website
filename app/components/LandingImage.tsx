@@ -66,7 +66,7 @@ const LandingImage: FC<{ padding: any }> = ({
     },
     [theme.breakpoints.up("sm")]: {
       bottom: "-3rem",
-      left: "-3rem",
+      left: "-5rem",
     },
   }));
 

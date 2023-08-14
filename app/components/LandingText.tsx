@@ -1,18 +1,17 @@
+import airbusLogo from "@/public/images/airbus.png";
 import { Box, Divider, Typography, useTheme } from "@mui/material";
-import { TFunction } from "i18next";
+import Image from "next/image";
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { ImagePath } from "../constants/constants";
-const LandingText: React.FC<{
-  isMobileScreen?: boolean;
-  translations: TFunction;
-}> = ({ isMobileScreen = false, translations }) => {
+
+const LandingText: React.FC = () => {
   const theme = useTheme();
 
   const imageStyle: React.CSSProperties = {
     maxWidth: "90%",
     maxHeight: "15rem",
-    filter: theme.palette.mode === "dark" ? "invert(100%)" : undefined,
+    filter: theme.palette.mode === "dark" ? "invert(100%)" : null,
   };
 
   return (
@@ -58,15 +57,16 @@ const LandingText: React.FC<{
         <Typography variant="h5" fontStyle="italic" marginRight={"0.5rem"}>
           @
         </Typography>
-        <img
-          src={ImagePath.AirbusLogo}
-          height="25rem"
+        <Image
+          src={airbusLogo}
           alt="Airbus"
-          style={
-            theme.palette.mode === "dark"
+          style={{
+            height: "1.5rem",
+            width: "auto",
+            ...(theme.palette.mode === "dark"
               ? { filter: "invert(1) grayscale(1) brightness(100)" }
-              : undefined
-          }
+              : null),
+          }}
         />
       </Box>
     </Box>
