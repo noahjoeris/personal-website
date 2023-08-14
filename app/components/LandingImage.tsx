@@ -1,6 +1,8 @@
-import { ImagePath } from "@/app/constants/constants";
-import { Box, useTheme } from "@mui/material";
-import React from "react";
+import me from "@/public/images/me.png";
+import { Box, styled } from "@mui/material";
+import { Theme } from "@mui/system";
+import Image from "next/image";
+import { FC } from "react";
 
 /* const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -34,48 +36,63 @@ import React from "react";
   },
 })); */
 
-const baseImageStyle: React.CSSProperties = {
-  zIndex: 1,
-  maxWidth: "25rem",
-};
-
-const LandingImage = ({ padding = "0", isMobileScreen = false }) => {
-  const theme = useTheme();
-
-  const containerStyle: React.CSSProperties = {
-    padding,
+const LandingImage: FC<{ padding: any }> = ({
+  padding = { xs: "0", sm: "0" },
+}) => {
+  const MainContainer = styled(Box)(({ theme }) => ({
+    padding: padding,
     display: "flex",
     position: "relative",
-    alignSelf: isMobileScreen ? "center" : "flex-end",
-  };
-  const backgroundStyle: React.CSSProperties = {
+    [theme.breakpoints.down("sm")]: {
+      alignSelf: "center",
+    },
+    [theme.breakpoints.up("sm")]: {
+      alignSelf: "flex-end",
+    },
+  }));
+
+  const ColoredCircle = styled("div")(({ theme }) => ({
     width: "38rem",
     height: "38rem",
     position: "absolute",
-    top: isMobileScreen ? "70px" : "3rem",
-    left: isMobileScreen ? "-100px" : "2rem",
-    maxHeight: isMobileScreen ? "60vh" : undefined,
-    maxWidth: isMobileScreen ? "150vw" : undefined,
     borderRadius: "50%",
     boxShadow: "inset 0 0 0.5rem 0.2rem",
     backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
-  };
+    [theme.breakpoints.down("sm")]: {
+      top: "6rem",
+      left: "-100px",
+      maxHeight: "60vh",
+      maxWidth: "150vw",
+    },
+    [theme.breakpoints.up("sm")]: {
+      bottom: "-3rem",
+      left: "-3rem",
+    },
+  }));
 
-  const imageStyle: React.CSSProperties = isMobileScreen
-    ? {
-        ...baseImageStyle,
-        maxHeight: "60vh",
-        position: "relative",
-        top: "1rem",
-        left: "2rem",
-      }
-    : baseImageStyle;
+  const imageStyle = (theme: Theme) => ({
+    zIndex: 1,
+    maxWidth: "25rem",
+    position: "relative",
+    bottom: "-1rem",
+    [theme.breakpoints.down("sm")]: {
+      maxHeight: "60vh",
+      top: "1rem",
+      left: "5rem",
+    },
+  });
 
   return (
-    <Box sx={containerStyle}>
-      <img alt="Noah Joeris" src={ImagePath.Myself} style={imageStyle} />
-      <div style={backgroundStyle} />
-    </Box>
+    <MainContainer>
+      <Box sx={imageStyle}>
+        <Image
+          src={me}
+          alt="Noah Joeris"
+          style={{ height: "100%", width: "auto", maxHeight: "38rem" }}
+        />
+      </Box>
+      <ColoredCircle />
+    </MainContainer>
   );
 };
 

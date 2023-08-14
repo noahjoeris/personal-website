@@ -39,15 +39,12 @@ const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
     height: "1rem",
     backgroundColor: "gray",
     borderRadius: "30px",
-    marginTop: "0.3rem",
-    marginBottom: "0.3rem",
-    marginLeft: "0.5rem",
-    marginRight: "0.5rem",
   };
 
   const boxStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: alignment,
+    maxHeight: "45vh",
     alignItems: "center",
     position: "fixed",
     top: "40vh",
@@ -66,11 +63,13 @@ const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
       {icons.map(({ icon, key, link }, index) => (
         <React.Fragment key={key}>
           <IconButton
+            style={{ maxHeight: "5rem", maxWidth: "5rem" }}
             onMouseEnter={() => setFocusedButton(key)}
             onMouseLeave={() => setFocusedButton("")}
             onClick={() => window.open(link, "_blank")}
           >
             <FontAwesomeIcon
+              style={{ maxHeight: "5rem", maxWidth: "5rem" }}
               icon={icon}
               {...(focusedButton === key ? { bounce: true } : undefined)}
             />

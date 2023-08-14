@@ -1,5 +1,5 @@
 "use client";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { TFunction } from "i18next";
 import { FC } from "react";
 import ContactsSideBar from "../components/ContactsSideBar";
@@ -15,28 +15,19 @@ const LandingPage: FC<LandingPageProps> = ({
   darkModeEnabled = true,
   translations = undefined,
 }) => {
-  const theme = useTheme();
-  const isMobileScreenSize = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <Box
       minHeight={"90vh"}
-      maxHeight={isMobileScreenSize ? "100vh" : undefined}
+      maxHeight={{ xs: "100vh", sm: undefined }}
       display={"flex"}
-      flexDirection={isMobileScreenSize ? "column" : "row"}
+      flexDirection={{ xs: "column", sm: "row" }}
       alignItems={"center"}
-      justifyContent={isMobileScreenSize ? "start" : "center"}
+      justifyContent={{ xs: "start", sm: "center" }}
       overflow={"hidden"}
+      gap={"2rem"}
     >
-      <LandingText
-        darkModeEnabled={darkModeEnabled}
-        isMobileScreen={isMobileScreenSize}
-        translations={translations}
-      />
-      <LandingImage
-        isMobileScreen={isMobileScreenSize}
-        padding={isMobileScreenSize ? undefined : "0 0 0 7rem"}
-      />
+      <LandingText translations={translations} />
+      <LandingImage padding={{ sm: "0 0 0 4rem" }} />
       <ContactsSideBar alignment="column" />
     </Box>
   );

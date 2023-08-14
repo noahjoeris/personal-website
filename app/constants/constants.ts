@@ -4,13 +4,13 @@ export enum Language {
 }
 
 export enum ImagePath {
-  Signature = "images/signature.png",
-  Myself = "images/me.png",
-  Myself2 = "images/me2.png",
-  EnglishFlag = "images/flag_eng.svg",
-  GermanFlag = "images/flag_ger.svg",
-  AirbusLogo = "images/airbus.png",
-  MyLogo = "images/logo.png",
+  Signature = "/images/signature.png",
+  Myself = "/images/me.png",
+  Myself2 = "/images/me2.png",
+  EnglishFlag = "/images/flag_eng.svg",
+  GermanFlag = "/images/flag_ger.svg",
+  AirbusLogo = "/images/airbus.png",
+  MyLogo = "/images/logo.png",
 }
 
 export enum Hyperlink {
@@ -19,20 +19,20 @@ export enum Hyperlink {
   Email = "mailto:noahjoeris@gmail.com",
 }
 export enum TechIconPath {
-  AWS = "tech_icons/AWS.svg",
-  React = "tech_icons/React.svg",
-  TypeScript = "tech_icons/TypeScript.svg",
-  JavaScript = "tech_icons/JavaScript.svg",
-  Java = "tech_icons/Java.svg",
-  Python = "tech_icons/Python.svg",
-  Docker = "tech_icons/Docker.svg",
-  Kubernetes = "tech_icons/Kubernetes.svg",
-  Flutter = "tech_icons/Flutter.svg",
-  Redux = "tech_icons/Redux.svg",
-  MUI = "tech_icons/MUI.svg",
-  HTML = "tech_icons/HTML5.svg",
-  CSS = "tech_icons/CSS3.svg",
-  Linux = "tech_icons/Linux.svg",
+  AWS = "/tech_icons/AWS.svg",
+  React = "/tech_icons/React.svg",
+  TypeScript = "/tech_icons/TypeScript.svg",
+  JavaScript = "/tech_icons/JavaScript.svg",
+  Java = "/tech_icons/Java.svg",
+  Python = "/tech_icons/Python.svg",
+  Docker = "/tech_icons/Docker.svg",
+  Kubernetes = "/tech_icons/Kubernetes.svg",
+  Flutter = "/tech_icons/Flutter.svg",
+  Redux = "/tech_icons/Redux.svg",
+  MUI = "/tech_icons/MUI.svg",
+  HTML = "/tech_icons/HTML5.svg",
+  CSS = "/tech_icons/CSS3.svg",
+  Linux = "/tech_icons/Linux.svg",
 }
 
 export const CAPTCHA_SITE_KEY: string =

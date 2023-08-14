@@ -51,7 +51,7 @@ const AboutmePage: React.FC = () => {
         container
         padding={4}
         maxWidth={"70rem"}
-        gap={{ xs: 2, md: 2 }}
+        gap={{ xs: 2, sm: 2 }}
         alignItems={"center"}
         justifyContent={"center"}
       >
@@ -126,7 +126,7 @@ const AboutmePage: React.FC = () => {
             justifyContent="end"
             alignItems={"end"}
             position={"relative"}
-            top={"2rem"}
+            top={"1rem"}
           >
             <AchievementCircle header="4+" subheader="Years Work Experience" />
           </Box>
@@ -138,7 +138,7 @@ const AboutmePage: React.FC = () => {
             justifyContent={"end"}
             alignItems={"end"}
             position={"relative"}
-            bottom={"2rem"}
+            bottom={"1rem"}
           >
             <AchievementCircle
               header="Since 2016"

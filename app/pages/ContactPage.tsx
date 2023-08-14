@@ -63,7 +63,7 @@ const ContactPage: FC = () => {
     <Box
       minHeight="100vh"
       display="flex"
-      flexDirection={{ xs: "column", md: "row" }}
+      flexDirection={{ xs: "column", sm: "row" }}
       justifyContent="center"
       alignItems="center"
       zIndex={2}

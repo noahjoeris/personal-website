@@ -19,13 +19,12 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "10.3rem",
-        width: "10.3rem",
+        height: "11rem",
+        width: "12rem",
         borderRadius: "50%",
         borderStyle: "solid",
-        alignItems: "center",
         justifyContent: "center",
-        padding: "0.6rem",
+        padding: "0.7rem",
         backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
         boxShadow: "inset 0 0 0.5rem 0.2rem",
       }}
@@ -34,10 +33,14 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
         variant={headerVariant}
         fontStyle={"italic"}
         fontWeight={"bold"}
+        align="center"
+        color={"white"}
       >
         {header}
       </Typography>
-      <Typography variant="subtitle1">{subheader}</Typography>
+      <Typography variant="subtitle1" align="center" color={"white"}>
+        {subheader}
+      </Typography>
     </Box>
   );
 };
