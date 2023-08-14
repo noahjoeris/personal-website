@@ -1,4 +1,3 @@
-"use client"; // TODO: make this work with server-side rendering
 import gerFlag from "@/public/images/flag_ger.svg";
 import myLogo from "@/public/images/logo.png";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -13,11 +12,11 @@ import {
   Toolbar,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import Image from "next/image";
 import { FC, MutableRefObject } from "react";
 import { Language } from "../constants/constants";
+import DarkModeAdjustingImage from "./DarkModeAdjustingImage";
 import NavBarMobile from "./NavBarMobile";
 
 export interface NavBarProps {
@@ -58,8 +57,6 @@ const NavBarDesktop: FC<NavBarProps> = ({
   pageRefs,
   onDarkModeButtonClick,
 }) => {
-  const theme = useTheme();
-
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
       <AppBar
@@ -73,15 +70,16 @@ const NavBarDesktop: FC<NavBarProps> = ({
       >
         <Toolbar>
           <Box display="flex" flexGrow={1} ml={2} p={1.5}>
-            <Image
+            <DarkModeAdjustingImage
               src={myLogo}
               alt="Noah Joeris Logo"
+              priority
               style={{
                 height: "5rem",
                 width: "auto",
-                ...(theme.palette.mode === "dark"
-                  ? { filter: "invert(100%)" }
-                  : null),
+              }}
+              onDarkModeStyles={{
+                filter: "invert(100%)",
               }}
             />
           </Box>

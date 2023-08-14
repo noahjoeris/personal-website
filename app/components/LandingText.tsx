@@ -1,18 +1,16 @@
 import airbusLogo from "@/public/images/airbus.png";
-import { Box, Divider, Typography, useTheme } from "@mui/material";
-import Image from "next/image";
-import React from "react";
-import { Typewriter } from "react-simple-typewriter";
-import { ImagePath } from "../constants/constants";
+import signature from "@/public/images/signature.png";
+import { Box, Divider, Typography } from "@mui/material";
+import { FC } from "react";
 
-const LandingText: React.FC = () => {
-  const theme = useTheme();
+import { TFunction } from "i18next";
+import DarkModeAdjustingImage from "./DarkModeAdjustingImage";
+import MyTypewriter from "./MyTypewriter";
 
-  const imageStyle: React.CSSProperties = {
-    maxWidth: "90%",
-    maxHeight: "15rem",
-    filter: theme.palette.mode === "dark" ? "invert(100%)" : null,
-  };
+const LandingText: FC<{ translations: TFunction }> = ({ translations }) => {
+  const shuffledWords = Object.values(
+    translations("factsAboutMe", { returnObjects: true })
+  ).sort(() => Math.random() - 0.5);
 
   return (
     <Box
@@ -24,26 +22,26 @@ const LandingText: React.FC = () => {
       }}
     >
       <Typography fontStyle="italic">
-        {/* {translations("landingPageTextWelcome")} */}
+        {translations("landingPageTextWelcome")}
       </Typography>
-      <img src={ImagePath.Signature} alt="Signature" style={imageStyle} />
+      <DarkModeAdjustingImage
+        src={signature}
+        alt="Noah Joeris Signature"
+        priority
+        style={{
+          maxWidth: "90%",
+          maxHeight: "15rem",
+          height: "auto",
+          width: "auto",
+        }}
+        onDarkModeStyles={{
+          filter: "invert(100%)",
+        }}
+      />
+
       <Box>
         <Typography variant="h6" marginBottom={"1rem"} marginTop={"2rem"}>
-          <Typewriter
-            words={
-              ["test", "dada", "tetete"]
-              /* 
-              translations("factsAboutMe", {
-                returnObjects: true,
-              }) (as string[]).sort(() => Math.random() - 0.5) */
-            }
-            loop={0}
-            cursor
-            cursorStyle="_"
-            typeSpeed={50}
-            deleteSpeed={50}
-            delaySpeed={1200}
-          />
+          <MyTypewriter words={shuffledWords} />
         </Typography>
       </Box>
       <Divider
@@ -51,21 +49,19 @@ const LandingText: React.FC = () => {
         sx={{ borderBottomWidth: "0.3rem", width: "5rem" }}
       />
       <Typography variant="h5" fontStyle="italic" marginTop="1rem">
-        {/* {translations("jobRole")} */}
+        {translations("jobRole")}
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Typography variant="h5" fontStyle="italic" marginRight={"0.5rem"}>
           @
         </Typography>
-        <Image
+        <DarkModeAdjustingImage
           src={airbusLogo}
           alt="Airbus"
-          style={{
-            height: "1.5rem",
-            width: "auto",
-            ...(theme.palette.mode === "dark"
-              ? { filter: "invert(1) grayscale(1) brightness(100)" }
-              : null),
+          priority
+          style={{ height: "1.5rem", width: "auto" }}
+          onDarkModeStyles={{
+            filter: "invert(1) grayscale(1) brightness(100)",
           }}
         />
       </Box>

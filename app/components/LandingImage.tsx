@@ -1,3 +1,4 @@
+"use client";
 import me from "@/public/images/me.png";
 import { Box, styled } from "@mui/material";
 import { Theme } from "@mui/system";
@@ -88,6 +89,7 @@ const LandingImage: FC<{ padding: any }> = ({
         <Image
           src={me}
           alt="Noah Joeris"
+          priority
           style={{ height: "100%", width: "auto", maxHeight: "38rem" }}
         />
       </Box>

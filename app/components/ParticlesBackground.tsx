@@ -1,3 +1,4 @@
+"use client";
 import { useTheme } from "@mui/material";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
