@@ -1,4 +1,6 @@
+"use client";
 import gerFlag from "@/public/images/flag_ger.svg";
+import engFlag from "@/public/images/flag_eng.svg";
 import myLogo from "@/public/images/logo.png";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -14,21 +16,19 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
-import { FC, MutableRefObject } from "react";
+import { FC, MutableRefObject, useEffect, useState } from "react";
 import { Language } from "../constants/constants";
 import DarkModeAdjustingImage from "./DarkModeAdjustingImage";
 import NavBarMobile from "./NavBarMobile";
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { useTranslation } from "../hooks/useTranslation";
+import { TFunction } from "i18next";
 
 export interface NavBarProps {
   pageRefs?: any;
   onDarkModeButtonClick?: () => void;
 }
-
-const changeLanguage = (i18n: any) => {
-  i18n.changeLanguage(
-    i18n.language === Language.English ? Language.German : Language.English
-  );
-};
 
 export const handleScrollToRef = (ref: MutableRefObject<any>) => {
   if (ref.current) {
@@ -57,6 +57,18 @@ const NavBarDesktop: FC<NavBarProps> = ({
   pageRefs,
   onDarkModeButtonClick,
 }) => {
+  const params = useParams();
+  const router = useRouter();
+  /* const [translations, setTranslations] = useState<any>();
+
+  useEffect(() => {
+    async function loadTranslations() {
+      const { t } = await useTranslation(params["lng"] as string);
+      setTranslations(t);
+    }
+    loadTranslations();
+  }, [params["lng"]]); */
+
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
       <AppBar
@@ -85,10 +97,7 @@ const NavBarDesktop: FC<NavBarProps> = ({
           </Box>
 
           <MenuItem onClick={() => handleScrollToRef(pageRefs.aboutPageRef)}>
-            <Typography variant="button">
-              {/* {props.t("aboutMeNav")} */}
-              About Me
-            </Typography>
+            <Typography variant="button">{/* About Me */}</Typography>
           </MenuItem>
           <MenuItem onClick={() => handleScrollToRef(pageRefs.contactPageRef)}>
             <Typography variant="button">
@@ -98,16 +107,16 @@ const NavBarDesktop: FC<NavBarProps> = ({
           <IconButton onClick={onDarkModeButtonClick}>
             <DarkModeIcon />
           </IconButton>
-          <IconButton /* onClick={() => changeLanguage(props.i18n)} */>
+
+          <IconButton
+            onClick={() =>
+              params["lng"] === "en" ? router.push("de") : router.push("en")
+            }
+          >
             <Badge
               badgeContent={
                 <Image
-                  /* src={
-                    props.i18n.language === Language.German
-                      ? ImagePath.GermanFlag
-                      : ImagePath.EnglishFlag
-                  } */
-                  src={gerFlag}
+                  src={params["lng"] === "en" ? engFlag : gerFlag}
                   alt="Language Flag"
                   style={{ width: "150%", height: "150%" }}
                 />
