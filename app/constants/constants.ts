@@ -28,7 +28,6 @@ export enum TechIconPath {
   Docker = "/tech_icons/Docker.svg",
   Kubernetes = "/tech_icons/Kubernetes.svg",
   Flutter = "/tech_icons/Flutter.svg",
-  Redux = "/tech_icons/Redux.svg",
   MUI = "/tech_icons/MUI.svg",
   HTML = "/tech_icons/HTML5.svg",
   CSS = "/tech_icons/CSS3.svg",

@@ -21,6 +21,7 @@ import { FC, MutableRefObject } from "react";
 import { useTranslation } from "../i18n/client";
 import DarkModeAdjustingImage from "./DarkModeAdjustingImage";
 import NavBarMobile from "./NavBarMobile";
+import ScrollLink from "./ScrollLink";
 
 export interface NavBarProps {
   pageRefs?: any;
@@ -85,12 +86,24 @@ const NavBarDesktop: FC<NavBarProps> = ({
             />
           </Box>
 
-          <MenuItem onClick={() => handleScrollToRef(pageRefs.aboutPageRef)}>
-            <Typography variant="button">{t("aboutMeNav")}</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => handleScrollToRef(pageRefs.contactPageRef)}>
-            <Typography variant="button">{t("contactNav")}</Typography>
-          </MenuItem>
+          <ScrollLink
+            href="#section-2-aboutme"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <MenuItem>
+              <Typography variant="button">{t("aboutMeNav")}</Typography>
+            </MenuItem>
+          </ScrollLink>
+
+          <ScrollLink
+            href="#section-3-contact"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <MenuItem>
+              <Typography variant="button">{t("contactNav")}</Typography>
+            </MenuItem>
+          </ScrollLink>
+
           <IconButton onClick={onDarkModeButtonClick}>
             <DarkModeIcon />
           </IconButton>

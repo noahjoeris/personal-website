@@ -33,7 +33,6 @@ const toolsAndFrameworkItems: SkillsetItem[] = [
   { icon: TechIconPath.React, label: "React" },
   { icon: TechIconPath.Flutter, label: "Flutter" },
   { icon: TechIconPath.MUI, label: "MUI" },
-  { icon: TechIconPath.Redux, label: "Redux" },
 ];
 
 const AboutmePage: React.FC = () => {
