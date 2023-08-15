@@ -10,13 +10,10 @@ import {
 
 const ParticlesBackground: React.FC = () => {
   const particlesInit = useCallback(async (engine) => {
-    console.log(engine);
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    console.log(container);
-  }, []);
+  const particlesLoaded = useCallback(async (container) => {}, []);
 
   const theme = useTheme();
 

@@ -1,9 +1,9 @@
+import ContactsSideBar from "@/app/components/ContactsSideBar";
+import LandingImage from "@/app/components/LandingImage";
+import LandingText from "@/app/components/LandingText";
+import { useTranslation } from "@/app/i18n/server";
 import { Box } from "@mui/material";
 import { FC } from "react";
-import ContactsSideBar from "../components/ContactsSideBar";
-import LandingImage from "../components/LandingImage";
-import LandingText from "../components/LandingText";
-import { useTranslation } from "../hooks/useTranslation";
 
 interface LandingPageProps {
   language?: string;

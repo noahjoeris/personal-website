@@ -1,6 +1,6 @@
 "use client";
-import gerFlag from "@/public/images/flag_ger.svg";
 import engFlag from "@/public/images/flag_eng.svg";
+import gerFlag from "@/public/images/flag_ger.svg";
 import myLogo from "@/public/images/logo.png";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -16,14 +16,11 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Image from "next/image";
-import { FC, MutableRefObject, useEffect, useState } from "react";
-import { Language } from "../constants/constants";
+import { useParams, useRouter } from "next/navigation";
+import { FC, MutableRefObject } from "react";
+import { useTranslation } from "../i18n/client";
 import DarkModeAdjustingImage from "./DarkModeAdjustingImage";
 import NavBarMobile from "./NavBarMobile";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
-import { useTranslation } from "../hooks/useTranslation";
-import { TFunction } from "i18next";
 
 export interface NavBarProps {
   pageRefs?: any;
@@ -59,15 +56,7 @@ const NavBarDesktop: FC<NavBarProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  /* const [translations, setTranslations] = useState<any>();
-
-  useEffect(() => {
-    async function loadTranslations() {
-      const { t } = await useTranslation(params["lng"] as string);
-      setTranslations(t);
-    }
-    loadTranslations();
-  }, [params["lng"]]); */
+  const { t } = useTranslation(params["lng"] as string);
 
   return (
     <Box flexGrow={1} maxWidth={"80rem"} margin="0 auto">
@@ -97,12 +86,10 @@ const NavBarDesktop: FC<NavBarProps> = ({
           </Box>
 
           <MenuItem onClick={() => handleScrollToRef(pageRefs.aboutPageRef)}>
-            <Typography variant="button">{/* About Me */}</Typography>
+            <Typography variant="button">{t("aboutMeNav")}</Typography>
           </MenuItem>
           <MenuItem onClick={() => handleScrollToRef(pageRefs.contactPageRef)}>
-            <Typography variant="button">
-              {/* {props.t("contactNav")} */}
-            </Typography>
+            <Typography variant="button">{t("contactNav")}</Typography>
           </MenuItem>
           <IconButton onClick={onDarkModeButtonClick}>
             <DarkModeIcon />
@@ -118,7 +105,7 @@ const NavBarDesktop: FC<NavBarProps> = ({
                 <Image
                   src={params["lng"] === "en" ? engFlag : gerFlag}
                   alt="Language Flag"
-                  style={{ width: "150%", height: "150%" }}
+                  style={{ width: "1.3rem", height: "auto" }}
                 />
               }
             >
