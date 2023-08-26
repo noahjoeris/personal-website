@@ -1,4 +1,4 @@
-"use client"; // TODO: make this work with server-side rendering
+"use client";
 import {
   Box,
   Button,

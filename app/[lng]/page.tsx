@@ -10,9 +10,6 @@ import "@fontsource/roboto/700.css";
 import { Divider } from "@mui/material";
 
 export default function Home({ params: { lng } }) {
-  /* const contactPageRef = useRef(null);
-  const aboutPageRef = useRef(null); */
-
   return (
     <div className="App">
       <ParticlesBackground />
@@ -32,7 +29,7 @@ export default function Home({ params: { lng } }) {
       </section>
 
       <section id="section-3-contact">
-        <ContactPage />
+        <ContactPage language={lng} />
       </section>
 
       <section id="section-4-footer">

@@ -1,7 +1,8 @@
-"use client"; // TODO: make this work with server-side rendering
+"use client";
 import { Box, Divider, Typography, styled, useTheme } from "@mui/material";
 import { FC } from "react";
 import MessageStepper from "../components/MessageStepper";
+import { useTranslation } from "../i18n/client";
 
 const GradientDivider = styled(Divider)(({ theme }) => ({
   minWidth: "6rem",
@@ -56,8 +57,13 @@ const GlassBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-const ContactPage: FC = () => {
+interface ContactPageProps {
+  language?: string;
+}
+
+const ContactPage: FC<ContactPageProps> = ({ language = "en" }) => {
   const theme = useTheme();
+  const { t } = useTranslation(language);
 
   return (
     <Box
@@ -79,7 +85,7 @@ const ContactPage: FC = () => {
       <GlassBox>
         <Typography variant="h3">Let's Talk</Typography>
         <GradientDivider variant="fullWidth" />
-        <Typography variant="subtitle1">{"TO REPLACE"}</Typography>
+        <Typography variant="subtitle1">{t("contactText")}</Typography>
       </GlassBox>
       <GlassBox>
         <MessageStepper />

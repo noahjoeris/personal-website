@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 interface AchievementCircleProps {
@@ -12,8 +12,6 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
   subheader,
   headerVariant = "h3",
 }) => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -25,7 +23,7 @@ const AchievementCircle: React.FC<AchievementCircleProps> = ({
         borderStyle: "solid",
         justifyContent: "center",
         padding: "0.7rem",
-        backgroundImage: `linear-gradient(${theme.palette.secondary.light}, ${theme.palette.primary.main})`,
+        backgroundImage: `linear-gradient(rgba(255, 0, 128, 0.5), rgba(15, 62, 215, 0.9))`,
         boxShadow: "inset 0 0 0.5rem 0.2rem",
       }}
     >
