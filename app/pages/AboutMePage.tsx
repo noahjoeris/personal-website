@@ -1,5 +1,5 @@
 import { TechIconPath } from "@/app/constants/constants";
-import meImage from "@/public/images/me2.png";
+import meImage from "@/public/images/me2.webp";
 import { Avatar, Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";

@@ -1,4 +1,4 @@
-import airbusLogo from "@/public/images/airbus.png";
+import airbusLogo from "@/public/images/airbus.webp";
 import signature from "@/public/images/signature.png";
 import { Box, Divider, Typography } from "@mui/material";
 import { FC } from "react";

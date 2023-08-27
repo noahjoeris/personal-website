@@ -1,7 +1,7 @@
 "use client";
 import engFlag from "@/public/images/flag_eng.svg";
 import gerFlag from "@/public/images/flag_ger.svg";
-import myLogo from "@/public/images/logo.png";
+import myLogo from "@/public/images/logo.webp";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LanguageIcon from "@mui/icons-material/Language";
 import {

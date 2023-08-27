@@ -1,5 +1,5 @@
 "use client";
-import me from "@/public/images/me.png";
+import me from "@/public/images/me.webp";
 import { Box, styled } from "@mui/material";
 import { Theme } from "@mui/system";
 import Image from "next/image";

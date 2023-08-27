@@ -1,5 +1,5 @@
 "use client";
-import myLogo from "@/public/images/logo.png";
+import myLogo from "@/public/images/logo.webp";
 import { Box, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import React from "react";
