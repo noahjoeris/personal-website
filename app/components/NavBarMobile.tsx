@@ -1,3 +1,5 @@
+"use client";
+import engFlag from "@/public/images/flag_eng.svg";
 import gerFlag from "@/public/images/flag_ger.svg";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -20,8 +22,10 @@ import {
   useTheme,
 } from "@mui/material";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import { FC, useState } from "react";
-import { NavBarProps, handleScrollToRef } from "./NavBar";
+import { NavBarProps } from "./NavBar";
+import ScrollLink from "./ScrollLink";
 
 const ListItemComponent: FC<{
   icon: React.ReactNode;
@@ -36,9 +40,11 @@ const ListItemComponent: FC<{
   </ListItem>
 );
 
-const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
+const NavBarMobile: FC<NavBarProps> = ({ onDarkModeButtonClick }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const theme = useTheme();
+  const params = useParams();
+  const router = useRouter();
 
   return (
     <Box flexGrow={1} marginBottom={5}>
@@ -57,6 +63,7 @@ const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
             anchor="right"
             open={isDrawerOpen}
             onClose={() => setIsDrawerOpen(false)}
+            /* sx={{ zIndex: 1000 }} */
           >
             <Box
               sx={{ width: "50vw" }}
@@ -64,16 +71,26 @@ const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
               onClick={() => setIsDrawerOpen(false)}
             >
               <List>
-                <ListItemComponent
-                  icon={<EmojiPeopleIcon />}
-                  text="About Me"
-                  action={() => handleScrollToRef(pageRefs.aboutPageRef)}
-                />
-                <ListItemComponent
-                  icon={<ContactMailIcon />}
-                  text="Contact"
-                  action={() => handleScrollToRef(pageRefs.contactPageRef)}
-                />
+                <ScrollLink
+                  href="#section-2-aboutme"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <ListItemComponent
+                    icon={<EmojiPeopleIcon />}
+                    text="About Me"
+                    action={() => {}}
+                  />
+                </ScrollLink>
+                <ScrollLink
+                  href="#section-3-contact"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <ListItemComponent
+                    icon={<ContactMailIcon />}
+                    text="Contact"
+                    action={() => {}}
+                  />
+                </ScrollLink>
               </List>
               <Divider />
 
@@ -91,7 +108,7 @@ const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
                     <Badge
                       badgeContent={
                         <Image
-                          src={gerFlag}
+                          src={params["lng"] === "en" ? engFlag : gerFlag}
                           alt="Language Flag"
                           style={{ width: "150%", height: "150%" }}
                         />
@@ -101,7 +118,11 @@ const NavBarMobile: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
                     </Badge>
                   }
                   text="Language"
-                  action={() => {}}
+                  action={() => {
+                    params["lng"] === "en"
+                      ? router.push("de")
+                      : router.push("en");
+                  }}
                 />
               </List>
             </Box>

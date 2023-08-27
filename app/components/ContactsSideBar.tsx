@@ -50,7 +50,7 @@ const ContactsSideBar: React.FC<ContactsSideBarProps> = ({
     position: "fixed",
     top: "40vh",
     right: "0.5rem",
-    zIndex: "tooltip",
+    zIndex: "2",
     padding: "0.2rem",
     backgroundColor: "rgba(0, 0, 0, 0.1)",
     border: "3px solid rgba(255, 255, 255, 0.5)",

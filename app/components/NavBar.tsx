@@ -24,7 +24,6 @@ import NavBarMobile from "./NavBarMobile";
 import ScrollLink from "./ScrollLink";
 
 export interface NavBarProps {
-  pageRefs?: any;
   onDarkModeButtonClick?: () => void;
 }
 
@@ -39,7 +38,7 @@ export const handleScrollToRef = (ref: MutableRefObject<any>) => {
   }
 };
 
-const NavBar: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
+const NavBar: FC<NavBarProps> = ({ onDarkModeButtonClick }) => {
   const isMobileScreenSize = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm")
   );
@@ -51,10 +50,7 @@ const NavBar: FC<NavBarProps> = ({ pageRefs, onDarkModeButtonClick }) => {
   );
 };
 
-const NavBarDesktop: FC<NavBarProps> = ({
-  pageRefs,
-  onDarkModeButtonClick,
-}) => {
+const NavBarDesktop: FC<NavBarProps> = ({ onDarkModeButtonClick }) => {
   const params = useParams();
   const router = useRouter();
   const { t } = useTranslation(params["lng"] as string);

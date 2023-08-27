@@ -1,10 +1,12 @@
+import { TechIconPath } from "@/app/constants/constants";
+import meImage from "@/public/images/me2.png";
 import { Avatar, Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Image from "next/image";
 import AchievementCircle from "../components/AchievementCircle";
 import SkillsetVisualizer, {
   SkillsetItem,
 } from "../components/SkillsetVisualizer";
-import { ImagePath, TechIconPath } from "../constants/constants";
 
 const programmingLanguagesItems: SkillsetItem[] = [
   { icon: TechIconPath.Python, label: "Python" },
@@ -102,16 +104,24 @@ const AboutmePage: React.FC = () => {
 
         <Grid md={5}>
           <Avatar
-            src={ImagePath.Myself2}
             sx={{
               minWidth: "15rem",
               minHeight: "15rem",
               borderStyle: "solid",
-              boxShadow: "0 0 1rem 0.1rem",
+              boxShadow: "0 0 2rem 0.3rem rgba(0, 0, 0, 0.5)",
               width: { xs: "80vw", sm: "20rem" },
               height: { xs: "30vh", sm: "20rem" },
             }}
-          />
+          >
+            <Image
+              src={meImage}
+              alt="Me"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </Avatar>
         </Grid>
 
         <Grid md={4} minHeight={"20rem"} minWidth={"20rem"}>

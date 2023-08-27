@@ -3,16 +3,6 @@ export enum Language {
   German = "de",
 }
 
-export enum ImagePath {
-  Signature = "/images/signature.png",
-  Myself = "/images/me.png",
-  Myself2 = "/images/me2.png",
-  EnglishFlag = "/images/flag_eng.svg",
-  GermanFlag = "/images/flag_ger.svg",
-  AirbusLogo = "/images/airbus.png",
-  MyLogo = "/images/logo.png",
-}
-
 export enum Hyperlink {
   LinkedIn = "https://www.linkedin.com/in/njoeris/",
   GitHub = "https://github.com/noahjoeris",
