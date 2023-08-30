@@ -1,37 +1,31 @@
 "use client";
+
 import { useTheme } from "@mui/material";
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import type { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
 import {
   particlesBackgoundDarkConfig,
   particlesBackgoundLightConfig,
 } from "./config/particles-config";
 
-const ParticlesBackground: React.FC = () => {
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container) => {}, []);
-
+export const ParticlesBackground = () => {
   const theme = useTheme();
+  const particlesInit = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
+  }, []);
 
   return (
     <Particles
       id="tsparticles"
-      height="100%"
-      width="100%"
       key={theme.palette.mode}
-      params={
+      options={
         theme.palette.mode === "dark"
           ? particlesBackgoundDarkConfig
           : particlesBackgoundLightConfig
       }
       init={particlesInit}
-      loaded={particlesLoaded}
     />
   );
 };
-
-export default ParticlesBackground;
