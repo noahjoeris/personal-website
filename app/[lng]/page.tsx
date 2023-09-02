@@ -2,10 +2,6 @@ import AboutmePage from "@/app/pages/AboutMePage";
 import ContactPage from "@/app/pages/ContactPage";
 import FooterPage from "@/app/pages/FooterPage";
 import LandingPage from "@/app/pages/LandingPage";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import { Divider } from "@mui/material";
 import { ParticlesBackground } from "../components/ParticlesBackground";
 
@@ -13,7 +9,6 @@ export default function Home({ params: { lng } }) {
   return (
     <div className="App">
       <ParticlesBackground />
-
       <section id="section-1-landingpage">
         <LandingPage language={lng} />
         <Divider

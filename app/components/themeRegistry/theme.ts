@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { Roboto } from "next/font/google";
+import { Dekko, Kaushan_Script, Patrick_Hand, Roboto } from "next/font/google";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -7,9 +7,13 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
+const font1 = Patrick_Hand({ subsets: ["latin"], weight: "400" });
+const font2 = Kaushan_Script({ subsets: ["latin"], weight: "400" });
+const font3 = Dekko({ subsets: ["latin"], weight: "400" });
+
 export const myTheme = (darkModeEnabled: boolean) =>
   createTheme({
-    typography: { fontFamily: roboto.style.fontFamily },
+    typography: { fontFamily: font3.style.fontFamily },
     palette: {
       mode: darkModeEnabled ? "dark" : "light",
       primary: {
