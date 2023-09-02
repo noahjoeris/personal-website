@@ -103,25 +103,33 @@ const AboutmePage: React.FC = () => {
         </Grid>
 
         <Grid md={5}>
-          <Avatar
+          <Box
             sx={{
-              minWidth: "15rem",
-              minHeight: "15rem",
+              width: "20rem",
+              height: "20rem",
+              borderRadius: "50%",
               borderStyle: "solid",
-              boxShadow: "0 0 2rem 0.3rem rgba(0, 0, 0, 0.5)",
-              width: { xs: "80vw", sm: "20rem" },
-              height: { xs: "30vh", sm: "20rem" },
+              boxShadow: "inset 0 0 1rem 0.2rem",
+              backgroundImage: `linear-gradient(rgba(255, 0, 128, 0.5), rgba(15, 62, 215, 0.9))`,
             }}
           >
-            <Image
-              src={meImage}
-              alt="Me"
-              style={{
+            <Avatar
+              sx={{
                 width: "100%",
-                height: "auto",
+                height: "100%",
+                background: "transparent",
               }}
-            />
-          </Avatar>
+            >
+              <Image
+                src={meImage}
+                alt="Me"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </Avatar>
+          </Box>
         </Grid>
 
         <Grid md={4} minHeight={"20rem"} minWidth={"20rem"}>
