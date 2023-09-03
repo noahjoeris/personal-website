@@ -1,28 +1,23 @@
 "use client";
 import myLogo from "@/public/images/logo.webp";
-import { Box, Typography, useTheme } from "@mui/material";
-import Image from "next/image";
+import { Box, Typography } from "@mui/material";
 import React from "react";
-
-const lightBackground: string =
-  "linear-gradient(to top right,  rgb(240, 240, 240, 0.8) 80%, #000bae 120%)";
-const darkBackground: string =
-  "linear-gradient(to top right,  	rgb(8,8,8, 0.9) 80%, #000bae 120%)";
+import DarkModeAdjustingImage from "../components/DarkModeAdjustingImage";
 
 const FooterPage: React.FC = () => {
-  const theme = useTheme();
-
   return (
     <>
       <Box
         display="flex"
         flexDirection="column"
-        minHeight="20vh"
+        minHeight="8rem"
         width="100%"
         justifyContent="space-evenly"
         sx={{
-          background:
-            theme.palette.mode === "dark" ? darkBackground : lightBackground,
+          background: (theme) =>
+            theme.palette.mode === "dark"
+              ? "rgb(8,8,8, 0.5)"
+              : "rgb(0,0,0, 0.3)",
         }}
       >
         <Box
@@ -34,17 +29,12 @@ const FooterPage: React.FC = () => {
           <Typography>
             © {new Date().getFullYear()} Noah Joeris. All rights reserved.
           </Typography>
-          <Image
+          <DarkModeAdjustingImage
             src={myLogo}
             alt="Noah Joeris Logo"
-            style={{
-              height: "8rem",
-              width: "auto",
-              zIndex: 1,
-              filter:
-                theme.palette.mode === "dark"
-                  ? "invert(1) grayscale(1) brightness(100)"
-                  : undefined,
+            style={{ height: "8rem", width: "auto", zIndex: 1 }}
+            onDarkModeStyles={{
+              filter: "invert(1) grayscale(1) brightness(100)",
             }}
           />
         </Box>

@@ -23,6 +23,9 @@ export default function Home({ params: { lng } }) {
       </section>
       <section id="section-3-contact">
         <ContactPage language={lng} />
+        <Divider
+          sx={{ orientation: "horizontal", borderBottomWidth: "0.3rem" }}
+        />
       </section>
       <section id="section-4-footer">
         <FooterPage />

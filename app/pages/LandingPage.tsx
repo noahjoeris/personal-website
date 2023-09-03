@@ -14,7 +14,7 @@ const LandingPage: FC<LandingPageProps> = async ({ language = "en" }) => {
 
   return (
     <Box
-      minHeight={"90vh"}
+      minHeight={"45rem"}
       maxHeight={{ xs: "100vh", sm: null }}
       display={"flex"}
       flexDirection={{ xs: "column", sm: "row" }}
