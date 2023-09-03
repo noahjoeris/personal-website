@@ -47,13 +47,9 @@ const GlassBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     width: "40rem",
     height: "35rem",
-    zoom: 1,
     marginTop: "6rem",
     marginBottom: "6rem",
     padding: "4rem",
-  },
-  [theme.breakpoints.down("sm")]: {
-    zoom: 0.7,
   },
 }));
 
