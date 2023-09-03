@@ -10,8 +10,6 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-/* const font1 = Patrick_Hand({ subsets: ["latin"], weight: "400" });
-const font2 = Kaushan_Script({ subsets: ["latin"], weight: "400" }); */
 const font3 = Dekko({ subsets: ["latin"], weight: "400" });
 
 export const myTheme = (darkModeEnabled: boolean) => {
