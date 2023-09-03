@@ -72,16 +72,21 @@ const AboutmePage: React.FC = () => {
               paragraph
               align="justify"
             >
-              Over the past four years, I've significantly enhanced my technical
-              skills at Airbus, gaining diverse experience across multiple
-              departments. My wide-ranging experience includes software
-              engineering, web development, cloud computing, and IT security.
-              This gives me a broad understanding of technology in the business
-              sector. Today, I'm leading the push for new innovative ideas at
-              Airbus, responsible for guiding the development of new projects in
-              the company. I turn ideas into reality by building
-              proof-of-concepts and minimum viable products in several emerging
-              areas.
+              Over the past four years at Airbus, I have deepened and
+              diversified my technical expertise, working closely with various
+              departments. My background in{" "}
+              <b>
+                <i>
+                  software engineering, web development, cloud computing, and IT
+                  security
+                </i>
+              </b>{" "}
+              provides me with a holistic understanding of technology's impact
+              on modern business. Today, I'm leading the push for digital
+              innovations at Airbus by transforming ideas into practical
+              proof-of-concepts and viable products. The primary focus lies in
+              emerging domains, including blockchain, cryptography, cloud
+              computing and other software-centric innovations.
             </Typography>
             <Typography
               /* variant={isMobileScreen ? "subtitle2" : "h6"} */
@@ -89,12 +94,18 @@ const AboutmePage: React.FC = () => {
               paragraph
               align="justify"
             >
-              Beyond my duties at Airbus, I'm now offering my services as a
-              freelancer to help other companies deal with the complexities of
-              software and DevOps. My aim is to use my expertise in software to
-              enable businesses to succeed with technology. As a freelancer, I'm
-              excited to start empowering companies to thrive by providing them
-              with well-designed and effective software solutions.{" "}
+              Beyond my duties at Airbus, I have ventured into{" "}
+              <b>
+                <i>Freelance Development</i>
+              </b>
+              . Drawing on my software expertise, I provide businesses with
+              custom solutions tailored to their technological challenges. I'm
+              dedicated to empowering companies to excel, delivering
+              <b>
+                <i> high-quality MVPs, and software solutions</i>
+              </b>
+              . Whether it's UI/UX-centric web applications, websites, or more
+              complex systems, I'm equipped to address a wide spectrum of needs.{" "}
               {/* <Button size="small" sx={{ color: theme.palette.secondary.light }}>
               Hire me
             </Button> */}
