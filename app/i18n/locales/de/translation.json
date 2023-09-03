@@ -15,9 +15,41 @@
     "Minimalist 🧘",
     "Connect mit mir auf LinkedIn 🤝"
   ],
+
   "aboutMeNav": "Über mich",
   "contactNav": "Kontakt",
   "portfolioNav": "Portfolio",
   "language": "Wechsel zu Englisch",
-  "contactText": "Meine Tür steht immer offen für einen guten Kaffee und ein Gespräch. Ob es um ein potentielles Projekt, eine neue Möglichkeit oder einfach nur um Hallo zu sagen geht. 😄"
+
+  "aboutMeHeader": "Über mich",
+  "aboutMeText1": "In den letzten vier Jahren bei Airbus habe ich meine technische Expertise vertieft und diversifiziert und eng mit verschiedenen Abteilungen zusammengearbeitet. Meine Erfahrung im Bereich ",
+  "aboutMeText2Highlight": "Software-Engineering, Webentwicklung, Cloud-Computing und IT-Sicherheit ",
+  "aboutMeText3": "vermittelt mir ein ganzheitliches Verständnis für den Einfluss der Technologie auf das moderne Geschäft. Heute führe ich den Weg für digitale Innovationen bei Airbus, indem ich Ideen in praktische Konzepte und tragfähige Produkte umsetze. Der Schwerpunkt liegt auf aufstrebenden Gebieten, einschließlich Blockchain, Kryptographie, Cloud-Computing und anderen softwarezentrierten Innovationen. ",
+  "aboutMeText4": "Über meine Aufgaben bei Airbus hinaus habe ich mich in den Bereich ",
+  "aboutMeText5Highlight": "Freelance Entwicklung",
+  "aboutMeText6": " gewagt. Unter Berufung auf meine Softwarekenntnisse biete ich Unternehmen maßgeschneiderte Lösungen für ihre technologischen Herausforderungen an. Ich bin bestrebt, Unternehmen zum Erfolg zu verhelfen und liefere ",
+  "aboutMeText7Highlight": "hochwertige MVPs und Softwarelösungen",
+  "aboutMeText8": ". Sei es UI/UX-zentrierte Webanwendungen, Websites oder komplexere Systeme, ich bin ausgerüstet, um ein breites Spektrum an Anforderungen zu erfüllen.",
+
+  "aboutMeAchievementHeader1": "4+ Jahre",
+  "aboutMeAchievementSubHeader1": "Professionelle Arbeitserfahrung",
+  "aboutMeAchievementHeader2": "Top",
+  "aboutMeAchievementSubHeader2": "Hochschulabsolvent",
+  "aboutMeAchievementHeader3": "Seit 2016",
+  "aboutMeAchievementSubHeader3": "In der IT-Branche unterwegs",
+
+  "contactText": "Meine Tür steht immer offen für einen guten Kaffee und ein Gespräch. Ob es um ein potentielles Projekt, eine neue Möglichkeit oder einfach nur um Hallo zu sagen geht. 😄",
+  "contactMessageBackLabel": "Zurück",
+  "contactMessageForwardLabel": "Weiter",
+  "contactMessageSendLabel": "Senden 🚀",
+  "contactMessageHeader1": "Nachricht",
+  "contactMessageHeader2": "Name",
+  "contactMessageHeader3": "E-Mail",
+  "contactMessageTextBoxLabel1": "Deine Nachricht",
+  "contactMessageTextBoxLabel2": "Dein Name",
+  "contactMessageTextBoxLabel3": "Deine E-Mail",
+  "contactMessageSentSuccessfullyText": "Nachricht erfolgreich gesendet",
+  "contactMessageSentFailedText": "Fehler beim Senden der Nachricht",
+  "contactMessageSentSuccessfullyButtonLabel": "Eine weitere Nachricht senden",
+  "contactMessageSentFailedButtonLabel": "Erneut versuchen"
 }

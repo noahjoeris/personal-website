@@ -7,6 +7,7 @@ import AchievementCircle from "../components/AchievementCircle";
 import SkillsetVisualizer, {
   SkillsetItem,
 } from "../components/SkillsetVisualizer";
+import { useTranslation } from "../i18n/server";
 
 const programmingLanguagesItems: SkillsetItem[] = [
   { icon: TechIconPath.Python, label: "Python" },
@@ -30,7 +31,13 @@ const toolsAndFrameworkItems: SkillsetItem[] = [
   { icon: TechIconPath.MUI, label: "MUI" },
 ];
 
-const AboutmePage: React.FC = () => {
+interface AboutmePageProps {
+  language?: string;
+}
+
+const AboutmePage: React.FC<AboutmePageProps> = async ({ language = "en" }) => {
+  const { t } = await useTranslation(language);
+
   return (
     <Box
       display="flex"
@@ -55,57 +62,31 @@ const AboutmePage: React.FC = () => {
             }}
           >
             <Typography
-              /* variant={isMobileScreen ? "h4" : "h2"} */
               variant={"h3"}
               sx={{ fontWeight: "bold" }}
               align="center"
               gutterBottom
             >
-              About Me
+              {t("aboutMeHeader")}
             </Typography>
 
-            {/* TODO: outsource text to translations */}
-
-            <Typography
-              /* variant={isMobileScreen ? "subtitle2" : "h6"} */
-              variant={"body1"}
-              paragraph
-              align="justify"
-            >
-              Over the past four years at Airbus, I have deepened and
-              diversified my technical expertise, working closely with various
-              departments. My background in{" "}
+            <Typography variant={"body1"} paragraph align="justify">
+              {t("aboutMeText1")}
               <b>
-                <i>
-                  software engineering, web development, cloud computing, and IT
-                  security
-                </i>
-              </b>{" "}
-              provides me with a holistic understanding of technology's impact
-              on modern business. Today, I'm leading the push for digital
-              innovations at Airbus by transforming ideas into practical
-              proof-of-concepts and viable products. The primary focus lies in
-              emerging domains, including blockchain, cryptography, cloud
-              computing and other software-centric innovations.
+                <i>{t("aboutMeText2Highlight")}</i>
+              </b>
+              {t("aboutMeText3")}
             </Typography>
-            <Typography
-              /* variant={isMobileScreen ? "subtitle2" : "h6"} */
-              variant={"body1"}
-              paragraph
-              align="justify"
-            >
-              Beyond my duties at Airbus, I have ventured into{" "}
+            <Typography variant={"body1"} paragraph align="justify">
+              {t("aboutMeText4")}
               <b>
-                <i>Freelance Development</i>
+                <i>{t("aboutMeText5Highlight")}</i>
               </b>
-              . Drawing on my software expertise, I provide businesses with
-              custom solutions tailored to their technological challenges. I'm
-              dedicated to empowering companies to excel, delivering
+              {t("aboutMeText6")}
               <b>
-                <i> high-quality MVPs, and software solutions</i>
+                <i> {t("aboutMeText7Highlight")}</i>
               </b>
-              . Whether it's UI/UX-centric web applications, websites, or more
-              complex systems, I'm equipped to address a wide spectrum of needs.{" "}
+              {t("aboutMeText8")}
               {/* <Button size="small" sx={{ color: theme.palette.secondary.light }}>
               Hire me
             </Button> */}
@@ -151,10 +132,17 @@ const AboutmePage: React.FC = () => {
             position={"relative"}
             top={"1rem"}
           >
-            <AchievementCircle header="4+" subheader="Years Work Experience" />
+            <AchievementCircle
+              header={t("aboutMeAchievementHeader1")}
+              subheader={t("aboutMeAchievementSubHeader1")}
+              headerVariant="h4"
+            />
           </Box>
           <Box display={"flex"} justifyContent={"start"} alignItems={"start"}>
-            <AchievementCircle header="Top" subheader="University Graduate" />
+            <AchievementCircle
+              header={t("aboutMeAchievementHeader2")}
+              subheader={t("aboutMeAchievementSubHeader2")}
+            />
           </Box>
           <Box
             display={"flex"}
@@ -164,8 +152,8 @@ const AboutmePage: React.FC = () => {
             bottom={"1rem"}
           >
             <AchievementCircle
-              header="Since 2016"
-              subheader="Fully committed to IT"
+              header={t("aboutMeAchievementHeader3")}
+              subheader={t("aboutMeAchievementSubHeader3")}
               headerVariant="h4"
             />
           </Box>

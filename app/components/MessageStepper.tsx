@@ -10,12 +10,12 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { CAPTCHA_SITE_KEY } from "../constants/constants";
+import { useTranslation } from "../i18n/client";
 import { sendContactMessage } from "../services/email";
-
-const steps: string[] = ["Message", "Name", "Email"];
 
 const validateInputs = (
   message: string,
@@ -28,6 +28,15 @@ const validateInputs = (
 
 export default function MessageStepper() {
   const theme = useTheme();
+  const params = useParams();
+  const { t } = useTranslation(params["lng"] as string);
+
+  const steps: string[] = [
+    t("contactMessageHeader1"),
+    t("contactMessageHeader2"),
+    t("contactMessageHeader3"),
+  ];
+
   const [activeStep, setActiveStep] = useState<number>(0);
   const [recaptchaOpened, setRecaptchaOpened] = useState<boolean>(false);
   const [isSending, setIsSending] = useState<boolean>(false);
@@ -62,7 +71,6 @@ export default function MessageStepper() {
       setIsSending(true);
       sendContactMessage(name, email, message, captchaValue)
         .then(() => {
-          console.log("Message sent");
           setSentSuccessfully(true);
           setIsSending(false);
           setMessage("");
@@ -93,7 +101,7 @@ export default function MessageStepper() {
               <TextField
                 multiline
                 fullWidth
-                label="Message"
+                label={t("contactMessageTextBoxLabel1")}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 minRows={6}
@@ -103,7 +111,7 @@ export default function MessageStepper() {
           )}
           {activeStep === 1 && (
             <TextField
-              label="Your Name"
+              label={t("contactMessageTextBoxLabel2")}
               fullWidth
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -111,7 +119,7 @@ export default function MessageStepper() {
           )}
           {activeStep === 2 && !isSending && (
             <TextField
-              label="Your Email"
+              label={t("contactMessageTextBoxLabel3")}
               fullWidth
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -122,13 +130,15 @@ export default function MessageStepper() {
             <>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 {sentSuccessfully
-                  ? "Message sent successfully"
-                  : "Error while sending message"}
+                  ? t("contactMessageSentSuccessfullyText")
+                  : t("contactMessageSentFailedText")}
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
                 <Button onClick={handleSendAnotherMessage} color="inherit">
-                  {sentSuccessfully ? "Send another message" : "Try again"}
+                  {sentSuccessfully
+                    ? t("contactMessageSentSuccessfullyButtonLabel")
+                    : t("contactMessageSentFailedButtonLabel")}
                 </Button>
               </Box>
             </>
@@ -150,7 +160,7 @@ export default function MessageStepper() {
             onClick={handleBack}
             sx={{ mr: 1 }}
           >
-            Back
+            {t("contactMessageBackLabel")}
           </Button>
           <Box sx={{ flex: "1 1 auto" }} />
           <Button
@@ -161,7 +171,9 @@ export default function MessageStepper() {
               !validateInputs(message, name, email)
             }
           >
-            {activeStep === steps.length - 1 ? "Send 🚀" : "Next"}
+            {activeStep === steps.length - 1
+              ? t("contactMessageSendLabel")
+              : t("contactMessageForwardLabel")}
           </Button>
         </Box>
       )}

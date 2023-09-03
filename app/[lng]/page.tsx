@@ -16,7 +16,7 @@ export default function Home({ params: { lng } }) {
         />
       </section>
       <section id="section-2-aboutme">
-        <AboutmePage />
+        <AboutmePage language={lng} />
         <Divider
           sx={{ orientation: "horizontal", borderBottomWidth: "0.3rem" }}
         />
