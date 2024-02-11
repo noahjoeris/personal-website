@@ -10,12 +10,13 @@ import SkillsetVisualizer, {
 import { useTranslation } from "../i18n/server";
 
 const programmingLanguagesItems: SkillsetItem[] = [
-  { icon: TechIconPath.Python, label: "Python" },
-  { icon: TechIconPath.Java, label: "Java" },
+  { icon: TechIconPath.Rust, label: "Rust" },
   { icon: TechIconPath.TypeScript, label: "Typescript" },
   { icon: TechIconPath.JavaScript, label: "Javascript" },
   { icon: TechIconPath.HTML, label: "HTML" },
   { icon: TechIconPath.CSS, label: "CSS" },
+  { icon: TechIconPath.Python, label: "Python" },
+  { icon: TechIconPath.Java, label: "Java" },
 ];
 
 const devOpsItems: SkillsetItem[] = [
@@ -27,6 +28,8 @@ const devOpsItems: SkillsetItem[] = [
 
 const toolsAndFrameworkItems: SkillsetItem[] = [
   { icon: TechIconPath.React, label: "React" },
+  { icon: TechIconPath.Nextjs, label: "Nextjs" },
+  { icon: TechIconPath.Substrate, label: "Substrate" },
   { icon: TechIconPath.Flutter, label: "Flutter" },
   { icon: TechIconPath.MUI, label: "MUI" },
 ];

@@ -15,6 +15,7 @@ export enum TechIconPath {
   JavaScript = "/tech_icons/JavaScript.svg",
   Java = "/tech_icons/Java.svg",
   Python = "/tech_icons/Python.svg",
+  Rust = "/tech_icons/Rust.svg",
   Docker = "/tech_icons/Docker.svg",
   Kubernetes = "/tech_icons/Kubernetes.svg",
   Flutter = "/tech_icons/Flutter.svg",
@@ -22,6 +23,8 @@ export enum TechIconPath {
   HTML = "/tech_icons/HTML5.svg",
   CSS = "/tech_icons/CSS3.svg",
   Linux = "/tech_icons/Linux.svg",
+  Nextjs = "/tech_icons/Nextjs.svg",
+  Substrate = "/tech_icons/Substrate.svg",
 }
 
 export const CAPTCHA_SITE_KEY: string =
