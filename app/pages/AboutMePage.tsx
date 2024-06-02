@@ -1,5 +1,5 @@
 import { TechIconPath } from "@/app/constants/constants";
-import meImage from "@/public/images/me2.webp";
+import meImage from "@/public/images/pba.png";
 import { Avatar, Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Image from "next/image";
@@ -107,7 +107,8 @@ const AboutmePage: React.FC<AboutmePageProps> = async ({ language = "en" }) => {
                 src={meImage}
                 alt="Me"
                 style={{
-                  width: "100%",
+                  borderRadius: "50%",
+                  width: "60%",
                   height: "auto",
                 }}
               />
