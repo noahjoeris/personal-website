@@ -75,24 +75,12 @@ const AboutmePage: React.FC<AboutmePageProps> = async ({ language = "en" }) => {
 
             <Typography variant={"body1"} paragraph align="justify">
               {t("aboutMeText1")}
-              <b>
-                <i>{t("aboutMeText2Highlight")}</i>
-              </b>
+              <br />
+              <br />
+              {t("aboutMeText2")}
+              <br />
+              <br />
               {t("aboutMeText3")}
-            </Typography>
-            <Typography variant={"body1"} paragraph align="justify">
-              {t("aboutMeText4")}
-              <b>
-                <i>{t("aboutMeText5Highlight")}</i>
-              </b>
-              {t("aboutMeText6")}
-              <b>
-                <i> {t("aboutMeText7Highlight")}</i>
-              </b>
-              {t("aboutMeText8")}
-              {/* <Button size="small" sx={{ color: theme.palette.secondary.light }}>
-              Hire me
-            </Button> */}
             </Typography>
           </Box>
         </Grid>
