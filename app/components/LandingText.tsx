@@ -1,5 +1,5 @@
-import airbusLogo from "@/public/images/airbus.webp";
 import signature from "@/public/images/signature.png";
+import velocity from "@/public/images/velocity.svg";
 import { Box, Divider, Typography } from "@mui/material";
 import { FC } from "react";
 
@@ -53,16 +53,13 @@ const LandingText: FC<{ translations: TFunction }> = ({ translations }) => {
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Typography variant="h5" fontStyle="italic" marginRight={"0.5rem"}>
-          @
+          at
         </Typography>
         <DarkModeAdjustingImage
-          src={airbusLogo}
-          alt="Airbus"
+          src={velocity}
+          alt="Velocity Labs"
           priority
-          style={{ height: "1.5rem", width: "auto" }}
-          onDarkModeStyles={{
-            filter: "invert(1) grayscale(1) brightness(100)",
-          }}
+          style={{ height: "1.8rem", width: "auto" }}
         />
       </Box>
     </Box>
