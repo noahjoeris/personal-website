@@ -66,8 +66,8 @@ const LandingImage: FC<{ padding: any }> = ({
       maxWidth: "150vw",
     },
     [theme.breakpoints.up("sm")]: {
-      bottom: "-3rem",
-      left: "-5rem",
+      bottom: "-4rem",
+      left: "-4rem",
     },
   }));
 
@@ -76,10 +76,11 @@ const LandingImage: FC<{ padding: any }> = ({
     maxWidth: "25rem",
     position: "relative",
     bottom: "-1rem",
+    left: "-5rem",
     [theme.breakpoints.down("sm")]: {
       maxHeight: "60vh",
       top: "1rem",
-      left: "5rem",
+      left: "-2rem",
     },
   });
 
@@ -90,7 +91,7 @@ const LandingImage: FC<{ padding: any }> = ({
           src={me}
           alt="Noah Joeris"
           priority
-          style={{ height: "100%", width: "auto", maxHeight: "38rem" }}
+          style={{ height: "100%", width: "auto", maxHeight: "37rem" }}
         />
       </Box>
       <ColoredCircle />
